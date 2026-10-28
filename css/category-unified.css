@@ -1,0 +1,205 @@
+/* ==========================================================
+   BYU-I Find | Unified Category Styles
+   ----------------------------------------------------------
+   Shared design for all seven category pages.
+
+   Contents:
+   1. Category theme colors
+   2. Page background
+   3. Category hero
+   4. Typography
+   5. Search
+   6. Resource cards
+   7. Resource lists
+   8. Category icons
+
+   This file is loaded after the shared and category CSS.
+   It keeps the layout consistent while allowing each
+   category to have its own accent color.
+
+   Header and footer styles are managed in styles.css.
+   ========================================================== */
+
+
+/* 1. Category theme colors */
+
+/*
+ * Default theme: My Classes.
+ *
+ * Each page is identified by its category stylesheet.
+ * The stylesheet links are located inside <head>, so
+ * we use html:has() instead of body:has().
+ */
+
+:root {
+  --category-accent: #2676c9;
+  --category-soft: #e5f0ff;
+}
+
+/* My Health */
+html:has(link[href$="/health.css"]),
+html:has(link[href="health.css"]) {
+  --category-accent: #2aa66a;
+  --category-soft: #e4f7eb;
+}
+
+/* Paying for School */
+html:has(link[href$="/financial.css"]),
+html:has(link[href="financial.css"]) {
+  --category-accent: #d9a314;
+  --category-soft: #fff1c9;
+}
+
+/* International Support */
+html:has(link[href$="/international.css"]),
+html:has(link[href="international.css"]) {
+  --category-accent: #9062c8;
+  --category-soft: #f0e8ff;
+}
+
+/* Career & Jobs */
+html:has(link[href$="/career.css"]),
+html:has(link[href="career.css"]) {
+  --category-accent: #278c98;
+  --category-soft: #ddf2f4;
+}
+
+/* Housing */
+html:has(link[href$="/housing.css"]),
+html:has(link[href="housing.css"]) {
+  --category-accent: #c87948;
+  --category-soft: #ffeadb;
+}
+
+/* Campus Life */
+html:has(link[href$="/campus.css"]),
+html:has(link[href="campus.css"]) {
+  --category-accent: #c56b93;
+  --category-soft: #fbe3ee;
+}
+
+
+/* 2. Page background */
+
+html,
+body {
+  background: #f3f8ff;
+}
+
+body {
+  color: #102d55;
+}
+
+main {
+  background: transparent;
+}
+
+
+/* 3. Category hero */
+
+/*
+ * All category pages use the same campus image.
+ * The image path is relative to the css/ folder.
+ */
+
+.category-hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(230, 243, 255, 0.96) 0%,
+      rgba(230, 243, 255, 0.78) 50%,
+      rgba(230, 243, 255, 0.40) 100%
+    ),
+    url("../assets/images/byui-campus.jpg")
+      center / cover no-repeat;
+
+  box-shadow: 0 6px 22px rgba(43, 91, 145, 0.09);
+}
+
+
+/* 4. Typography */
+
+.category-hero h1,
+.category-section .section-heading h2,
+.category-section .resource-card h3,
+.category-section .resource-list-item strong {
+  color: #102d55;
+}
+
+.category-description {
+  color: #36577b;
+}
+
+.eyebrow {
+  color: #326ea8;
+}
+
+
+/* 5. Search */
+
+.category-section .search-box,
+.category-search .search-box {
+  background: #fff;
+  border-color: #e2eaf5;
+  box-shadow: 0 5px 20px rgba(34, 79, 128, 0.09);
+}
+
+.search-box button {
+  color: #fff;
+  background: #0e416f;
+}
+
+.search-box button:hover {
+  background: #195c95;
+}
+
+
+/* 6. Featured resource cards */
+
+.category-section .resource-grid .resource-card {
+  background: #fff;
+  border-color: #e4edf8;
+  box-shadow: 0 4px 15px rgba(42, 81, 130, 0.05);
+}
+
+.category-section .resource-card a {
+  color: #286fb2;
+}
+
+
+/* 7. More resources */
+
+.category-section .resource-list-item {
+  background: #fff;
+  border-color: #e4edf8;
+}
+
+.category-section .resource-list-item > svg {
+  color: #4389c5;
+}
+
+
+/* 8. Category icons */
+
+/*
+ * Only the icons use category-specific colors.
+ * The rest of the page keeps the shared blue theme.
+ */
+
+/* Large hero icon */
+.category-hero .category-icon {
+  color: #fff;
+  background: var(--category-accent);
+}
+
+/* Featured resource icons */
+.category-section .resource-card .resource-icon {
+  color: var(--category-accent);
+  background: var(--category-soft);
+}
+
+/* More resource icons */
+.category-section .list-icon {
+  color: var(--category-accent);
+  background: var(--category-soft);
+}

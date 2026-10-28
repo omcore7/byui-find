@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Discover BYU-Idaho campus resources based on your needs, from academic help and student jobs to food assistance, wellness, and campus life."
+  >
+
+  <title>BYU-I Find | Discover Campus Resources</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Main JavaScript -->
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ======================================================
+       1. Header and Navigation
+       ====================================================== -->
+  <header class="site-header">
+
+    <a href="index.html" class="logo">
+      BYU-I <span>Find</span>
+    </a>
+
+    <!-- Mobile navigation -->
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i data-lucide="menu"></i>
+    </button>
+
+    <nav
+      class="navigation"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="#discover" class="nav-link active">
+        Discover
+      </a>
+
+      <a href="#categories" class="nav-link">
+        Resources
+      </a>
+
+      <a href="#about" class="nav-link">
+        About
+      </a>
+
+      <a href="#feedback" class="nav-link">
+        Feedback
+      </a>
+
+      <button
+        class="search-button"
+        id="nav-search"
+        type="button"
+        aria-label="Focus resource search"
+      >
+        <i data-lucide="search"></i>
+      </button>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- ====================================================
+         2. Hero and Search
+         ==================================================== -->
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <p class="hero-eyebrow">
+          YOUR CAMPUS. YOUR SUPPORT.
+        </p>
+
+        <h1>You don't have to know where to look.</h1>
+
+        <p>
+          Discover BYU-Idaho resources you might not know
+          about. Tell us what you need, and we'll help
+          you find a place to start.
+        </p>
+
+        <!-- Search is still available for students who
+             already know what they're looking for. -->
+        <form
+          class="search-form"
+          id="search-form"
+          role="search"
+        >
+
+          <i data-lucide="search" aria-hidden="true"></i>
+
+          <label
+            class="visually-hidden"
+            for="resource-search"
+          >
+            Search campus resources
+          </label>
+
+          <input
+            type="search"
+            id="resource-search"
+            placeholder="Search campus resources..."
+            autocomplete="off"
+          >
+
+          <button
+            type="submit"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right"></i>
+          </button>
+
+        </form>
+
+        <p
+          class="search-feedback"
+          id="search-feedback"
+          aria-live="polite"
+        ></p>
+
+        <a href="#discover" class="hero-discover-link">
+          Not sure what to search? Explore below
+          <i data-lucide="arrow-down"></i>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         3. Discover Resources by Student Needs
+         ==================================================== -->
+    <section
+      class="discover-section section-wrap"
+      id="discover"
+    >
+
+      <div class="section-heading discover-heading">
+
+        <div>
+          <p class="section-eyebrow">START WITH YOU</p>
+
+          <h2>What brings you here today?</h2>
+
+          <p class="section-description">
+            Choose what sounds familiar. You don't need
+            to know the name of a resource to find help.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- The first six options are visible by default.
+           JavaScript reveals the remaining options. -->
+      <div class="needs-grid" id="needs-grid">
+
+        <!-- Food assistance -->
+        <button
+          class="need-card"
+          type="button"
+          data-need="food"
+          data-category="financial"
+        >
+          <span class="need-icon yellow">
+            <i data-lucide="shopping-basket"></i>
+          </span>
+
+          <strong>I need help with food</strong>
+
+          <span>Find food assistance and support.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <!-- Financial difficulties -->
+        <button
+          class="need-card"
+          type="button"
+          data-need="money"
+          data-category="financial"
+        >
+          <span class="need-icon yellow">
+            <i data-lucide="wallet"></i>
+          </span>
+
+          <strong>I'm worried about money</strong>
+
+          <span>Explore financial support options.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <!-- Employment -->
+        <button
+          class="need-card"
+          type="button"
+          data-need="jobs"
+          data-category="career"
+        >
+          <span class="need-icon teal">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <strong>I'm looking for a job</strong>
+
+          <span>Discover student employment resources.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <!-- Academic difficulties -->
+        <button
+          class="need-card"
+          type="button"
+          data-need="classes"
+          data-category="classes"
+        >
+          <span class="need-icon blue">
+            <i data-lucide="book-open"></i>
+          </span>
+
+          <strong>I'm struggling in a class</strong>
+
+          <span>Find tutoring and academic help.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <!-- Emotional wellbeing -->
+        <button
+          class="need-card"
+          type="button"
+          data-need="wellbeing"
+          data-category="health"
+        >
+          <span class="need-icon green">
+            <i data-lucide="heart-handshake"></i>
+          </span>
+
+          <strong>I'm feeling overwhelmed</strong>
+
+          <span>Explore wellbeing and support resources.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <!-- International students -->
+        <button
+          class="need-card"
+          type="button"
+          data-need="international"
+          data-category="international"
+        >
+          <span class="need-icon purple">
+            <i data-lucide="globe"></i>
+          </span>
+
+          <strong>I'm an international student</strong>
+
+          <span>Discover services and important guidance.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <!-- Additional options -->
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="talk"
+          data-category="health"
+          hidden
+        >
+          <span class="need-icon green">
+            <i data-lucide="message-circle-heart"></i>
+          </span>
+
+          <strong>I need someone to talk to</strong>
+          <span>Find someone who can help.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="studying"
+          data-category="classes"
+          hidden
+        >
+          <span class="need-icon blue">
+            <i data-lucide="graduation-cap"></i>
+          </span>
+
+          <strong>I need help studying</strong>
+          <span>Explore labs and academic support.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="internship"
+          data-category="career"
+          hidden
+        >
+          <span class="need-icon teal">
+            <i data-lucide="file-user"></i>
+          </span>
+
+          <strong>I need an internship</strong>
+          <span>Find experience and career guidance.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="career"
+          data-category="career"
+          hidden
+        >
+          <span class="need-icon teal">
+            <i data-lucide="target"></i>
+          </span>
+
+          <strong>I need career advice</strong>
+          <span>Prepare for your professional future.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="friends"
+          data-category="campus"
+          hidden
+        >
+          <span class="need-icon pink">
+            <i data-lucide="users-round"></i>
+          </span>
+
+          <strong>I want to make friends</strong>
+          <span>Find communities and student groups.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="involved"
+          data-category="campus"
+          hidden
+        >
+          <span class="need-icon pink">
+            <i data-lucide="calendar-days"></i>
+          </span>
+
+          <strong>I want to get involved</strong>
+          <span>Explore activities and campus events.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="housing"
+          data-category="housing"
+          hidden
+        >
+          <span class="need-icon peach">
+            <i data-lucide="house"></i>
+          </span>
+
+          <strong>I'm looking for housing</strong>
+          <span>Explore student apartment options.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="roommates"
+          data-category="housing"
+          hidden
+        >
+          <span class="need-icon peach">
+            <i data-lucide="users"></i>
+          </span>
+
+          <strong>I'm having roommate problems</strong>
+          <span>Find housing guidance and support.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+        <button
+          class="need-card extra-need"
+          type="button"
+          data-need="new"
+          data-category="campus"
+          hidden
+        >
+          <span class="need-icon purple">
+            <i data-lucide="map"></i>
+          </span>
+
+          <strong>I'm new to BYU-Idaho</strong>
+          <span>Discover services and campus life.</span>
+
+          <i data-lucide="arrow-up-right" class="need-arrow"></i>
+        </button>
+
+      </div>
+
+      <!-- Expand or collapse additional options -->
+      <div class="discover-actions">
+
+        <button
+          class="show-more-button"
+          id="show-more-needs"
+          type="button"
+          aria-expanded="false"
+          aria-controls="needs-grid"
+        >
+          See all options
+          <i data-lucide="chevron-down"></i>
+        </button>
+
+      </div>
+
+
+      <!-- Recommendations appear after a need is selected -->
+      <div
+        class="recommendation-panel"
+        id="need-recommendations"
+        aria-live="polite"
+        hidden
+      >
+
+        <div class="recommendation-header">
+          <div>
+            <p class="section-eyebrow">RECOMMENDED FOR YOU</p>
+
+            <h3 id="recommendation-title">
+              Resources that may help
+            </h3>
+          </div>
+
+          <button
+            class="recommendation-close"
+            id="close-recommendations"
+            type="button"
+            aria-label="Close recommendations"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <p id="recommendation-description"></p>
+
+        <div
+          class="recommendation-grid"
+          id="recommendation-results"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         4. Personalized Resource Finder
+         ==================================================== -->
+    <section class="finder-section" id="finder">
+
+      <div class="section-wrap">
+
+        <div class="finder-panel">
+
+          <div class="finder-intro">
+
+            <span class="finder-icon">
+              <i data-lucide="sparkles"></i>
+            </span>
+
+            <p class="section-eyebrow">
+              A LITTLE HELP FINDING YOUR WAY
+            </p>
+
+            <h2>Let's find what's right for you.</h2>
+
+            <p>
+              Everyone's experience is different.
+              Choose a few things you'd like help with,
+              and we'll suggest resources worth exploring.
+            </p>
+
+            <p class="finder-note">
+              No account needed. You can skip this anytime.
+            </p>
+
+          </div>
+
+          <form id="resource-finder-form" class="finder-form">
+
+            <fieldset>
+
+              <legend>What would you like help with?</legend>
+
+              <p class="finder-hint">
+                You can select more than one.
+              </p>
+
+              <div class="finder-options">
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="food">
+                  <span>Food support</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="money">
+                  <span>Financial help</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="jobs">
+                  <span>Finding a job</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="classes">
+                  <span>Classes and studying</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="wellbeing">
+                  <span>Wellbeing and support</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="housing">
+                  <span>Housing</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="friends">
+                  <span>Friends and campus life</span>
+                </label>
+
+                <label class="finder-option">
+                  <input type="checkbox" name="need" value="international">
+                  <span>International student support</span>
+                </label>
+
+              </div>
+
+            </fieldset>
+
+            <button class="finder-submit" type="submit">
+              Find my resources
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+            <p
+              class="finder-feedback"
+              id="finder-feedback"
+              aria-live="polite"
+            ></p>
+
+          </form>
+
+        </div>
+
+        <!-- Results generated by JavaScript -->
+        <div
+          class="finder-results"
+          id="finder-results"
+          aria-live="polite"
+          hidden
+        >
+
+          <div class="section-heading">
+            <div>
+              <p class="section-eyebrow">JUST FOR YOU</p>
+              <h2>Your recommended resources</h2>
+            </div>
+          </div>
+
+          <div
+            class="recommendation-grid"
+            id="finder-resource-list"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         5. Did You Know? Resource Spotlight
+         ==================================================== -->
+    <section class="spotlight-section" id="spotlight">
+
+      <div class="section-wrap">
+
+        <div class="section-heading">
+
+          <div>
+            <p class="section-eyebrow">DISCOVER SOMETHING NEW</p>
+
+            <h2>Did you know?</h2>
+
+            <p class="section-description">
+              Some of the most helpful resources are
+              ones students don't know about yet.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="spotlight-card">
+
+          <div class="spotlight-content">
+
+            <span class="spotlight-icon" id="spotlight-icon">
+              <i data-lucide="shopping-basket"></i>
+            </span>
+
+            <p class="spotlight-label">
+              RESOURCE SPOTLIGHT
+            </p>
+
+            <h3 id="spotlight-title">Food Pantry</h3>
+
+            <p id="spotlight-description">
+              Discover food assistance and support
+              resources available to students.
+            </p>
+
+            <a
+              href="pages/financial.html"
+              class="spotlight-link"
+              id="spotlight-link"
+            >
+              Learn more
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+
+          </div>
+
+          <div class="spotlight-controls">
+
+            <button
+              id="spotlight-prev"
+              type="button"
+              aria-label="Previous resource"
+            >
+              <i data-lucide="chevron-left"></i>
+            </button>
+
+            <span
+              class="spotlight-counter"
+              id="spotlight-counter"
+              aria-live="polite"
+            >
+              1 / 5
+            </span>
+
+            <button
+              id="spotlight-next"
+              type="button"
+              aria-label="Next resource"
+            >
+              <i data-lucide="chevron-right"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         6. Browse by Category
+         ==================================================== -->
+    <section
+      class="categories section-wrap"
+      id="categories"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <p class="section-eyebrow">EXPLORE EVERYTHING</p>
+
+          <h2>Browse by category</h2>
+
+          <p class="section-description">
+            Already know what you're looking for?
+            Explore all our campus resource categories.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="category-grid">
+
+        <!-- My Classes -->
+        <a
+          href="pages/classes.html"
+          class="category-card"
+          data-category="classes"
+          data-search="classes tutoring academic courses studying writing"
+        >
+          <span class="category-icon blue">
+            <i data-lucide="book-open"></i>
+          </span>
+
+          <strong>My classes</strong>
+
+          <span>
+            Get help with courses, tutoring,
+            and academic skills.
+          </span>
+        </a>
+
+        <!-- My Health -->
+        <a
+          href="pages/health.html"
+          class="category-card"
+          data-category="health"
+          data-search="health wellness counseling mental physical emotional"
+        >
+          <span class="category-icon green">
+            <i data-lucide="heart-pulse"></i>
+          </span>
+
+          <strong>My health</strong>
+
+          <span>
+            Find support for your physical,
+            mental, and emotional well-being.
+          </span>
+        </a>
+
+        <!-- Paying for School -->
+        <a
+          href="pages/financial.html"
+          class="category-card"
+          data-category="financial"
+          data-search="financial aid scholarships tuition money expenses food pantry"
+        >
+          <span class="category-icon yellow">
+            <i data-lucide="coins"></i>
+          </span>
+
+          <strong>Paying for school</strong>
+
+          <span>
+            Explore financial aid, scholarships,
+            and financial support.
+          </span>
+        </a>
+
+        <!-- International Support -->
+        <a
+          href="pages/international.html"
+          class="category-card"
+          data-category="international"
+          data-search="international students immigration visa work authorization"
+        >
+          <span class="category-icon purple">
+            <i data-lucide="globe"></i>
+          </span>
+
+          <strong>International support</strong>
+
+          <span>
+            Find services and guidance
+            for international students.
+          </span>
+        </a>
+
+        <!-- Career & Jobs -->
+        <a
+          href="pages/career.html"
+          class="category-card"
+          data-category="career"
+          data-search="career jobs employment internships resume interview"
+        >
+          <span class="category-icon teal">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <strong>Career &amp; jobs</strong>
+
+          <span>
+            Explore student jobs, internships,
+            and career preparation.
+          </span>
+        </a>
+
+        <!-- Housing -->
+        <a
+          href="pages/housing.html"
+          class="category-card"
+          data-category="housing"
+          data-search="housing apartments roommates rent student living"
+        >
+          <span class="category-icon peach">
+            <i data-lucide="house"></i>
+          </span>
+
+          <strong>Housing</strong>
+
+          <span>
+            Find student housing information
+            and apartment resources.
+          </span>
+        </a>
+
+        <!-- Campus Life -->
+        <a
+          href="pages/campus.html"
+          class="category-card"
+          data-category="campus"
+          data-search="campus life activities events societies clubs sports"
+        >
+          <span class="category-icon pink">
+            <i data-lucide="users-round"></i>
+          </span>
+
+          <strong>Campus life</strong>
+
+          <span>
+            Discover activities, student societies,
+            and ways to get involved.
+          </span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         7. Featured Resources
+         ==================================================== -->
+    <section class="featured" id="resources">
+
+      <div class="section-wrap">
+
+        <div class="section-heading">
+
+          <div>
+            <p class="section-eyebrow">MORE TO EXPLORE</p>
+            <h2>Featured resources</h2>
+          </div>
+
+          <a href="#categories" class="text-link">
+            Explore all categories
+            <i data-lucide="arrow-right"></i>
+          </a>
+
+        </div>
+
+        <div class="featured-grid" id="all-resources">
+
+          <!-- Tutoring -->
+          <a
+            class="resource-card"
+            href="https://www.byui.edu/tutoring-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-category="classes"
+            data-search="tutoring courses academic help subjects"
+          >
+            <span class="resource-icon blue">
+              <i data-lucide="graduation-cap"></i>
+            </span>
+
+            <span class="resource-copy">
+              <strong>Tutoring</strong>
+
+              <span>
+                Get help from peer tutors in a
+                variety of subjects and courses.
+              </span>
+            </span>
+
+            <span class="arrow-circle">
+              <i data-lucide="chevron-right"></i>
+            </span>
+          </a>
+
+          <!-- Writing Center -->
+          <a
+            class="resource-card"
+            href="https://www.byui.edu/academic-support-centers/writing-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-category="classes"
+            data-search="writing center essays writing academic help"
+          >
+            <span class="resource-icon green">
+              <i data-lucide="file-pen-line"></i>
+            </span>
+
+            <span class="resource-copy">
+              <strong>Writing Center</strong>
+
+              <span>
+                Get support with planning,
+                drafting, and improving your writing.
+              </span>
+            </span>
+
+            <span class="arrow-circle">
+              <i data-lucide="chevron-right"></i>
+            </span>
+          </a>
+
+          <!-- Counseling -->
+          <a
+            class="resource-card"
+            href="https://www.byui.edu/counseling-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-category="health"
+            data-search="counseling mental health wellness support"
+          >
+            <span class="resource-icon purple">
+              <i data-lucide="messages-square"></i>
+            </span>
+
+            <span class="resource-copy">
+              <strong>Counseling</strong>
+
+              <span>
+                Find support for challenges
+                and care for your well-being.
+              </span>
+            </span>
+
+            <span class="arrow-circle">
+              <i data-lucide="chevron-right"></i>
+            </span>
+          </a>
+
+        </div>
+
+        <p
+          class="no-results"
+          id="no-results"
+          hidden
+        >
+          No resources found. Try another search or category.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         8. About BYU-I Find
+         ==================================================== -->
+    <section class="about-section" id="about">
+
+      <div class="section-wrap">
+
+        <div class="info-panel">
+
+          <span class="info-icon">
+            <i data-lucide="compass"></i>
+          </span>
+
+          <div>
+
+            <p class="info-eyebrow">ABOUT BYU-I FIND</p>
+
+            <h2>Discover support you didn't know existed.</h2>
+
+            <p>
+              BYU-I Find is a student-created website
+              designed to help BYU-Idaho students
+              discover helpful campus resources.
+            </p>
+
+            <p>
+              Our student survey showed that many students
+              know how to find resources once they hear about
+              them, but don't always know what's available.
+              That's why we help you explore resources
+              based on your needs, not just their names.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         9. Feedback
+         ==================================================== -->
+    <section class="feedback-section" id="feedback">
+
+      <div class="section-wrap">
+
+        <div class="feedback-panel">
+
+          <span class="info-icon feedback-icon">
+            <i data-lucide="message-square-heart"></i>
+          </span>
+
+          <div class="feedback-content">
+
+            <p class="info-eyebrow">YOUR FEEDBACK MATTERS</p>
+
+            <h2>Help us make BYU-I Find better.</h2>
+
+            <p>
+              Have an idea or know about a campus resource
+              we should include? We'd love to hear your suggestions.
+            </p>
+
+            <!-- Temporary feedback link -->
+            <a
+              href="mailto:?subject=BYU-I%20Find%20Feedback"
+              class="feedback-link"
+            >
+              Share feedback
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       10. Footer
+       ====================================================== -->
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-main">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="logo">
+            BYU-I <span>Find</span>
+          </a>
+
+          <p>
+            Helping BYU-Idaho students discover
+            the support they need, all in one place.
+          </p>
+
+          <span class="footer-note">
+            A student-created campus resource guide.
+          </span>
+
+        </div>
+
+        <div class="footer-links">
+
+          <h3>Quick Links</h3>
+
+          <a href="#discover">Discover</a>
+          <a href="#categories">Resources</a>
+          <a href="#about">About</a>
+          <a href="#feedback">Feedback</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 BYU-I Find. Student project.</p>
+        <p>Made for BYU-Idaho students</p>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>

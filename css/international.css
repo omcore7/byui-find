@@ -1,0 +1,56 @@
+/* ==========================================================
+   BYU-I Find | International Support
+   ----------------------------------------------------------
+   International category-specific styles.
+
+   The page uses:
+   - classes.css for the shared category layout
+   - category-unified.css for the common page design
+   - A purple accent for international resources
+
+   The shared header and footer are in styles.css.
+   ========================================================== */
+
+
+/* 1. Shared category layout */
+
+/*
+ * Reuse the category layout from My Classes.
+ * Both stylesheets are inside the css/ folder.
+ */
+@import url("./classes.css");
+
+
+/* 2. International theme */
+
+/*
+ * Purple identifies international student resources.
+ * The unified stylesheet also defines category accents.
+ */
+:root {
+  --category-accent: #9062c8;
+  --category-soft: #f0e5ff;
+}
+
+
+/* 3. International resource icon */
+
+/*
+ * The International Services card uses the lavender icon.
+ * Other icon colors are managed by category-unified.css.
+ */
+.resource-icon.lavender {
+  color: #8054a8;
+  background-color: #f0e5ff;
+}
+
+
+/* 4. Accessibility */
+
+/* Use the international accent for keyboard focus indicators. */
+.search-box:focus-within,
+.category-section .resource-card a:focus-visible,
+.category-section .resource-list-item:focus-visible,
+.search-box button:focus-visible {
+  outline-color: var(--category-accent);
+}

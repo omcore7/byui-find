@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Find BYU-Idaho international student resources, immigration information, employment guidance, and campus support."
+  >
+
+  <title>International Support | BYU-I Find</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Shared website styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- International page styles -->
+  <link rel="stylesheet" href="../css/international.css">
+
+  <!-- Unified category design -->
+  <link rel="stylesheet" href="../css/category-unified.css">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Shared website JavaScript -->
+  <script src="../js/script.js" defer>
+  </script>
+</head>
+
+<body>
+
+  <!-- ======================================================
+       1. Header and Navigation
+       ====================================================== -->
+  <header class="site-header">
+
+    <a href="../index.html" class="logo">
+      BYU-I <span>Find</span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i data-lucide="menu"></i>
+    </button>
+
+    <!-- Main navigation -->
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html#categories" class="active">
+        Resources
+      </a>
+
+      <a href="../index.html#about">
+        About
+      </a>
+
+      <a href="../index.html#feedback">
+        Feedback
+      </a>
+    </nav>
+
+  </header>
+
+
+  <!-- ======================================================
+       2. Main Content
+       ====================================================== -->
+  <main>
+
+    <!-- Category hero -->
+    <section class="category-hero international-hero">
+
+      <div class="category-hero-content">
+
+        <span class="category-icon">
+          <i data-lucide="globe"></i>
+        </span>
+
+        <p class="eyebrow">INTERNATIONAL STUDENTS</p>
+
+        <h1>International Support</h1>
+
+        <p class="category-description">
+          Find resources to help you navigate student life,
+          immigration requirements, and opportunities at BYU-Idaho.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         3. Resource Search
+         ==================================================== -->
+    <section
+      class="category-search"
+      aria-label="Search international resources"
+    >
+
+      <div class="search-box">
+
+        <i data-lucide="search"></i>
+
+        <input
+          id="resource-search"
+          type="search"
+          placeholder="Search international resources..."
+          aria-label="Search international resources"
+        >
+
+        <button
+          id="search-button"
+          type="button"
+          aria-label="Search resources"
+        >
+          <i data-lucide="arrow-right"></i>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         4. Featured Resources
+         ==================================================== -->
+    <section class="category-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">START HERE</p>
+          <h2>Featured resources</h2>
+        </div>
+      </div>
+
+      <div class="resource-grid">
+
+        <!-- International Services -->
+        <article
+          class="resource-card"
+          data-search="international services student advisors immigration questions"
+        >
+
+          <span class="resource-icon lavender">
+            <i data-lucide="globe"></i>
+          </span>
+
+          <h3>International Services</h3>
+
+          <p>
+            Find information and guidance for international
+            students studying at BYU-Idaho.
+          </p>
+
+          <a
+            href="https://www.byui.edu/international-services"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore services
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+
+        </article>
+
+
+        <!-- Visa and Immigration -->
+        <article
+          class="resource-card"
+          data-search="f1 visa immigration i20 sevis travel student status"
+        >
+
+          <span class="resource-icon blue">
+            <i data-lucide="file-check"></i>
+          </span>
+
+          <h3>Visa &amp; Immigration</h3>
+
+          <p>
+            Learn about maintaining student status,
+            immigration documents, and travel requirements.
+          </p>
+
+          <a
+            href="https://www.byui.edu/international-services"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View immigration information
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+
+        </article>
+
+
+        <!-- Student Support -->
+        <article
+          class="resource-card"
+          data-search="student support adjustment campus community international"
+        >
+
+          <span class="resource-icon green">
+            <i data-lucide="users"></i>
+          </span>
+
+          <h3>Student Support</h3>
+
+          <p>
+            Discover campus resources and support
+            to help you adjust to university life.
+          </p>
+
+          <a
+            href="https://www.byui.edu/student-services"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Find student support
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+
+        </article>
+
+      </div>
+
+      <!-- Message displayed when no resources match -->
+      <p id="no-results" class="no-results" hidden>
+        No resources found. Try another search.
+      </p>
+
+    </section>
+
+
+    <!-- ====================================================
+         5. More International Resources
+         ==================================================== -->
+    <section class="category-section more-resources">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EXPLORE MORE</p>
+          <h2>More international resources</h2>
+        </div>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- Employment Authorization -->
+        <a
+          class="resource-list-item"
+          href="https://www.byui.edu/international-services"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-search="cpt opt employment authorization international students work"
+        >
+
+          <span class="list-icon">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <span>
+            <strong>Employment Authorization</strong>
+            <small>
+              Learn about work authorization, CPT, and OPT
+              for eligible international students.
+            </small>
+          </span>
+
+          <i data-lucide="chevron-right"></i>
+
+        </a>
+
+
+        <!-- Academic Advising -->
+        <a
+          class="resource-list-item"
+          href="https://www.byui.edu/advising"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-search="academic advising classes registration degree planning"
+        >
+
+          <span class="list-icon">
+            <i data-lucide="graduation-cap"></i>
+          </span>
+
+          <span>
+            <strong>Academic Advising</strong>
+            <small>
+              Get guidance on planning your classes
+              and meeting degree requirements.
+            </small>
+          </span>
+
+          <i data-lucide="chevron-right"></i>
+
+        </a>
+
+
+        <!-- Campus Life and Activities -->
+        <a
+          class="resource-list-item"
+          href="https://www.byui.edu/activities"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-search="campus life activities friends community clubs events"
+        >
+
+          <span class="list-icon">
+            <i data-lucide="users-round"></i>
+          </span>
+
+          <span>
+            <strong>Campus Life &amp; Activities</strong>
+            <small>
+              Explore activities and opportunities
+              to connect with other students.
+            </small>
+          </span>
+
+          <i data-lucide="chevron-right"></i>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       6. Footer
+       ====================================================== -->
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-main">
+
+        <!-- Website information -->
+        <div class="footer-brand">
+
+          <a href="../index.html" class="logo">
+            BYU-I <span>Find</span>
+          </a>
+
+          <p>
+            Helping BYU-Idaho students find the
+            support they need, all in one place.
+          </p>
+
+          <span class="footer-note">
+            A student-created campus resource guide.
+          </span>
+
+        </div>
+
+        <!-- Quick navigation links -->
+        <div class="footer-links">
+
+          <h3>Quick Links</h3>
+
+          <a href="../index.html#categories">Resources</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#feedback">Feedback</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 BYU-I Find. Student project.</p>
+        <p>Made for BYU-Idaho students</p>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>

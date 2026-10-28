@@ -1,0 +1,44 @@
+/* ==========================================================
+   BYU-I Find | My Health Page
+   ----------------------------------------------------------
+   Health-specific styles.
+
+   The page uses:
+   - classes.css for the shared category layout
+   - category-unified.css for the common blue design
+   - A green accent for health-related elements
+
+   The shared header and footer are in styles.css.
+   ========================================================== */
+
+
+/* 1. Shared category layout */
+
+/*
+ * Reuse the category layout from My Classes.
+ * Both files are inside the css/ folder.
+ */
+@import url("./classes.css");
+
+
+/* 2. Health theme */
+
+/*
+ * The health category uses green as its accent.
+ * These variables are also used by category-unified.css.
+ */
+:root {
+  --category-accent: #2aa66a;
+  --category-soft: #e4f7eb;
+}
+
+
+/* 3. Health-specific interactions */
+
+/* Use the health accent for keyboard focus indicators. */
+.search-box:focus-within,
+.category-section .resource-card a:focus-visible,
+.category-section .resource-list-item:focus-visible,
+.search-box button:focus-visible {
+  outline-color: var(--category-accent);
+}

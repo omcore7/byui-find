@@ -1,0 +1,56 @@
+/* ==========================================================
+   BYU-I Find | Paying for School
+   ----------------------------------------------------------
+   Financial category-specific styles.
+
+   The page uses:
+   - classes.css for the shared category layout
+   - category-unified.css for the common page design
+   - A gold accent for financial resources
+
+   The shared header and footer are in styles.css.
+   ========================================================== */
+
+
+/* 1. Shared category layout */
+
+/*
+ * Reuse the category layout from My Classes.
+ * Both stylesheets are inside the css/ folder.
+ */
+@import url("./classes.css");
+
+
+/* 2. Financial theme */
+
+/*
+ * Gold is used to identify financial resources.
+ * The unified stylesheet also defines category accents.
+ */
+:root {
+  --category-accent: #d9a314;
+  --category-soft: #fff1c9;
+}
+
+
+/* 3. Financial resource icon */
+
+/*
+ * The Financial Aid card uses the "gold" icon class.
+ * Other icon colors are managed by category-unified.css.
+ */
+.resource-icon.gold {
+  color: #b7832d;
+  background-color: #fff0ce;
+}
+
+
+/* 4. Accessibility */
+
+/* Use the financial accent for keyboard focus indicators. */
+.search-box:focus-within,
+.category-section .resource-card a:focus-visible,
+.category-section .resource-list-item:focus-visible,
+.search-box button:focus-visible {
+  outline-color: var(--category-accent);
+}

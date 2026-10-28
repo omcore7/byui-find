@@ -1,0 +1,376 @@
+/* ==========================================================
+   BYU-I Find | My Classes Page
+   ----------------------------------------------------------
+   Category page layout and component styles.
+
+   Contents:
+   1. Page layout
+   2. Category hero
+   3. Resource search
+   4. Section headings
+   5. Featured resource cards
+   6. More resources
+   7. Search feedback
+   8. Accessibility
+   9. Responsive design
+
+   Shared website styles are in styles.css.
+   Category colors are managed in category-unified.css.
+   ========================================================== */
+
+
+/* 1. Page layout */
+
+main {
+  padding: 20px 0 32px;
+}
+
+.category-search,
+.category-section {
+  width: min(1100px, calc(100% - 40px));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+/* 2. Category hero */
+
+.category-hero {
+  display: flex;
+  align-items: center;
+  width: min(1200px, calc(100% - 40px));
+  min-height: 220px;
+  margin: 0 auto;
+  padding: 30px 36px;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(225, 241, 255, 0.96),
+      rgba(225, 241, 255, 0.42)
+    ),
+    url("../assets/images/byui-campus.jpg")
+      center / cover no-repeat;
+
+  box-shadow: 0 6px 20px rgba(33, 78, 128, 0.08);
+}
+
+.category-hero-content {
+  max-width: 540px;
+}
+
+.category-hero .category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+}
+
+.category-hero .category-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.category-hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.9rem, 3.4vw, 2.65rem);
+  line-height: 1.15;
+}
+
+.category-description {
+  max-width: 450px;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+
+/* 3. Resource search */
+
+.category-search {
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 18px;
+  background: #fff;
+  border: 1px solid #e2ebf6;
+  border-radius: 999px;
+  box-shadow: 0 5px 18px rgba(33, 78, 128, 0.08);
+}
+
+.search-box > svg {
+  flex-shrink: 0;
+  color: #7890aa;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  color: #102f56;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 0.9rem;
+}
+
+.search-box input::placeholder {
+  color: #7890aa;
+}
+
+.search-box button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background: #104875;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-box button:hover {
+  background: #2676c9;
+}
+
+
+/* 4. Section headings */
+
+.category-section {
+  margin-top: 22px;
+  margin-bottom: 30px;
+  background: transparent;
+}
+
+.category-section .section-heading {
+  margin-bottom: 16px;
+}
+
+.category-section .section-heading h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+
+
+/* 5. Featured resource cards */
+
+.category-section .resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.category-section .resource-grid .resource-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e2ebf6;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(30, 70, 110, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-section .resource-grid .resource-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(30, 70, 110, 0.1);
+}
+
+.category-section .resource-card .resource-icon {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+
+.category-section .resource-card .resource-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.category-section .resource-card h3 {
+  margin: 2px 0 0;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+
+.category-section .resource-card p {
+  width: 100%;
+  margin: 0;
+  color: #5f7590;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.category-section .resource-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.category-section .resource-card a:hover {
+  text-decoration: underline;
+}
+
+.category-section .resource-card a svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* 6. More resources */
+
+.resource-list {
+  display: grid;
+  gap: 10px;
+}
+
+.category-section .resource-list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #e2ebf6;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-section .resource-list-item:hover {
+  transform: translateX(3px);
+  box-shadow: 0 5px 16px rgba(30, 70, 110, 0.08);
+}
+
+.list-icon {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.list-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.resource-list-item > span:nth-child(2) {
+  display: grid;
+  flex: 1;
+  gap: 4px;
+}
+
+.resource-list-item strong {
+  font-size: 0.92rem;
+}
+
+.resource-list-item small {
+  color: #5f7590;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.resource-list-item > svg {
+  flex-shrink: 0;
+  color: #5795d4;
+}
+
+.resource-list-item:hover strong {
+  text-decoration: underline;
+}
+
+
+/* 7. Search feedback */
+
+.category-section .no-results {
+  padding: 20px;
+  color: #5f7590;
+  text-align: center;
+}
+
+/* The shared [hidden] rule in styles.css handles filtered cards. */
+
+
+/* 8. Accessibility */
+
+.search-box:focus-within {
+  outline: 2px solid #2676c9;
+  outline-offset: 2px;
+}
+
+.category-section .resource-card a:focus-visible,
+.category-section .resource-list-item:focus-visible,
+.search-box button:focus-visible {
+  outline: 2px solid #2676c9;
+  outline-offset: 3px;
+}
+
+
+/* 9. Responsive design */
+
+@media (max-width: 900px) {
+  .category-section .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    padding-top: 14px;
+  }
+
+  .category-hero {
+    width: calc(100% - 24px);
+    min-height: 210px;
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .category-search,
+  .category-section {
+    width: calc(100% - 28px);
+  }
+
+  .category-section .resource-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-section .resource-card,
+  .category-section .resource-list-item,
+  .search-box button {
+    transition: none;
+  }
+}

@@ -1,0 +1,59 @@
+/* ==========================================================
+   BYU-I Find | Campus Life
+   ----------------------------------------------------------
+   Campus Life category-specific styles.
+
+   The page uses:
+   - classes.css for the shared category layout
+   - category-unified.css for the common page design
+   - A soft pink accent for campus life resources
+
+   The shared header and footer are in styles.css.
+   ========================================================== */
+
+
+/* 1. Shared category layout */
+
+/*
+ * Reuse the category layout from My Classes.
+ * Both stylesheets are inside the css/ folder.
+ */
+@import url("./classes.css");
+
+
+/* 2. Campus Life theme */
+
+/*
+ * Pink identifies campus activities and student life.
+ * The unified stylesheet also defines category accents.
+ */
+:root {
+  --category-accent: #c56b93;
+  --category-soft: #fbe3ee;
+}
+
+
+/* 3. Campus resource icons */
+
+/* Pink icon for campus activities. */
+.resource-icon.pink {
+  color: #c56b93;
+  background-color: #fbe3ee;
+}
+
+/* Lavender icon for student societies. */
+.resource-icon.lavender {
+  color: #8d6ac2;
+  background-color: #eee6fc;
+}
+
+
+/* 4. Accessibility */
+
+/* Use the campus accent for keyboard focus indicators. */
+.search-box:focus-within,
+.category-section .resource-card a:focus-visible,
+.category-section .resource-list-item:focus-visible,
+.search-box button:focus-visible {
+  outline-color: var(--category-accent);
+}

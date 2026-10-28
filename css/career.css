@@ -1,0 +1,56 @@
+/* ==========================================================
+   BYU-I Find | Career & Jobs
+   ----------------------------------------------------------
+   Career category-specific styles.
+
+   The page uses:
+   - classes.css for the shared category layout
+   - category-unified.css for the common page design
+   - A teal accent for career resources
+
+   The shared header and footer are in styles.css.
+   ========================================================== */
+
+
+/* 1. Shared category layout */
+
+/*
+ * Reuse the category layout from My Classes.
+ * Both stylesheets are inside the css/ folder.
+ */
+@import url("./classes.css");
+
+
+/* 2. Career theme */
+
+/*
+ * Teal identifies career and employment resources.
+ * The unified stylesheet also defines category accents.
+ */
+:root {
+  --category-accent: #278c98;
+  --category-soft: #ddf2f4;
+}
+
+
+/* 3. Career resource icon */
+
+/*
+ * The Career Center card uses the teal icon.
+ * Other icon colors are managed by shared styles.
+ */
+.resource-icon.teal {
+  color: #278c98;
+  background-color: #ddf2f4;
+}
+
+
+/* 4. Accessibility */
+
+/* Use the career accent for keyboard focus indicators. */
+.search-box:focus-within,
+.category-section .resource-card a:focus-visible,
+.category-section .resource-list-item:focus-visible,
+.search-box button:focus-visible {
+  outline-color: var(--category-accent);
+}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Find BYU-Idaho financial aid, scholarships, tuition, and student financial resources."
+  >
+
+  <title>Paying for School | BYU-I Find</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Shared website styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Financial page styles -->
+  <link rel="stylesheet" href="../css/financial.css">
+
+  <!-- Unified category design -->
+  <link rel="stylesheet" href="../css/category-unified.css">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Shared website JavaScript -->
+  <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ======================================================
+       1. Header and Navigation
+       ====================================================== -->
+  <header class="site-header">
+
+    <a href="../index.html" class="logo">
+      BYU-I <span>Find</span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i data-lucide="menu"></i>
+    </button>
+
+    <!-- Main navigation -->
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html#categories" class="active">
+        Resources
+      </a>
+
+      <a href="../index.html#about">
+        About
+      </a>
+
+      <a href="../index.html#feedback">
+        Feedback
+      </a>
+    </nav>
+
+  </header>
+
+
+  <!-- ======================================================
+       2. Main Content
+       ====================================================== -->
+  <main>
+
+    <!-- Category hero -->
+    <section class="category-hero financial-hero">
+
+      <div class="category-hero-content">
+
+        <span class="category-icon">
+          <i data-lucide="wallet"></i>
+        </span>
+
+        <p class="eyebrow">FINANCIAL RESOURCES</p>
+
+        <h1>Paying for School</h1>
+
+        <p class="category-description">
+          Find financial aid, scholarships, and resources
+          to help you manage school expenses.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         3. Resource Search
+         ==================================================== -->
+    <section
+      class="category-search"
+      aria-label="Search financial resources"
+    >
+
+      <div class="search-box">
+
+        <i data-lucide="search"></i>
+
+        <input
+          id="resource-search"
+          type="search"
+          placeholder="Search financial resources..."
+          aria-label="Search financial resources"
+        >
+
+        <button
+          id="search-button"
+          type="button"
+          aria-label="Search resources"
+        >
+          <i data-lucide="arrow-right"></i>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         4. Featured Resources
+         ==================================================== -->
+    <section class="category-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">START HERE</p>
+          <h2>Featured resources</h2>
+        </div>
+      </div>
+
+      <div class="resource-grid">
+
+        <!-- Financial Aid -->
+        <article
+          class="resource-card"
+          data-search="financial aid fafsa grants student assistance"
+        >
+
+          <span class="resource-icon gold">
+            <i data-lucide="landmark"></i>
+          </span>
+
+          <h3>Financial Aid</h3>
+
+          <p>
+            Learn about financial aid options and how to apply
+            for assistance with school expenses.
+          </p>
+
+          <a
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore financial aid
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+
+        </article>
+
+
+        <!-- Scholarships -->
+        <article
+          class="resource-card"
+          data-search="scholarships grants awards academic merit funding"
+        >
+
+          <span class="resource-icon blue">
+            <i data-lucide="graduation-cap"></i>
+          </span>
+
+          <h3>Scholarships</h3>
+
+          <p>
+            Discover scholarship opportunities that may help
+            reduce the cost of your education.
+          </p>
+
+          <a
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore scholarships
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+
+        </article>
+
+
+        <!-- Tuition and Costs -->
+        <article
+          class="resource-card"
+          data-search="tuition fees payments school costs expenses"
+        >
+
+          <span class="resource-icon green">
+            <i data-lucide="calculator"></i>
+          </span>
+
+          <h3>Tuition &amp; Costs</h3>
+
+          <p>
+            Find information about tuition, school fees,
+            and planning for educational expenses.
+          </p>
+
+          <a
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View tuition information
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+
+        </article>
+
+      </div>
+
+      <!-- Message displayed when no resources match -->
+      <p id="no-results" class="no-results" hidden>
+        No resources found. Try another search.
+      </p>
+
+    </section>
+
+
+    <!-- ====================================================
+         5. More Financial Resources
+         ==================================================== -->
+    <section class="category-section more-resources">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PLAN AHEAD</p>
+          <h2>More financial resources</h2>
+        </div>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- FAFSA Application -->
+        <a
+          class="resource-list-item"
+          href="https://studentaid.gov/h/apply-for-aid/fafsa"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-search="fafsa federal student aid application grants loans"
+        >
+
+          <span class="list-icon">
+            <i data-lucide="file-text"></i>
+          </span>
+
+          <span>
+            <strong>FAFSA Application</strong>
+            <small>
+              Learn how to apply for federal student financial aid.
+            </small>
+          </span>
+
+          <i data-lucide="chevron-right"></i>
+
+        </a>
+
+
+        <!-- Student Employment -->
+        <a
+          class="resource-list-item"
+          href="https://www.byui.edu/human-resources/student-employment"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-search="student employment jobs work income campus"
+        >
+
+          <span class="list-icon">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <span>
+            <strong>Student Employment</strong>
+            <small>
+              Explore opportunities to work while attending school.
+            </small>
+          </span>
+
+          <i data-lucide="chevron-right"></i>
+
+        </a>
+
+
+        <!-- Financial Planning -->
+        <a
+          class="resource-list-item"
+          href="https://www.byui.edu/financial-aid"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-search="budget planning expenses money financial resources"
+        >
+
+          <span class="list-icon">
+            <i data-lucide="piggy-bank"></i>
+          </span>
+
+          <span>
+            <strong>Financial Planning</strong>
+            <small>
+              Find information to help you plan for school expenses.
+            </small>
+          </span>
+
+          <i data-lucide="chevron-right"></i>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       6. Footer
+       ====================================================== -->
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-main">
+
+        <!-- Website information -->
+        <div class="footer-brand">
+
+          <a href="../index.html" class="logo">
+            BYU-I <span>Find</span>
+          </a>
+
+          <p>
+            Helping BYU-Idaho students find the
+            support they need, all in one place.
+          </p>
+
+          <span class="footer-note">
+            A student-created campus resource guide.
+          </span>
+
+        </div>
+
+        <!-- Quick navigation links -->
+        <div class="footer-links">
+
+          <h3>Quick Links</h3>
+
+          <a href="../index.html#categories">Resources</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#feedback">Feedback</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 BYU-I Find. Student project.</p>
+        <p>Made for BYU-Idaho students</p>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>

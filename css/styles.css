@@ -1,0 +1,1673 @@
+/* ==========================================================
+   BYU-I Find | Shared Website Styles
+   ----------------------------------------------------------
+   Contents:
+   1. Design tokens and global styles
+   2. Header and navigation
+   3. Homepage hero and search
+   4. Shared section layout
+   5. Category cards and icon colors
+   6. Featured resources
+   7. About and feedback
+   8. Footer
+   9. Accessibility and utilities
+   10. Responsive layouts
+
+   Used by the homepage and all category pages.
+   Category-specific layouts belong in their own CSS files.
+   ========================================================== */
+
+/* 1. Design tokens and global styles */
+:root {
+  --navy: #102f56;
+  --blue: #427bbd;
+  --blue-dark: #2768a7;
+  --text: #17213a;
+  --muted: #697489;
+  --border: #e3e8ef;
+  --light-blue: #f2f7fc;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--white);
+  font-family: "Inter", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+/* 2. Header and navigation */
+.site-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1200px, calc(100% - 32px));
+  min-height: 72px;
+  margin: 14px auto;
+  padding: 12px 26px;
+  background: var(--white);
+  border: 1px solid #e3ebf5;
+  border-radius: 40px;
+  box-shadow: 0 5px 20px rgba(30, 70, 120, 0.07);
+}
+
+.logo {
+  color: var(--navy);
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.9px;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--blue);
+}
+
+/* Both navigation class names are used across the project. */
+.navigation,
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navigation a,
+.main-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 18px;
+  color: #304a69;
+  border-radius: 30px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navigation a:hover,
+.main-nav a:hover {
+  color: var(--blue-dark);
+  background: #f0f6fd;
+}
+
+.navigation a.active,
+.main-nav a.active {
+  color: var(--blue-dark);
+  background: #e6f1ff;
+}
+
+/* Header search is a button, not a navigation link. */
+.search-button,
+.menu-toggle {
+  display: grid;
+  place-items: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.search-button {
+  width: 42px;
+  height: 42px;
+  margin-left: 6px;
+  padding: 0;
+  color: var(--blue-dark);
+  background: #e6f1ff;
+  border-radius: 50%;
+}
+
+.search-button:hover {
+  background: #d5e8fc;
+}
+
+.search-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+}
+
+/* 3. Homepage hero and search */
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+  padding: 45px 20px;
+  background:
+    linear-gradient(rgba(224, 238, 252, 0.66), rgba(224, 238, 252, 0.66)),
+    url("../assets/images/byui-campus.jpg") center 52% / cover no-repeat;
+}
+
+.hero-content {
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #091630;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+}
+
+.hero-content > p:not(.search-feedback) {
+  margin: 12px 0 23px;
+  color: #24364b;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: min(590px, 100%);
+  min-height: 62px;
+  margin: 0 auto;
+  padding: 7px 12px 7px 23px;
+  background: var(--white);
+  border-radius: 50px;
+  box-shadow: 0 5px 24px rgba(20, 40, 70, 0.12);
+}
+
+.search-form > svg {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  color: #48546a;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 16px;
+}
+
+.search-form input::placeholder {
+  color: #81899a;
+}
+
+.search-form button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  color: var(--white);
+  background: var(--navy);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: var(--blue);
+}
+
+.search-form button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.search-feedback {
+  margin: 8px 0 0;
+  color: #273c60;
+  font-size: 13px;
+}
+
+/* 4. Shared section layout */
+.section-wrap {
+  width: min(1360px, 90%);
+  margin: 0 auto;
+}
+
+.categories {
+  padding: 33px 0 30px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 19px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 27px;
+  letter-spacing: -0.7px;
+  line-height: 1.3;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #32649f;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.text-link:hover {
+  color: var(--blue);
+}
+
+.text-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* 5. Category cards and icon colors */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 245px;
+  padding: 18px 13px;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.category-card:hover,
+.category-card.active {
+  transform: translateY(-3px);
+  border-color: #a8c6e8;
+  box-shadow: 0 7px 22px rgba(20, 40, 70, 0.07);
+}
+
+.category-icon,
+.resource-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.category-icon {
+  width: 78px;
+  height: 78px;
+  margin-bottom: 12px;
+}
+
+.category-icon svg {
+  width: 34px;
+  height: 34px;
+  stroke-width: 1.7;
+}
+
+.category-card strong {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.category-card > span:last-child {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Shared icon colors also apply to featured resource cards. */
+.blue {
+  color: #3675b8;
+  background: #e3eefc;
+}
+
+.green {
+  color: #43815a;
+  background: #e2f0e2;
+}
+
+.yellow {
+  color: #a47b16;
+  background: #fff0c2;
+}
+
+.purple {
+  color: #8d6ac2;
+  background: #eee6fc;
+}
+
+.teal {
+  color: #278c98;
+  background: #ddf2f4;
+}
+
+.peach {
+  color: #c87948;
+  background: #ffeadb;
+}
+
+.pink {
+  color: #c56b93;
+  background: #fbe3ee;
+}
+
+.coral {
+  color: #8a4e48;
+  background: #f9e4df;
+}
+
+/* 6. Featured resources */
+.featured {
+  padding: 30px 0 25px;
+  background: linear-gradient(110deg, #f4f8fc, #f1f6fb);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+/* Scoped to homepage cards to avoid changing category-page cards. */
+.featured-grid .resource-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  min-height: 125px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid #e8edf3;
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-grid .resource-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(20, 40, 70, 0.08);
+}
+
+.featured-grid .resource-icon {
+  width: 66px;
+  height: 66px;
+}
+
+.featured-grid .resource-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 1.7;
+}
+
+.resource-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.resource-copy strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.resource-copy > span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.arrow-circle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  background: #f2f5f9;
+  border-radius: 50%;
+}
+
+.arrow-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.no-results {
+  padding: 18px 0;
+  color: var(--muted);
+}
+
+/* 7. About and feedback */
+.about-section,
+.feedback-section {
+  padding: 34px 0;
+  scroll-margin-top: 24px;
+}
+
+.about-section {
+  background: var(--white);
+}
+
+.feedback-section {
+  background: #f0f7ff;
+}
+
+.info-panel,
+.feedback-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 36px;
+  background: #f2f7fd;
+  border: 1px solid #e1ebf7;
+  border-radius: 22px;
+}
+
+.feedback-panel {
+  background: var(--white);
+}
+
+.info-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  color: #3277b9;
+  background: #e1efff;
+  border-radius: 18px;
+}
+
+.info-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feedback-icon {
+  color: #8d6ac2;
+  background: #eee6fc;
+}
+
+.info-eyebrow {
+  margin: 0 0 8px;
+  color: #3477b5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.info-panel h2,
+.feedback-panel h2 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-size: clamp(23px, 3vw, 30px);
+}
+
+.info-panel p:not(.info-eyebrow),
+.feedback-panel p:not(.info-eyebrow) {
+  max-width: 700px;
+  margin: 0 0 12px;
+  color: #60758d;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.feedback-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 12px 20px;
+  color: var(--white);
+  background: var(--blue-dark);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.feedback-link:hover {
+  background: #174d80;
+}
+
+.feedback-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* 8. Footer */
+.site-footer {
+  width: 100%;
+  padding: 40px 24px 22px;
+  background: #ddeafb;
+  border-top: 1px solid #cadff3;
+}
+
+.footer-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.footer-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 32px;
+}
+
+.footer-brand {
+  max-width: 380px;
+}
+
+.footer-brand .logo {
+  font-size: 25px;
+}
+
+.footer-brand p {
+  margin: 14px 0 10px;
+  color: #496a8a;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.footer-note {
+  color: #6c87a2;
+  font-size: 12px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footer-links h3 {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.footer-links a {
+  color: #496a8a;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--blue-dark);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid #c1d7ed;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #6a86a2;
+  font-size: 12px;
+}
+
+/* 9. Accessibility and utilities */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.navigation a:focus-visible,
+.main-nav a:focus-visible,
+.footer-links a:focus-visible,
+.feedback-link:focus-visible,
+.search-button:focus-visible,
+.menu-toggle:focus-visible,
+.search-form button:focus-visible,
+.category-card:focus-visible,
+.resource-card:focus-visible {
+  outline: 2px solid var(--blue-dark);
+  outline-offset: 3px;
+}
+
+/* 10. Responsive layouts */
+@media (max-width: 1100px) {
+  .category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .category-card {
+    min-height: 220px;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .site-header {
+    flex-wrap: wrap;
+    width: calc(100% - 24px);
+    min-height: 64px;
+    margin: 12px auto;
+    padding: 12px 18px;
+    border-radius: 24px;
+  }
+
+  .site-header .logo {
+    font-size: 23px;
+  }
+
+  .menu-toggle {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+  }
+
+  .navigation,
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 0 6px;
+  }
+
+  .navigation.open,
+  .main-nav.open {
+    display: flex;
+  }
+
+  .navigation a,
+  .main-nav a {
+    justify-content: flex-start;
+    padding: 12px 16px;
+    border-radius: 14px;
+  }
+
+  .navigation .search-button {
+    width: 100%;
+    margin: 4px 0 0;
+    border-radius: 14px;
+  }
+
+  .hero {
+    min-height: 300px;
+    padding: 44px 18px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .hero-content > p:not(.search-feedback) {
+    font-size: 16px;
+  }
+
+  .search-form {
+    gap: 10px;
+    min-height: 56px;
+    padding-left: 16px;
+  }
+
+  .search-form input {
+    font-size: 14px;
+  }
+
+  .search-form button {
+    width: 39px;
+    height: 39px;
+  }
+
+  .section-wrap {
+    width: 92%;
+  }
+
+  .categories {
+    padding-top: 25px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .section-heading h2 {
+    font-size: 22px;
+  }
+
+  .text-link {
+    gap: 4px;
+    padding-top: 5px;
+    font-size: 12px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .category-card {
+    min-height: 220px;
+    padding: 16px 10px;
+  }
+
+  .category-icon {
+    width: 68px;
+    height: 68px;
+  }
+
+  .category-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .category-card strong {
+    font-size: 14px;
+  }
+
+  .category-card > span:last-child {
+    font-size: 12px;
+  }
+
+  .featured {
+    padding: 24px 0;
+  }
+
+  .featured-grid .resource-card {
+    gap: 11px;
+    padding: 13px;
+  }
+
+  .featured-grid .resource-icon {
+    width: 53px;
+    height: 53px;
+  }
+
+  .featured-grid .resource-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .resource-copy strong {
+    font-size: 14px;
+  }
+
+  .resource-copy > span {
+    font-size: 12px;
+  }
+
+  .arrow-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .info-panel,
+  .feedback-panel {
+    flex-direction: column;
+    gap: 18px;
+    padding: 26px;
+  }
+
+  .about-section,
+  .feedback-section {
+    padding: 24px 0;
+  }
+
+  .site-footer {
+    padding: 34px 24px 22px;
+  }
+
+  .footer-main {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .section-heading {
+    flex-direction: column;
+  }
+
+  .featured-grid .resource-icon {
+    display: none;
+  }
+}
+
+/* ==========================================================
+   11. Homepage Discovery Experience
+   ----------------------------------------------------------
+   Styles for:
+   - Student needs
+   - Personalized resource finder
+   - Recommended resources
+   - Did You Know? spotlight
+
+   These styles are scoped to the homepage so the
+   existing category pages keep their current design.
+   ========================================================== */
+
+/* Shared headings for new homepage sections */
+
+.section-eyebrow {
+  margin: 0 0 10px;
+  color: var(--blue-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-description {
+  max-width: 650px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+#discover,
+#finder,
+#spotlight,
+#categories {
+  scroll-margin-top: 24px;
+}
+
+/* ==========================================================
+   12. Updated Homepage Hero
+   ========================================================== */
+
+.hero {
+  min-height: 390px;
+  padding: 70px 20px;
+}
+
+.hero-content {
+  width: min(850px, 100%);
+}
+
+.hero .hero-eyebrow {
+  margin: 0 0 14px;
+  color: #275f98;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.hero-content > p:not(.search-feedback):not(.hero-eyebrow) {
+  max-width: 680px;
+  margin: 16px auto 26px;
+}
+
+.hero-discover-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 20px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero-discover-link:hover {
+  color: var(--blue-dark);
+}
+
+.hero-discover-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ==========================================================
+   13. Discover by Student Needs
+   ========================================================== */
+
+.discover-section {
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+.discover-heading {
+  margin-bottom: 26px;
+}
+
+.needs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.need-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  min-height: 200px;
+  padding: 25px;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.need-card:hover {
+  transform: translateY(-4px);
+  border-color: #b5cde8;
+  box-shadow: 0 12px 30px rgba(20, 40, 70, 0.08);
+}
+
+.need-card.active {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(66, 123, 189, 0.12);
+}
+
+.need-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 5px;
+  border-radius: 16px;
+}
+
+.need-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 1.8;
+}
+
+.need-card strong {
+  padding-right: 22px;
+  color: var(--navy);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.need-card > span:not(.need-icon) {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.need-arrow {
+  position: absolute;
+  top: 26px;
+  right: 23px;
+  width: 19px;
+  height: 19px;
+  color: #8294a8;
+  transition: transform 0.2s ease;
+}
+
+.need-card:hover .need-arrow {
+  transform: translate(2px, -2px);
+  color: var(--blue-dark);
+}
+
+/* Expand additional student needs */
+
+.discover-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.show-more-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 12px 24px;
+  color: var(--blue-dark);
+  background: #edf5ff;
+  border: 1px solid #d8e8fa;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.show-more-button:hover {
+  background: #dcecff;
+}
+
+.show-more-button svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.show-more-button[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================
+   14. Resource Recommendations
+   ========================================================== */
+
+.recommendation-panel {
+  margin-top: 36px;
+  padding: 30px;
+  background: #f2f7fd;
+  border: 1px solid #dce9f8;
+  border-radius: 24px;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.recommendation-header h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.recommendation-panel > p {
+  margin: 12px 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.recommendation-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.recommendation-close:hover {
+  background: #e5effb;
+}
+
+.recommendation-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+/* Cards created by JavaScript */
+
+.recommendation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid #e2eaf3;
+  border-radius: 18px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(20, 40, 70, 0.08);
+}
+
+.recommendation-card .resource-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.recommendation-card .resource-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.recommendation-card strong {
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.recommendation-card > span:not(.resource-icon) {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.recommendation-card .recommendation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.recommendation-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================================
+   15. Personalized Resource Finder
+   ========================================================== */
+
+.finder-section {
+  padding: 65px 0;
+  background: #f0f7ff;
+}
+
+.finder-panel {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 50px;
+  align-items: center;
+  padding: 48px;
+  background: var(--white);
+  border: 1px solid #e1ebf7;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(30, 70, 120, 0.04);
+}
+
+.finder-intro h2 {
+  max-width: 420px;
+  margin: 15px 0;
+  color: var(--navy);
+  font-size: clamp(26px, 3vw, 36px);
+  letter-spacing: -0.8px;
+  line-height: 1.25;
+}
+
+.finder-intro > p:not(.section-eyebrow) {
+  max-width: 430px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.finder-icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin-bottom: 20px;
+  color: #8d6ac2;
+  background: #eee6fc;
+  border-radius: 19px;
+}
+
+.finder-icon svg {
+  width: 29px;
+  height: 29px;
+}
+
+.finder-intro .finder-note {
+  margin-top: 20px;
+  color: #75869b;
+  font-size: 12px;
+}
+
+.finder-form fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.finder-form legend {
+  margin-bottom: 7px;
+  color: var(--navy);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.finder-hint {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.finder-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.finder-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 13px;
+  background: #f8fbff;
+  border: 1px solid #e1eaf4;
+  border-radius: 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.finder-option:hover {
+  background: #eef6ff;
+  border-color: #b7d4f2;
+}
+
+.finder-option:has(input:checked) {
+  background: #e9f3ff;
+  border-color: var(--blue);
+}
+
+.finder-option input {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--blue-dark);
+  cursor: pointer;
+}
+
+.finder-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  margin-top: 22px;
+  padding: 13px 24px;
+  color: var(--white);
+  background: var(--navy);
+  border: 0;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.finder-submit:hover {
+  background: var(--blue-dark);
+}
+
+.finder-submit svg {
+  width: 18px;
+  height: 18px;
+}
+
+.finder-feedback {
+  margin: 12px 0 0;
+  color: #9c4c41;
+  font-size: 13px;
+}
+
+.finder-results {
+  margin-top: 30px;
+  padding: 30px;
+  background: #e8f2ff;
+  border: 1px solid #d5e7fa;
+  border-radius: 24px;
+}
+
+/* ==========================================================
+   16. Did You Know? Resource Spotlight
+   ========================================================== */
+
+.spotlight-section {
+  padding: 65px 0;
+  background: var(--white);
+}
+
+.spotlight-card {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  min-height: 280px;
+  margin-top: 24px;
+  padding: 38px;
+  background: linear-gradient(120deg, #e9f3ff, #f2edff);
+  border: 1px solid #dce7f5;
+  border-radius: 26px;
+}
+
+.spotlight-content {
+  max-width: 700px;
+}
+
+.spotlight-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  color: #3675b8;
+  background: var(--white);
+  border-radius: 18px;
+}
+
+.spotlight-icon svg {
+  width: 29px;
+  height: 29px;
+}
+
+.spotlight-label {
+  margin: 0 0 10px;
+  color: #5575a0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.spotlight-content h3 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -0.7px;
+}
+
+.spotlight-content > p:not(.spotlight-label) {
+  max-width: 570px;
+  margin: 0 0 20px;
+  color: #536d8a;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.spotlight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue-dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.spotlight-link:hover {
+  text-decoration: underline;
+}
+
+.spotlight-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.spotlight-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.spotlight-controls button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid #d9e5f4;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.spotlight-controls button:hover {
+  background: #dcecff;
+}
+
+.spotlight-controls button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.spotlight-counter {
+  min-width: 42px;
+  color: #536d8a;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ==========================================================
+   17. Accessibility
+   ========================================================== */
+
+.need-card:focus-visible,
+.show-more-button:focus-visible,
+.recommendation-close:focus-visible,
+.recommendation-link:focus-visible,
+.finder-option:focus-within,
+.finder-submit:focus-visible,
+.spotlight-link:focus-visible,
+.spotlight-controls button:focus-visible,
+.hero-discover-link:focus-visible {
+  outline: 3px solid var(--blue-dark);
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .need-card,
+  .need-arrow,
+  .recommendation-card,
+  .show-more-button svg {
+    transition: none;
+  }
+}
+
+/* ==========================================================
+   18. Responsive Homepage Layouts
+   ========================================================== */
+
+@media (max-width: 1100px) {
+  .needs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .finder-panel {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .recommendation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .hero {
+    min-height: 370px;
+    padding: 55px 18px;
+  }
+
+  .hero .hero-eyebrow {
+    font-size: 10px;
+  }
+
+  .discover-section,
+  .finder-section,
+  .spotlight-section {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  .section-description {
+    font-size: 14px;
+  }
+
+  .needs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .need-card {
+    min-height: 185px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .need-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .need-icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .need-card strong {
+    font-size: 14px;
+  }
+
+  .need-card > span:not(.need-icon) {
+    font-size: 12px;
+  }
+
+  .need-arrow {
+    top: 17px;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .recommendation-panel,
+  .finder-results {
+    padding: 20px;
+  }
+
+  .recommendation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-header h3 {
+    font-size: 21px;
+  }
+
+  .finder-panel {
+    gap: 25px;
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  .finder-options {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .finder-submit {
+    width: 100%;
+  }
+
+  .spotlight-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+    min-height: auto;
+    padding: 26px;
+  }
+
+  .spotlight-controls {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .needs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .need-card {
+    min-height: 155px;
+  }
+}
