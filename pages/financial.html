@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Find BYU-Idaho financial aid, scholarships, tuition, and student financial resources."
+    content="Find BYU-Idaho financial aid, scholarships, tuition, food assistance, and student financial resources."
   >
 
   <title>Paying for School | BYU-I Find</title>
@@ -21,34 +21,28 @@
     rel="stylesheet"
   >
 
-  <!-- Shared website styles -->
+  <!-- Shared styles -->
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/category-unified.css">
 
   <!-- Financial page styles -->
   <link rel="stylesheet" href="../css/financial.css">
 
-  <!-- Unified category design -->
-  <link rel="stylesheet" href="../css/category-unified.css">
-
-  <!-- Lucide icons -->
+  <!-- Icons and shared JavaScript -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-
-  <!-- Shared website JavaScript -->
   <script src="../js/script.js" defer></script>
+
 </head>
 
-<body>
+<body class="financial-page">
 
-  <!-- ======================================================
-       1. Header and Navigation
-       ====================================================== -->
+  <!-- HEADER -->
   <header class="site-header">
 
     <a href="../index.html" class="logo">
       BYU-I <span>Find</span>
     </a>
 
-    <!-- Mobile menu button -->
     <button
       class="menu-toggle"
       type="button"
@@ -59,7 +53,6 @@
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Main navigation -->
     <nav
       class="main-nav"
       id="main-navigation"
@@ -69,275 +62,310 @@
         Resources
       </a>
 
-      <a href="../index.html#about">
-        About
-      </a>
+      <a href="../index.html#about">About</a>
 
-      <a href="../index.html#feedback">
-        Feedback
-      </a>
+      <a href="../index.html#feedback">Feedback</a>
     </nav>
 
   </header>
 
-
-  <!-- ======================================================
-       2. Main Content
-       ====================================================== -->
   <main>
 
-    <!-- Category hero -->
-    <section class="category-hero financial-hero">
+    <!-- PAGE INTRODUCTION -->
+    <section class="financial-intro">
 
-      <div class="category-hero-content">
+      <div class="financial-container">
 
-        <span class="category-icon">
-          <i data-lucide="wallet"></i>
-        </span>
+        <a
+          href="../index.html#categories"
+          class="back-link"
+        >
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          All categories
+        </a>
 
-        <p class="eyebrow">FINANCIAL RESOURCES</p>
+        <div class="financial-intro-content">
 
-        <h1>Paying for School</h1>
+          <span class="financial-intro-icon">
+            <i data-lucide="wallet" aria-hidden="true"></i>
+          </span>
 
-        <p class="category-description">
-          Find financial aid, scholarships, and resources
-          to help you manage school expenses.
-        </p>
+          <p class="financial-eyebrow">
+            FINANCIAL RESOURCES
+          </p>
+
+          <h1>Paying for School</h1>
+
+          <p class="financial-intro-description">
+            Find financial aid, scholarships, food assistance,
+            and resources to help you manage school expenses.
+          </p>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ====================================================
-         3. Resource Search
-         ==================================================== -->
+    <!-- SEARCH AND RESOURCES -->
     <section
-      class="category-search"
-      aria-label="Search financial resources"
+      class="financial-resources"
+      id="financial-resources"
+      aria-labelledby="financial-resources-title"
     >
 
-      <div class="search-box">
+      <div class="financial-container">
 
-        <i data-lucide="search"></i>
-
-        <input
-          id="resource-search"
-          type="search"
-          placeholder="Search financial resources..."
+        <!-- Search -->
+        <div
+          class="financial-search"
+          role="search"
           aria-label="Search financial resources"
         >
 
-        <button
-          id="search-button"
-          type="button"
-          aria-label="Search resources"
-        >
-          <i data-lucide="arrow-right"></i>
-        </button>
+          <i data-lucide="search" aria-hidden="true"></i>
 
-      </div>
+          <input
+            id="resource-search"
+            type="search"
+            placeholder="Search financial resources..."
+            aria-label="Search financial resources"
+            autocomplete="off"
+          >
 
-    </section>
+          <button
+            id="search-button"
+            type="button"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
 
-
-    <!-- ====================================================
-         4. Featured Resources
-         ==================================================== -->
-    <section class="category-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">START HERE</p>
-          <h2>Featured resources</h2>
         </div>
-      </div>
 
-      <div class="resource-grid">
 
-        <!-- Financial Aid -->
-        <article
-          class="resource-card"
-          data-search="financial aid fafsa grants student assistance"
-        >
+        <!-- Directory heading -->
+        <div class="financial-directory-heading">
 
-          <span class="resource-icon gold">
-            <i data-lucide="landmark"></i>
+          <div>
+
+            <p class="financial-eyebrow">
+              EXPLORE YOUR OPTIONS
+            </p>
+
+            <h2 id="financial-resources-title">
+              Financial resources
+            </h2>
+
+            <p>
+              Choose a resource to visit its website.
+            </p>
+
+          </div>
+
+          <span class="financial-resource-count">
+            7 resources
           </span>
 
-          <h3>Financial Aid</h3>
-
-          <p>
-            Learn about financial aid options and how to apply
-            for assistance with school expenses.
-          </p>
-
-          <a
-            href="https://www.byui.edu/financial-aid"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Explore financial aid
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-
-        </article>
-
-
-        <!-- Scholarships -->
-        <article
-          class="resource-card"
-          data-search="scholarships grants awards academic merit funding"
-        >
-
-          <span class="resource-icon blue">
-            <i data-lucide="graduation-cap"></i>
-          </span>
-
-          <h3>Scholarships</h3>
-
-          <p>
-            Discover scholarship opportunities that may help
-            reduce the cost of your education.
-          </p>
-
-          <a
-            href="https://www.byui.edu/financial-aid"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Explore scholarships
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-
-        </article>
-
-
-        <!-- Tuition and Costs -->
-        <article
-          class="resource-card"
-          data-search="tuition fees payments school costs expenses"
-        >
-
-          <span class="resource-icon green">
-            <i data-lucide="calculator"></i>
-          </span>
-
-          <h3>Tuition &amp; Costs</h3>
-
-          <p>
-            Find information about tuition, school fees,
-            and planning for educational expenses.
-          </p>
-
-          <a
-            href="https://www.byui.edu/financial-aid"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View tuition information
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-
-        </article>
-
-      </div>
-
-      <!-- Message displayed when no resources match -->
-      <p id="no-results" class="no-results" hidden>
-        No resources found. Try another search.
-      </p>
-
-    </section>
-
-
-    <!-- ====================================================
-         5. More Financial Resources
-         ==================================================== -->
-    <section class="category-section more-resources">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">PLAN AHEAD</p>
-          <h2>More financial resources</h2>
         </div>
-      </div>
-
-      <div class="resource-list">
-
-        <!-- FAFSA Application -->
-        <a
-          class="resource-list-item"
-          href="https://studentaid.gov/h/apply-for-aid/fafsa"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="fafsa federal student aid application grants loans"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="file-text"></i>
-          </span>
-
-          <span>
-            <strong>FAFSA Application</strong>
-            <small>
-              Learn how to apply for federal student financial aid.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
 
 
-        <!-- Student Employment -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/human-resources/student-employment"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="student employment jobs work income campus"
-        >
+        <!-- Resource list -->
+        <div class="financial-resource-list">
 
-          <span class="list-icon">
-            <i data-lucide="briefcase-business"></i>
-          </span>
+          <!-- Financial Aid -->
+          <a
+            class="resource-list-item"
+            id="financial-aid"
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="financial aid fafsa grants student assistance"
+          >
 
-          <span>
-            <strong>Student Employment</strong>
-            <small>
-              Explore opportunities to work while attending school.
-            </small>
-          </span>
+            <span class="list-icon">
+              <i data-lucide="landmark" aria-hidden="true"></i>
+            </span>
 
-          <i data-lucide="chevron-right"></i>
+            <span class="resource-details">
+              <strong>Financial Aid</strong>
+              <small>
+                Learn about financial aid options and how to apply
+                for assistance with school expenses.
+              </small>
+            </span>
 
-        </a>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
 
 
-        <!-- Financial Planning -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/financial-aid"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="budget planning expenses money financial resources"
-        >
+          <!-- Scholarships -->
+          <a
+            class="resource-list-item"
+            id="scholarships"
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="scholarships grants awards academic merit funding"
+          >
 
-          <span class="list-icon">
-            <i data-lucide="piggy-bank"></i>
-          </span>
+            <span class="list-icon">
+              <i data-lucide="graduation-cap" aria-hidden="true"></i>
+            </span>
 
-          <span>
-            <strong>Financial Planning</strong>
-            <small>
-              Find information to help you plan for school expenses.
-            </small>
-          </span>
+            <span class="resource-details">
+              <strong>Scholarships</strong>
+              <small>
+                Discover scholarship opportunities that may help
+                reduce the cost of your education.
+              </small>
+            </span>
 
-          <i data-lucide="chevron-right"></i>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
 
-        </a>
+          </a>
+
+
+          <!-- Tuition and Costs -->
+          <a
+            class="resource-list-item"
+            id="tuition-costs"
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="tuition fees payments school costs expenses"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="calculator" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Tuition &amp; Costs</strong>
+              <small>
+                Find information about tuition, school fees,
+                and planning for educational expenses.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- FAFSA Application -->
+          <a
+            class="resource-list-item"
+            id="fafsa-application"
+            href="https://studentaid.gov/h/apply-for-aid/fafsa"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="fafsa federal student aid application grants loans"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="file-text" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>FAFSA Application</strong>
+              <small>
+                Learn how to apply for federal student financial aid.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- Student Employment -->
+          <a
+            class="resource-list-item"
+            id="student-employment"
+            href="https://www.byui.edu/human-resources/student-employment"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="student employment jobs work income campus"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="briefcase-business" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Student Employment</strong>
+              <small>
+                Explore opportunities to work while attending school.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- Financial Planning -->
+          <a
+            class="resource-list-item"
+            id="financial-planning"
+            href="https://www.byui.edu/financial-aid"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="budget planning expenses money financial resources"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="piggy-bank" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Financial Planning</strong>
+              <small>
+                Find information to help you plan for school expenses.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- NEW: Food Pantry and Food Assistance -->
+          <a
+            class="resource-list-item"
+            id="food-pantry"
+            href="https://www.byui.edu/dean-of-students/student-faqs"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="food pantry free food groceries food insecurity meals food assistance rexburg mobile food pantry"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="shopping-basket" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Food Pantry &amp; Food Assistance</strong>
+              <small>
+                Find information about local food pantries and
+                community food assistance recommended by BYU-Idaho.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+        </div>
+
+
+        <!-- No search results -->
+        <p id="no-results" class="no-results" hidden>
+          No resources found. Try another search.
+        </p>
 
       </div>
 
@@ -346,16 +374,13 @@
   </main>
 
 
-  <!-- ======================================================
-       6. Footer
-       ====================================================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
       <div class="footer-main">
 
-        <!-- Website information -->
         <div class="footer-brand">
 
           <a href="../index.html" class="logo">
@@ -373,7 +398,6 @@
 
         </div>
 
-        <!-- Quick navigation links -->
         <div class="footer-links">
 
           <h3>Quick Links</h3>
@@ -394,6 +418,73 @@
     </div>
 
   </footer>
+
+
+  <!-- Financial resource search -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const searchInput = document.querySelector(
+        ".financial-page #resource-search"
+      );
+
+      const searchButton = document.querySelector(
+        ".financial-page #search-button"
+      );
+
+      const resources = Array.from(
+        document.querySelectorAll(
+          ".financial-page .financial-resource-list .resource-list-item"
+        )
+      );
+
+      const noResults = document.querySelector(
+        ".financial-page #no-results"
+      );
+
+      const count = document.querySelector(
+        ".financial-page .financial-resource-count"
+      );
+
+      if (!searchInput) return;
+
+      function filterResources() {
+
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+
+        resources.forEach((resource) => {
+
+          const searchableText = (
+            (resource.dataset.search || "") + " " +
+            resource.textContent
+          ).toLowerCase();
+
+          const matches = searchableText.includes(query);
+
+          resource.hidden = !matches;
+
+          if (matches) visible++;
+
+        });
+
+        if (noResults) {
+          noResults.hidden = visible !== 0;
+        }
+
+        if (count) {
+          count.textContent =
+            visible + (visible === 1 ? " resource" : " resources");
+        }
+
+      }
+
+      searchInput.addEventListener("input", filterResources);
+
+      searchButton?.addEventListener("click", filterResources);
+
+    });
+  </script>
 
 </body>
 </html>

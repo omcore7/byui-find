@@ -1,59 +1,398 @@
-/* ==========================================================
-   BYU-I Find | Campus Life
-   ----------------------------------------------------------
-   Campus Life category-specific styles.
+/* ==========================================
+   CAMPUS LIFE - BYU-I FIND
+   ========================================== */
 
-   The page uses:
-   - classes.css for the shared category layout
-   - category-unified.css for the common page design
-   - A soft pink accent for campus life resources
-
-   The shared header and footer are in styles.css.
-   ========================================================== */
-
-
-/* 1. Shared category layout */
-
-/*
- * Reuse the category layout from My Classes.
- * Both stylesheets are inside the css/ folder.
- */
-@import url("./classes.css");
-
-
-/* 2. Campus Life theme */
-
-/*
- * Pink identifies campus activities and student life.
- * The unified stylesheet also defines category accents.
- */
-:root {
-  --category-accent: #c56b93;
-  --category-soft: #fbe3ee;
+.campus-page {
+  background: #ffffff;
 }
 
-
-/* 3. Campus resource icons */
-
-/* Pink icon for campus activities. */
-.resource-icon.pink {
-  color: #c56b93;
-  background-color: #fbe3ee;
+.campus-page .campus-container {
+  width: min(100% - 40px, 1050px);
+  margin: 0 auto;
 }
 
-/* Lavender icon for student societies. */
-.resource-icon.lavender {
-  color: #8d6ac2;
-  background-color: #eee6fc;
+/* ==========================================
+   PAGE INTRODUCTION
+   ========================================== */
+
+.campus-page .campus-intro {
+  background: #fff0f5;
+  padding: 38px 0 58px;
 }
 
+.campus-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
-/* 4. Accessibility */
+  margin-bottom: 38px;
 
-/* Use the campus accent for keyboard focus indicators. */
-.search-box:focus-within,
-.category-section .resource-card a:focus-visible,
-.category-section .resource-list-item:focus-visible,
-.search-box button:focus-visible {
-  outline-color: var(--category-accent);
+  color: #b45179;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.campus-page .back-link:hover {
+  text-decoration: underline;
+}
+
+.campus-page .back-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.campus-page .campus-intro-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.campus-page .campus-intro-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 62px;
+  height: 62px;
+  margin-bottom: 18px;
+
+  background: #ffdae7;
+  color: #b45179;
+  border-radius: 18px;
+}
+
+.campus-page .campus-intro-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.campus-page .campus-eyebrow {
+  margin: 0 0 12px;
+
+  color: #b45179;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.campus-page .campus-intro h1 {
+  margin: 0 0 16px;
+
+  color: #4b2a3a;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.campus-page .campus-intro-description {
+  max-width: 600px;
+  margin: 0 auto;
+
+  color: #806274;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* ==========================================
+   RESOURCE DIRECTORY
+   ========================================== */
+
+.campus-page .campus-resources {
+  padding: 45px 0 90px;
+  background: #ffffff;
+}
+
+/* Search */
+
+.campus-page .campus-search {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  max-width: 700px;
+  margin: 0 auto 55px;
+  padding: 8px 10px 8px 20px;
+
+  background: #ffffff;
+  border: 1px solid #efdfe7;
+  border-radius: 999px;
+  box-shadow: 0 5px 20px rgba(75, 42, 58, 0.05);
+}
+
+.campus-page .campus-search > svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  color: #b9829a;
+}
+
+.campus-page .campus-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #4b2a3a;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.campus-page .campus-search input::placeholder {
+  color: #b4a0aa;
+}
+
+.campus-page .campus-search:focus-within {
+  border-color: #b45179;
+  box-shadow: 0 0 0 3px rgba(180, 81, 121, 0.12);
+}
+
+.campus-page .campus-search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+  background: #b45179;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.campus-page .campus-search button:hover {
+  background: #913b5e;
+}
+
+.campus-page .campus-search button svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* Directory heading */
+
+.campus-page .campus-directory-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+
+  margin-bottom: 26px;
+}
+
+.campus-page .campus-directory-heading h2 {
+  margin: 0 0 10px;
+
+  color: #4b2a3a;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  letter-spacing: -0.035em;
+}
+
+.campus-page .campus-directory-heading p:not(.campus-eyebrow) {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.campus-page .campus-resource-count {
+  flex-shrink: 0;
+
+  padding: 8px 14px;
+  background: #fff0f5;
+  border-radius: 999px;
+
+  color: #b45179;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Resource list */
+
+.campus-page .campus-resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campus-page .resource-list-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px 24px;
+
+  background: #ffffff;
+  border: 1px solid #eee2e8;
+  border-radius: 15px;
+  box-shadow: none;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.campus-page .resource-list-item[hidden],
+.campus-page #no-results[hidden] {
+  display: none !important;
+}
+
+.campus-page .resource-list-item:hover {
+  background: #fff8fb;
+  border-color: #e6b5c9;
+  transform: translateX(3px);
+}
+
+.campus-page .resource-list-item:focus-visible {
+  outline: 3px solid #b45179;
+  outline-offset: 3px;
+}
+
+/* Icons */
+
+.campus-page .list-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 50px;
+  height: 50px;
+
+  background: #ffe3ed;
+  color: #b45179;
+  border-radius: 13px;
+}
+
+.campus-page .list-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Resource information */
+
+.campus-page .resource-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.campus-page .resource-details strong {
+  color: #4b2a3a;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.campus-page .resource-details small {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* Right arrow */
+
+.campus-page .resource-list-item > svg:last-child {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #94a3b8;
+}
+
+.campus-page .resource-list-item:hover > svg:last-child {
+  color: #b45179;
+}
+
+/* No results */
+
+.campus-page .no-results {
+  padding: 28px;
+  margin-top: 20px;
+
+  background: #fff8fb;
+  border-radius: 14px;
+
+  color: #64748b;
+  text-align: center;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 700px) {
+  .campus-page .campus-intro {
+    padding: 25px 0 45px;
+  }
+
+  .campus-page .back-link {
+    margin-bottom: 28px;
+  }
+
+  .campus-page .campus-resources {
+    padding: 35px 0 65px;
+  }
+
+  .campus-page .campus-search {
+    margin-bottom: 40px;
+  }
+
+  .campus-page .campus-directory-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .campus-page .campus-container {
+    width: min(100% - 30px, 1050px);
+  }
+
+  .campus-page .campus-intro h1 {
+    font-size: 2.35rem;
+  }
+
+  .campus-page .campus-intro-description {
+    font-size: 0.94rem;
+  }
+
+  .campus-page .resource-list-item {
+    padding: 16px;
+    gap: 13px;
+  }
+
+  .campus-page .list-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .campus-page .resource-details strong {
+    font-size: 0.95rem;
+  }
+
+  .campus-page .resource-details small {
+    font-size: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-page .resource-list-item {
+    transition: none;
+  }
+
+  .campus-page .resource-list-item:hover {
+    transform: none;
+  }
 }

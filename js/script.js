@@ -74,6 +74,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ----------------------------------------------------------
+  // Active Navigation on Scroll
+  // ----------------------------------------------------------
+
+  const sectionLinks = document.querySelectorAll(
+    '.navigation a[href^="#"], .main-nav a[href^="#"]'
+  );
+
+  const trackedSections = [...sectionLinks]
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter((section) => section !== null);
+
+  function updateActiveNavigation() {
+    if (trackedSections.length === 0) return;
+
+    const scrollPosition = window.scrollY + 160;
+
+    let activeSection = trackedSections[0];
+
+    trackedSections.forEach((section) => {
+      if (section.offsetTop <= scrollPosition) {
+        activeSection = section;
+      }
+    });
+
+    sectionLinks.forEach((link) => {
+      const isActive =
+        link.getAttribute("href") === `#${activeSection.id}`;
+
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  if (sectionLinks.length > 0) {
+    window.addEventListener("scroll", updateActiveNavigation, {
+      passive: true
+    });
+
+    window.addEventListener("resize", updateActiveNavigation);
+
+    updateActiveNavigation();
+  }
+
+
+  // ----------------------------------------------------------
   // 3. Reusable Resource Filtering
   // ----------------------------------------------------------
 
@@ -105,36 +155,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const homeSearchForm = document.querySelector("#search-form");
   const homeSearchInput = homeSearchForm?.querySelector("#resource-search");
-
   const searchFeedback = document.querySelector("#search-feedback");
-  const categoryCards = document.querySelectorAll(".category-card");
-  const featuredCards = document.querySelectorAll(
-    ".featured-grid .resource-card"
-  );
-
-  const homeNoResults = document.querySelector(".featured #no-results");
+  const categoryCards = document.querySelectorAll("#categories .category-card");
   const navSearch = document.querySelector("#nav-search");
 
   if (homeSearchForm && homeSearchInput) {
-
     function filterHomeResources() {
       const query = homeSearchInput.value.trim().toLowerCase();
-
-      const categoryCount = filterResources(categoryCards, query);
-      const featuredCount = filterResources(featuredCards, query);
-      const totalResults = categoryCount + featuredCount;
-
-      if (homeNoResults) {
-        homeNoResults.hidden = totalResults > 0;
-      }
+      const visibleCount = filterResources(categoryCards, query);
 
       if (searchFeedback) {
-        searchFeedback.textContent = query
-          ? `${totalResults} result${totalResults === 1 ? "" : "s"} found.`
-          : "";
+        if (!query) {
+          searchFeedback.textContent = "";
+        } else if (visibleCount === 0) {
+          searchFeedback.textContent =
+            "No matching categories found. Try another word.";
+        } else {
+          searchFeedback.textContent =
+            `${visibleCount} matching ${visibleCount === 1 ? "category" : "categories"} found.`;
+        }
       }
 
-      return { categoryCount, featuredCount };
+      return visibleCount;
     }
 
     homeSearchInput.addEventListener("input", filterHomeResources);
@@ -142,13 +184,13 @@ document.addEventListener("DOMContentLoaded", () => {
     homeSearchForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const results = filterHomeResources();
+      if (!homeSearchInput.value.trim()) {
+        homeSearchInput.focus();
+        return;
+      }
 
-      const target = results.categoryCount > 0
-        ? document.querySelector("#categories")
-        : document.querySelector("#resources");
-
-      target?.scrollIntoView({
+      filterHomeResources();
+      document.querySelector("#categories")?.scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
@@ -156,9 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navSearch?.addEventListener("click", () => {
       document.querySelector(".hero")?.scrollIntoView({
-        behavior: "smooth"
+        behavior: "smooth",
+        block: "start"
       });
-
       homeSearchInput.focus({ preventScroll: true });
       closeMenu();
     });
@@ -226,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore food assistance and student support options.",
       icon: "shopping-basket",
       color: "yellow",
-      url: "pages/financial.html"
+      url: "pages/financial.html#food-pantry"
     },
 
     financialAid: {
@@ -250,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn where to look for student job opportunities.",
       icon: "search",
       color: "teal",
-      url: "pages/career.html"
+      url: "pages/career.html#help-wanted"
     },
 
     careerCenter: {
@@ -282,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore academic labs and additional study support.",
       icon: "book-open-check",
       color: "blue",
-      url: "pages/classes.html"
+      url: "pages/classes.html#drop-in-labs"
     },
 
     writingCenter: {
@@ -306,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn about additional support when you need someone to talk to.",
       icon: "message-circle-heart",
       color: "green",
-      url: "pages/health.html"
+      url: "pages/health.html#get-help-line"
     },
 
     crisisSupport: {
@@ -314,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find information about urgent emotional support resources.",
       icon: "heart-handshake",
       color: "green",
-      url: "pages/health.html"
+      url: "pages/health.html#crisis-support"
     },
 
     internationalServices: {
@@ -659,6 +701,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const spotlightTitle = document.querySelector("#spotlight-title");
+
   const spotlightDescription = document.querySelector(
     "#spotlight-description"
   );

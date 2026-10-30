@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Find BYU-Idaho health, counseling, wellness, and fitness resources."
+    content="Find BYU-Idaho health, counseling, wellness, fitness, and mental health support resources."
   >
 
   <title>My Health | BYU-I Find</title>
@@ -16,39 +16,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Shared website styles -->
+  <!-- Shared styles -->
   <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Unified category styles -->
+  <link rel="stylesheet" href="../css/category-unified.css">
 
   <!-- Health page styles -->
   <link rel="stylesheet" href="../css/health.css">
 
-  <!-- Unified category design -->
-  <link rel="stylesheet" href="../css/category-unified.css">
-
-  <!-- Lucide icons -->
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
 
-  <!-- Shared website JavaScript -->
+  <!-- Shared JavaScript -->
   <script src="../js/script.js" defer></script>
+
 </head>
 
-<body>
+<body class="health-page">
 
-  <!-- ======================================================
-       1. Header and Navigation
-       ====================================================== -->
+  <!-- ======================================
+       HEADER
+       ====================================== -->
   <header class="site-header">
 
     <a href="../index.html" class="logo">
       BYU-I <span>Find</span>
     </a>
 
-    <!-- Mobile menu button -->
     <button
       class="menu-toggle"
       type="button"
@@ -59,7 +60,6 @@
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Main navigation -->
     <nav
       class="main-nav"
       id="main-navigation"
@@ -80,264 +80,286 @@
 
   </header>
 
-
-  <!-- ======================================================
-       2. Main Content
-       ====================================================== -->
   <main>
 
-    <!-- Category hero -->
-    <section class="category-hero health-hero">
+    <!-- ======================================
+         PAGE INTRODUCTION
+         ====================================== -->
+    <section class="health-intro">
 
-      <div class="category-hero-content">
+      <div class="health-container">
 
-        <span class="category-icon">
-          <i data-lucide="heart-pulse"></i>
-        </span>
+        <a
+          href="../index.html#categories"
+          class="back-link"
+        >
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          All categories
+        </a>
 
-        <p class="eyebrow">HEALTH & WELLNESS</p>
+        <div class="health-intro-content">
 
-        <h1>My Health</h1>
+          <span class="health-intro-icon">
+            <i data-lucide="heart-pulse" aria-hidden="true"></i>
+          </span>
 
-        <p class="category-description">
-          Find support for your physical, mental,
-          and emotional well-being.
-        </p>
+          <p class="health-eyebrow">
+            HEALTH &amp; WELLNESS
+          </p>
+
+          <h1>My Health</h1>
+
+          <p class="health-intro-description">
+            Find support for your physical, mental,
+            and emotional well-being.
+          </p>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ====================================================
-         3. Resource Search
-         ==================================================== -->
+    <!-- ======================================
+         SEARCH AND RESOURCES
+         ====================================== -->
     <section
-      class="category-search"
-      aria-label="Search health resources"
+      class="health-resources"
+      id="health-resources"
+      aria-labelledby="health-resources-title"
     >
 
-      <div class="search-box">
+      <div class="health-container">
 
-        <i data-lucide="search"></i>
-
-        <input
-          id="resource-search"
-          type="search"
-          placeholder="Search health resources..."
+        <!-- Search -->
+        <div
+          class="health-search"
+          role="search"
           aria-label="Search health resources"
         >
 
-        <button
-          id="search-button"
-          type="button"
-          aria-label="Search resources"
-        >
-          <i data-lucide="arrow-right"></i>
-        </button>
+          <i data-lucide="search" aria-hidden="true"></i>
 
-      </div>
+          <input
+            id="resource-search"
+            type="search"
+            placeholder="Search health resources..."
+            aria-label="Search health resources"
+            autocomplete="off"
+          >
 
-    </section>
+          <button
+            id="search-button"
+            type="button"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
 
-
-    <!-- ====================================================
-         4. Featured Resources
-         ==================================================== -->
-    <section class="category-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">START HERE</p>
-          <h2>Featured resources</h2>
         </div>
-      </div>
 
-      <div class="resource-grid">
 
-        <!-- Counseling Center -->
-        <article
-          class="resource-card"
-          data-search="counseling mental health stress anxiety emotional support"
-        >
+        <!-- Directory heading -->
+        <div class="health-directory-heading">
 
-          <span class="resource-icon green">
-            <i data-lucide="heart-handshake"></i>
+          <div>
+
+            <p class="health-eyebrow">
+              EXPLORE YOUR OPTIONS
+            </p>
+
+            <h2 id="health-resources-title">
+              Health resources
+            </h2>
+
+            <p>
+              Choose a resource to visit its website.
+            </p>
+
+          </div>
+
+          <span class="health-resource-count" aria-live="polite">
+            6 resources
           </span>
 
-          <h3>Counseling Center</h3>
+        </div>
 
-          <p>
-            Find support for stress, emotional challenges,
-            and mental well-being.
-          </p>
 
+        <!-- Resource list -->
+        <div class="health-resource-list">
+
+          <!-- Counseling Center -->
           <a
+            class="resource-list-item"
+            id="counseling-center"
             href="https://www.byui.edu/counseling-center"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="counseling mental health stress anxiety emotional support therapy"
           >
-            Explore counseling
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="heart-handshake" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Counseling Center</strong>
+              <small>
+                Find support for stress, emotional challenges,
+                and mental well-being.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-
-        <!-- Student Health Center -->
-        <article
-          class="resource-card"
-          data-search="student health center medical doctor appointments physical health"
-        >
-
-          <span class="resource-icon blue">
-            <i data-lucide="stethoscope"></i>
-          </span>
-
-          <h3>Student Health Center</h3>
-
-          <p>
-            Find information about medical services,
-            appointments, and student healthcare.
-          </p>
-
+          <!-- Student Health Center -->
           <a
+            class="resource-list-item"
+            id="student-health-center"
             href="https://www.byui.edu/health-center"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="student health center medical doctor appointments physical health healthcare"
           >
-            Explore health services
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="stethoscope" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Student Health Center</strong>
+              <small>
+                Find information about medical services,
+                appointments, and student healthcare.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-
-        <!-- Fitness and Recreation -->
-        <article
-          class="resource-card"
-          data-search="fitness gym recreation exercise sports wellness"
-        >
-
-          <span class="resource-icon purple">
-            <i data-lucide="dumbbell"></i>
-          </span>
-
-          <h3>Fitness &amp; Recreation</h3>
-
-          <p>
-            Stay active through campus fitness,
-            exercise, and recreational activities.
-          </p>
-
+          <!-- Fitness and Recreation -->
           <a
+            class="resource-list-item"
+            id="fitness-recreation"
             href="https://www.byui.edu/activities"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="fitness gym recreation exercise sports wellness campus activities"
           >
-            Explore activities
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="dumbbell" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Fitness &amp; Recreation</strong>
+              <small>
+                Explore campus fitness, sports, exercise,
+                and recreational activities.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-      </div>
+          <!-- Wellness Resources -->
+          <a
+            class="resource-list-item"
+            id="wellness-resources"
+            href="https://www.byui.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="wellness healthy habits physical emotional health wellbeing"
+          >
 
-      <!-- Message displayed when no resources match -->
-      <p id="no-results" class="no-results" hidden>
-        No resources found. Try another search.
-      </p>
+            <span class="list-icon">
+              <i data-lucide="leaf" aria-hidden="true"></i>
+            </span>
 
-    </section>
+            <span class="resource-details">
+              <strong>Wellness Resources</strong>
+              <small>
+                Explore healthy habits and ways to
+                support your well-being.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
 
 
-    <!-- ====================================================
-         5. More Health Resources
-         ==================================================== -->
-    <section class="category-section more-resources">
+          <!-- NEW: I Get Help Line -->
+          <a
+            class="resource-list-item"
+            id="get-help-line"
+            href="https://www.byui.edu/counseling-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="i get help line get help emotional support mental health counseling talk someone stress help"
+          >
 
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">TAKE CARE OF YOURSELF</p>
-          <h2>More health resources</h2>
+            <span class="list-icon">
+              <i data-lucide="message-circle-heart" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>I Get Help Line</strong>
+              <small>
+                Explore BYU-Idaho counseling resources and
+                information about getting emotional support
+                when you need someone to talk to.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- NEW: Crisis Support -->
+          <a
+            class="resource-list-item"
+            id="crisis-support"
+            href="https://988lifeline.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="crisis support 988 suicide prevention lifeline emergency mental health immediate help emotional distress"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="heart-handshake" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Crisis Support — 988 Lifeline</strong>
+              <small>
+                Get free, confidential support during a
+                mental health or emotional crisis.
+                Call or text 988 in the United States,
+                or visit the 988 Lifeline website.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
         </div>
-      </div>
-
-      <div class="resource-list">
-
-        <!-- Wellness Resources -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="wellness healthy habits physical emotional health"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="leaf"></i>
-          </span>
-
-          <span>
-            <strong>Wellness Resources</strong>
-            <small>
-              Explore healthy habits and ways to support your well-being.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
 
 
-        <!-- Campus Recreation -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/activities"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="recreation sports campus activities exercise"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="activity"></i>
-          </span>
-
-          <span>
-            <strong>Campus Recreation</strong>
-            <small>
-              Find sports, recreation, and activities to stay active.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
-
-
-        <!-- Mental Health Support -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/counseling-center"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="mental health counseling emotional support"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="message-circle-heart"></i>
-          </span>
-
-          <span>
-            <strong>Mental Health Support</strong>
-            <small>
-              Learn where to find support when life feels overwhelming.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
+        <!-- No search results -->
+        <p id="no-results" class="no-results" hidden>
+          No resources found. Try another search.
+        </p>
 
       </div>
 
@@ -346,16 +368,15 @@
   </main>
 
 
-  <!-- ======================================================
-       6. Footer
-       ====================================================== -->
+  <!-- ======================================
+       FOOTER
+       ====================================== -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
       <div class="footer-main">
 
-        <!-- Website information -->
         <div class="footer-brand">
 
           <a href="../index.html" class="logo">
@@ -373,7 +394,6 @@
 
         </div>
 
-        <!-- Quick navigation links -->
         <div class="footer-links">
 
           <h3>Quick Links</h3>
@@ -394,6 +414,77 @@
     </div>
 
   </footer>
+
+
+  <!-- ======================================
+       HEALTH RESOURCE SEARCH
+       ====================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const searchInput = document.querySelector(
+        ".health-page #resource-search"
+      );
+
+      const searchButton = document.querySelector(
+        ".health-page #search-button"
+      );
+
+      const resources = Array.from(
+        document.querySelectorAll(
+          ".health-page .health-resource-list .resource-list-item"
+        )
+      );
+
+      const noResults = document.querySelector(
+        ".health-page #no-results"
+      );
+
+      const count = document.querySelector(
+        ".health-page .health-resource-count"
+      );
+
+      if (!searchInput) return;
+
+      function filterResources() {
+
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+
+        resources.forEach((resource) => {
+
+          const searchableText = (
+            (resource.dataset.search || "") + " " +
+            resource.textContent
+          ).toLowerCase();
+
+          const matches = searchableText.includes(query);
+
+          resource.hidden = !matches;
+
+          if (matches) {
+            visible++;
+          }
+
+        });
+
+        if (noResults) {
+          noResults.hidden = visible !== 0;
+        }
+
+        if (count) {
+          count.textContent =
+            visible + (visible === 1 ? " resource" : " resources");
+        }
+
+      }
+
+      searchInput.addEventListener("input", filterResources);
+
+      searchButton?.addEventListener("click", filterResources);
+
+    });
+  </script>
 
 </body>
 </html>

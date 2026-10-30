@@ -94,22 +94,38 @@
          ==================================================== -->
     <section class="hero">
 
+      <!-- Decorative background -->
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+
+      <!-- Floating icons -->
+      <div class="hero-floating-icon hero-icon-top" aria-hidden="true">
+        <i data-lucide="sparkles"></i>
+      </div>
+
+      <div class="hero-floating-icon hero-icon-bottom" aria-hidden="true">
+        <i data-lucide="graduation-cap"></i>
+      </div>
+
       <div class="hero-content">
 
         <p class="hero-eyebrow">
-          YOUR CAMPUS. YOUR SUPPORT.
+          <i data-lucide="sparkles" aria-hidden="true"></i>
+          YOUR CAMPUS RESOURCE GUIDE
         </p>
 
-        <h1>You don't have to know where to look.</h1>
+        <h1>
+          Your campus.
+          <span>Your resources.</span>
+        </h1>
 
-        <p>
-          Discover BYU-Idaho resources you might not know
-          about. Tell us what you need, and we'll help
-          you find a place to start.
+        <p class="hero-description">
+          Everything you need to feel supported at BYU-Idaho.
+          Find helpful resources for classes, health, finances,
+          and student life.
         </p>
 
-        <!-- Search is still available for students who
-             already know what they're looking for. -->
+        <!-- Keep existing search functionality -->
         <form
           class="search-form"
           id="search-form"
@@ -128,7 +144,7 @@
           <input
             type="search"
             id="resource-search"
-            placeholder="Search campus resources..."
+            placeholder="What are you looking for?"
             autocomplete="off"
           >
 
@@ -148,14 +164,13 @@
         ></p>
 
         <a href="#discover" class="hero-discover-link">
-          Not sure what to search? Explore below
+          Not sure where to start? Explore below
           <i data-lucide="arrow-down"></i>
         </a>
 
       </div>
 
     </section>
-
 
     <!-- ====================================================
          3. Discover Resources by Student Needs
@@ -168,13 +183,14 @@
       <div class="section-heading discover-heading">
 
         <div>
-          <p class="section-eyebrow">START WITH YOU</p>
+          <p class="section-eyebrow">DISCOVER YOUR SUPPORT</p>
 
-          <h2>What brings you here today?</h2>
+          <h2>What's on your mind?</h2>
 
           <p class="section-description">
-            Choose what sounds familiar. You don't need
-            to know the name of a resource to find help.
+            You don't need to know where to look.
+            Just choose what sounds familiar, and we'll
+            help you find a place to start.
           </p>
         </div>
 
@@ -521,7 +537,7 @@
             </span>
 
             <p class="section-eyebrow">
-              A LITTLE HELP FINDING YOUR WAY
+              MADE FOR YOU
             </p>
 
             <h2>Let's find what's right for you.</h2>
@@ -533,6 +549,7 @@
             </p>
 
             <p class="finder-note">
+              <i data-lucide="shield-check" aria-hidden="true"></i>
               No account needed. You can skip this anytime.
             </p>
 
@@ -636,92 +653,7 @@
     </section>
 
 
-    <!-- ====================================================
-         5. Did You Know? Resource Spotlight
-         ==================================================== -->
-    <section class="spotlight-section" id="spotlight">
-
-      <div class="section-wrap">
-
-        <div class="section-heading">
-
-          <div>
-            <p class="section-eyebrow">DISCOVER SOMETHING NEW</p>
-
-            <h2>Did you know?</h2>
-
-            <p class="section-description">
-              Some of the most helpful resources are
-              ones students don't know about yet.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="spotlight-card">
-
-          <div class="spotlight-content">
-
-            <span class="spotlight-icon" id="spotlight-icon">
-              <i data-lucide="shopping-basket"></i>
-            </span>
-
-            <p class="spotlight-label">
-              RESOURCE SPOTLIGHT
-            </p>
-
-            <h3 id="spotlight-title">Food Pantry</h3>
-
-            <p id="spotlight-description">
-              Discover food assistance and support
-              resources available to students.
-            </p>
-
-            <a
-              href="pages/financial.html"
-              class="spotlight-link"
-              id="spotlight-link"
-            >
-              Learn more
-              <i data-lucide="arrow-up-right"></i>
-            </a>
-
-          </div>
-
-          <div class="spotlight-controls">
-
-            <button
-              id="spotlight-prev"
-              type="button"
-              aria-label="Previous resource"
-            >
-              <i data-lucide="chevron-left"></i>
-            </button>
-
-            <span
-              class="spotlight-counter"
-              id="spotlight-counter"
-              aria-live="polite"
-            >
-              1 / 5
-            </span>
-
-            <button
-              id="spotlight-next"
-              type="button"
-              aria-label="Next resource"
-            >
-              <i data-lucide="chevron-right"></i>
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
+    
 
     <!-- ====================================================
          6. Browse by Category
@@ -885,208 +817,181 @@
 
     </section>
 
-
     <!-- ====================================================
-         7. Featured Resources
+         5. Did You Know? Resource Spotlight
          ==================================================== -->
-    <section class="featured" id="resources">
+    <section class="spotlight-section" id="spotlight">
 
       <div class="section-wrap">
 
         <div class="section-heading">
 
           <div>
-            <p class="section-eyebrow">MORE TO EXPLORE</p>
-            <h2>Featured resources</h2>
-          </div>
+            <p class="section-eyebrow">A LITTLE SOMETHING EXTRA</p>
 
-          <a href="#categories" class="text-link">
-            Explore all categories
-            <i data-lucide="arrow-right"></i>
-          </a>
+            <h2>Did you know?</h2>
 
-        </div>
-
-        <div class="featured-grid" id="all-resources">
-
-          <!-- Tutoring -->
-          <a
-            class="resource-card"
-            href="https://www.byui.edu/tutoring-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-category="classes"
-            data-search="tutoring courses academic help subjects"
-          >
-            <span class="resource-icon blue">
-              <i data-lucide="graduation-cap"></i>
-            </span>
-
-            <span class="resource-copy">
-              <strong>Tutoring</strong>
-
-              <span>
-                Get help from peer tutors in a
-                variety of subjects and courses.
-              </span>
-            </span>
-
-            <span class="arrow-circle">
-              <i data-lucide="chevron-right"></i>
-            </span>
-          </a>
-
-          <!-- Writing Center -->
-          <a
-            class="resource-card"
-            href="https://www.byui.edu/academic-support-centers/writing-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-category="classes"
-            data-search="writing center essays writing academic help"
-          >
-            <span class="resource-icon green">
-              <i data-lucide="file-pen-line"></i>
-            </span>
-
-            <span class="resource-copy">
-              <strong>Writing Center</strong>
-
-              <span>
-                Get support with planning,
-                drafting, and improving your writing.
-              </span>
-            </span>
-
-            <span class="arrow-circle">
-              <i data-lucide="chevron-right"></i>
-            </span>
-          </a>
-
-          <!-- Counseling -->
-          <a
-            class="resource-card"
-            href="https://www.byui.edu/counseling-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-category="health"
-            data-search="counseling mental health wellness support"
-          >
-            <span class="resource-icon purple">
-              <i data-lucide="messages-square"></i>
-            </span>
-
-            <span class="resource-copy">
-              <strong>Counseling</strong>
-
-              <span>
-                Find support for challenges
-                and care for your well-being.
-              </span>
-            </span>
-
-            <span class="arrow-circle">
-              <i data-lucide="chevron-right"></i>
-            </span>
-          </a>
-
-        </div>
-
-        <p
-          class="no-results"
-          id="no-results"
-          hidden
-        >
-          No resources found. Try another search or category.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ====================================================
-         8. About BYU-I Find
-         ==================================================== -->
-    <section class="about-section" id="about">
-
-      <div class="section-wrap">
-
-        <div class="info-panel">
-
-          <span class="info-icon">
-            <i data-lucide="compass"></i>
-          </span>
-
-          <div>
-
-            <p class="info-eyebrow">ABOUT BYU-I FIND</p>
-
-            <h2>Discover support you didn't know existed.</h2>
-
-            <p>
-              BYU-I Find is a student-created website
-              designed to help BYU-Idaho students
-              discover helpful campus resources.
-            </p>
-
-            <p>
-              Our student survey showed that many students
-              know how to find resources once they hear about
-              them, but don't always know what's available.
-              That's why we help you explore resources
-              based on your needs, not just their names.
+            <p class="section-description">
+              There are more resources on campus than you might think.
+              Discover something new!
             </p>
 
           </div>
 
         </div>
 
-      </div>
+        <div class="spotlight-card">
 
-    </section>
+          <div class="spotlight-content">
 
+            <span class="spotlight-icon" id="spotlight-icon">
+              <i data-lucide="shopping-basket"></i>
+            </span>
 
-    <!-- ====================================================
-         9. Feedback
-         ==================================================== -->
-    <section class="feedback-section" id="feedback">
-
-      <div class="section-wrap">
-
-        <div class="feedback-panel">
-
-          <span class="info-icon feedback-icon">
-            <i data-lucide="message-square-heart"></i>
-          </span>
-
-          <div class="feedback-content">
-
-            <p class="info-eyebrow">YOUR FEEDBACK MATTERS</p>
-
-            <h2>Help us make BYU-I Find better.</h2>
-
-            <p>
-              Have an idea or know about a campus resource
-              we should include? We'd love to hear your suggestions.
+            <p class="spotlight-label">
+              RESOURCE SPOTLIGHT
             </p>
 
-            <!-- Temporary feedback link -->
+            <h3 id="spotlight-title">Food Pantry</h3>
+
+            <p id="spotlight-description">
+              Discover food assistance and support
+              resources available to students.
+            </p>
+
             <a
-              href="mailto:?subject=BYU-I%20Find%20Feedback"
-              class="feedback-link"
+              href="pages/financial.html"
+              class="spotlight-link"
+              id="spotlight-link"
             >
-              Share feedback
+              Learn more
               <i data-lucide="arrow-up-right"></i>
             </a>
 
           </div>
 
+          <div class="spotlight-controls">
+
+            <button
+              id="spotlight-prev"
+              type="button"
+              aria-label="Previous resource"
+            >
+              <i data-lucide="chevron-left"></i>
+            </button>
+
+            <span
+              class="spotlight-counter"
+              id="spotlight-counter"
+              aria-live="polite"
+            >
+              1 / 5
+            </span>
+
+            <button
+              id="spotlight-next"
+              type="button"
+              aria-label="Next resource"
+            >
+              <i data-lucide="chevron-right"></i>
+            </button>
+
+          </div>
+
         </div>
 
       </div>
 
     </section>
+
+
+
+
+    <!-- ==========================================
+     ABOUT BYU-I FIND
+     ========================================== -->
+    <section class="about-section" id="about">
+      <div class="section-wrap">
+
+        <div class="about-content">
+
+          <p class="info-eyebrow">
+            <i data-lucide="compass" aria-hidden="true"></i>
+            ABOUT BYU-I FIND
+          </p>
+
+          <h2>
+            Finding support shouldn't be complicated.
+          </h2>
+
+          <p>
+            BYU-I Find is a student-created website
+            designed to help BYU-Idaho students
+            discover helpful campus resources.
+          </p>
+
+          <div class="about-divider"></div>
+
+          <p>
+            Our student survey showed that many students
+            know how to find resources once they hear
+            about them, but don't always know what's
+            available. That's why we help you explore
+            resources based on your needs, not just
+            their names.
+          </p>
+
+          <div class="about-signature">
+            <i data-lucide="heart" aria-hidden="true"></i>
+            <span>Created by students, for students.</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+   <!-- ==========================================
+     FEEDBACK
+     ========================================== -->
+      <section class="feedback-section" id="feedback">
+        <div class="section-wrap">
+
+          <div class="feedback-panel">
+
+            <div class="feedback-content">
+
+              <span class="feedback-icon">
+                <i data-lucide="message-square-heart" aria-hidden="true"></i>
+              </span>
+
+              <div class="feedback-text">
+
+                <p class="info-eyebrow">YOUR FEEDBACK MATTERS</p>
+
+                <h2>Help us make BYU-I Find better.</h2>
+
+                <p>
+                  Have an idea or know about a campus resource
+                  we should include? We'd love to hear your suggestions.
+                </p>
+
+              </div>
+
+            </div>
+
+            <a
+              href="mailto:?subject=BYU-I%20Find%20Feedback"
+              class="feedback-link"
+            >
+              Share feedback
+              <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+
+          </div>
+
+        </div>
+      </section>
 
   </main>
 

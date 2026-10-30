@@ -21,35 +21,30 @@
     rel="stylesheet"
   >
 
-  <!-- Shared website styles -->
+  <!-- Shared styles -->
   <link rel="stylesheet" href="../css/styles.css">
-
-  <!-- Campus Life page styles -->
-  <link rel="stylesheet" href="../css/campus.css">
-
-  <!-- Unified category design -->
   <link rel="stylesheet" href="../css/category-unified.css">
 
-  <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <!-- Campus page styles -->
+  <link rel="stylesheet" href="../css/campus.css">
 
-  <!-- Shared website JavaScript -->
+  <!-- Icons and shared JavaScript -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="../js/script.js" defer></script>
+
 </head>
 
-<body>
+<body class="campus-page">
 
-  <!-- ======================================================
-       1. Header and Navigation
-       ====================================================== -->
+  <!-- ======================================
+       HEADER
+       ====================================== -->
   <header class="site-header">
 
-    <!-- Website logo -->
     <a href="../index.html" class="logo">
       BYU-I <span>Find</span>
     </a>
 
-    <!-- Mobile menu button -->
     <button
       class="menu-toggle"
       type="button"
@@ -60,7 +55,6 @@
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Main navigation -->
     <nav
       class="main-nav"
       id="main-navigation"
@@ -81,268 +75,261 @@
 
   </header>
 
-
-  <!-- ======================================================
-       2. Main Content
-       ====================================================== -->
   <main>
 
-    <!-- Category hero -->
-    <section class="category-hero campus-hero">
+    <!-- ======================================
+         PAGE INTRODUCTION
+         ====================================== -->
+    <section class="campus-intro">
 
-      <div class="category-hero-content">
+      <div class="campus-container">
 
-        <span class="category-icon">
-          <i data-lucide="users-round"></i>
-        </span>
+        <a
+          href="../index.html#categories"
+          class="back-link"
+        >
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          All categories
+        </a>
 
-        <p class="eyebrow">GET INVOLVED</p>
+        <div class="campus-intro-content">
 
-        <h1>Campus Life</h1>
+          <span class="campus-intro-icon">
+            <i data-lucide="users-round" aria-hidden="true"></i>
+          </span>
 
-        <p class="category-description">
-          Discover campus activities, student societies,
-          and opportunities to meet new people and
-          enjoy your experience at BYU-Idaho.
-        </p>
+          <p class="campus-eyebrow">
+            GET INVOLVED
+          </p>
+
+          <h1>Campus Life</h1>
+
+          <p class="campus-intro-description">
+            Discover campus activities, student societies,
+            and opportunities to meet new people and
+            enjoy your experience at BYU-Idaho.
+          </p>
+
+        </div>
 
       </div>
 
     </section>
 
-
-    <!-- ====================================================
-         3. Resource Search
-         ==================================================== -->
+    <!-- ======================================
+         SEARCH AND RESOURCES
+         ====================================== -->
     <section
-      class="category-search"
-      aria-label="Search campus life resources"
+      class="campus-resources"
+      id="campus-resources"
+      aria-labelledby="campus-resources-title"
     >
 
-      <div class="search-box">
+      <div class="campus-container">
 
-        <i data-lucide="search"></i>
-
-        <input
-          id="resource-search"
-          type="search"
-          placeholder="Search campus life resources..."
+        <!-- Search -->
+        <div
+          class="campus-search"
+          role="search"
           aria-label="Search campus life resources"
         >
 
-        <button
-          id="search-button"
-          type="button"
-          aria-label="Search resources"
-        >
-          <i data-lucide="arrow-right"></i>
-        </button>
+          <i data-lucide="search" aria-hidden="true"></i>
 
-      </div>
+          <input
+            id="resource-search"
+            type="search"
+            placeholder="Search campus life resources..."
+            aria-label="Search campus life resources"
+            autocomplete="off"
+          >
 
-    </section>
+          <button
+            id="search-button"
+            type="button"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
 
-
-    <!-- ====================================================
-         4. Featured Resources
-         ==================================================== -->
-    <section class="category-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">START HERE</p>
-          <h2>Featured resources</h2>
         </div>
-      </div>
 
-      <div class="resource-grid">
+        <!-- Directory heading -->
+        <div class="campus-directory-heading">
 
-        <!-- Campus Activities -->
-        <article
-          class="resource-card"
-          data-search="campus activities recreation social student involvement"
-        >
+          <div>
+            <p class="campus-eyebrow">
+              EXPLORE YOUR OPTIONS
+            </p>
 
-          <span class="resource-icon pink">
-            <i data-lucide="calendar-days"></i>
+            <h2 id="campus-resources-title">
+              Campus life resources
+            </h2>
+
+            <p>
+              Choose a resource to visit its website.
+            </p>
+          </div>
+
+          <span class="campus-resource-count">
+            6 resources
           </span>
 
-          <h3>Campus Activities</h3>
+        </div>
 
-          <p>
-            Explore fun activities and opportunities
-            to connect with other students on campus.
-          </p>
+        <!-- Resource list -->
+        <div class="campus-resource-list">
 
+          <!-- Campus Activities -->
           <a
+            class="resource-list-item"
+            id="campus-activities"
             href="https://www.byui.edu/activities"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="campus activities recreation social student involvement"
           >
-            Explore activities
-            <i data-lucide="arrow-up-right"></i>
+            <span class="list-icon">
+              <i data-lucide="calendar-days" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Campus Activities</strong>
+              <small>
+                Explore fun activities and opportunities
+                to connect with other students on campus.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
           </a>
 
-        </article>
-
-
-        <!-- Student Societies -->
-        <article
-          class="resource-card"
-          data-search="student societies clubs groups interests community"
-        >
-
-          <span class="resource-icon lavender">
-            <i data-lucide="users"></i>
-          </span>
-
-          <h3>Student Societies</h3>
-
-          <p>
-            Find student groups and societies where
-            you can meet people who share your interests.
-          </p>
-
+          <!-- Student Societies -->
           <a
+            class="resource-list-item"
+            id="student-societies"
             href="https://www.byui.edu/societies"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="student societies clubs groups interests community"
           >
-            Explore societies
-            <i data-lucide="arrow-up-right"></i>
+            <span class="list-icon">
+              <i data-lucide="users" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Student Societies</strong>
+              <small>
+                Find student groups and societies where
+                you can meet people who share your interests.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
           </a>
 
-        </article>
-
-
-        <!-- Campus Events -->
-        <article
-          class="resource-card"
-          data-search="campus events calendar performances activities"
-        >
-
-          <span class="resource-icon blue">
-            <i data-lucide="party-popper"></i>
-          </span>
-
-          <h3>Campus Events</h3>
-
-          <p>
-            Stay informed about upcoming events,
-            performances, and activities at BYU-Idaho.
-          </p>
-
+          <!-- Campus Events -->
           <a
+            class="resource-list-item"
+            id="campus-events"
             href="https://www.byui.edu/events"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="campus events calendar performances activities"
           >
-            View campus events
-            <i data-lucide="arrow-up-right"></i>
+            <span class="list-icon">
+              <i data-lucide="party-popper" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Campus Events</strong>
+              <small>
+                Stay informed about upcoming events,
+                performances, and activities at BYU-Idaho.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
           </a>
 
-        </article>
+          <!-- Sports and Recreation -->
+          <a
+            class="resource-list-item"
+            id="sports-recreation"
+            href="https://www.byui.edu/activities"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="sports recreation fitness games intramural"
+          >
+            <span class="list-icon">
+              <i data-lucide="volleyball" aria-hidden="true"></i>
+            </span>
 
-      </div>
+            <span class="resource-details">
+              <strong>Sports &amp; Recreation</strong>
+              <small>
+                Discover recreational activities, sports,
+                and opportunities to stay active.
+              </small>
+            </span>
 
-      <!-- Message displayed when no resources match -->
-      <p id="no-results" class="no-results" hidden>
-        No resources found. Try another search.
-      </p>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-    </section>
+          <!-- Leadership and Service -->
+          <a
+            class="resource-list-item"
+            id="leadership-service"
+            href="https://www.byui.edu/activities"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="leadership volunteering service student involvement"
+          >
+            <span class="list-icon">
+              <i data-lucide="hand-heart" aria-hidden="true"></i>
+            </span>
 
+            <span class="resource-details">
+              <strong>Leadership &amp; Service</strong>
+              <small>
+                Find opportunities to serve others,
+                develop leadership skills, and get involved.
+              </small>
+            </span>
 
-    <!-- ====================================================
-         5. More Campus Life Resources
-         ==================================================== -->
-    <section class="category-section more-resources">
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">EXPLORE MORE</p>
-          <h2>More campus life resources</h2>
+          <!-- Arts and Entertainment -->
+          <a
+            class="resource-list-item"
+            id="arts-entertainment"
+            href="https://www.byui.edu/events"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="arts music concerts performances entertainment"
+          >
+            <span class="list-icon">
+              <i data-lucide="music" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Arts &amp; Entertainment</strong>
+              <small>
+                Explore concerts, performances,
+                and other entertainment opportunities.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
+
         </div>
-      </div>
 
-      <div class="resource-list">
-
-        <!-- Sports and Recreation -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/activities"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="sports recreation fitness games intramural"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="volleyball"></i>
-          </span>
-
-          <span>
-            <strong>Sports &amp; Recreation</strong>
-            <small>
-              Discover recreational activities, sports,
-              and opportunities to stay active.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
-
-
-        <!-- Leadership and Service -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/activities"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="leadership volunteering service student involvement"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="hand-heart"></i>
-          </span>
-
-          <span>
-            <strong>Leadership &amp; Service</strong>
-            <small>
-              Find opportunities to serve others,
-              develop leadership skills, and get involved.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
-
-
-        <!-- Arts and Entertainment -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/events"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="arts music concerts performances entertainment"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="music"></i>
-          </span>
-
-          <span>
-            <strong>Arts &amp; Entertainment</strong>
-            <small>
-              Explore concerts, performances,
-              and other entertainment opportunities.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
+        <!-- No search results -->
+        <p id="no-results" class="no-results" hidden>
+          No resources found. Try another search.
+        </p>
 
       </div>
 
@@ -350,17 +337,15 @@
 
   </main>
 
-
-  <!-- ======================================================
-       6. Footer
-       ====================================================== -->
+  <!-- ======================================
+       FOOTER
+       ====================================== -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
       <div class="footer-main">
 
-        <!-- Website information -->
         <div class="footer-brand">
 
           <a href="../index.html" class="logo">
@@ -378,7 +363,6 @@
 
         </div>
 
-        <!-- Quick navigation links -->
         <div class="footer-links">
 
           <h3>Quick Links</h3>
@@ -399,6 +383,66 @@
     </div>
 
   </footer>
+
+  <!-- Campus resource search -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.querySelector(
+        ".campus-page #resource-search"
+      );
+
+      const searchButton = document.querySelector(
+        ".campus-page #search-button"
+      );
+
+      const resources = Array.from(
+        document.querySelectorAll(
+          ".campus-page .campus-resource-list .resource-list-item"
+        )
+      );
+
+      const noResults = document.querySelector(
+        ".campus-page #no-results"
+      );
+
+      const count = document.querySelector(
+        ".campus-page .campus-resource-count"
+      );
+
+      if (!searchInput) return;
+
+      function filterResources() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+
+        resources.forEach((resource) => {
+          const searchableText = (
+            (resource.dataset.search || "") + " " +
+            resource.textContent
+          ).toLowerCase();
+
+          const matches = searchableText.includes(query);
+
+          resource.hidden = !matches;
+
+          if (matches) visible++;
+        });
+
+        if (noResults) {
+          noResults.hidden = visible !== 0;
+        }
+
+        if (count) {
+          count.textContent =
+            visible + (visible === 1 ? " resource" : " resources");
+        }
+      }
+
+      searchInput.addEventListener("input", filterResources);
+
+      searchButton?.addEventListener("click", filterResources);
+    });
+  </script>
 
 </body>
 </html>

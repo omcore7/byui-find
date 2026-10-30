@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Explore BYU-Idaho career resources, student jobs, internships, resumes, and interview preparation."
+    content="Explore BYU-Idaho career resources, student jobs, job postings, internships, resumes, and interview preparation."
   >
 
   <title>Career &amp; Jobs | BYU-I Find</title>
@@ -21,35 +21,27 @@
     rel="stylesheet"
   >
 
-  <!-- Shared website styles -->
+  <!-- Shared styles -->
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/category-unified.css">
 
   <!-- Career page styles -->
   <link rel="stylesheet" href="../css/career.css">
 
-  <!-- Unified category design -->
-  <link rel="stylesheet" href="../css/category-unified.css">
-
-  <!-- Lucide icons -->
+  <!-- Icons and shared JavaScript -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-
-  <!-- Shared website JavaScript -->
   <script src="../js/script.js" defer></script>
 </head>
 
-<body>
+<body class="career-page">
 
-  <!-- ======================================================
-       1. Header and Navigation
-       ====================================================== -->
+  <!-- HEADER -->
   <header class="site-header">
 
-    <!-- Website logo -->
     <a href="../index.html" class="logo">
       BYU-I <span>Find</span>
     </a>
 
-    <!-- Mobile menu button -->
     <button
       class="menu-toggle"
       type="button"
@@ -60,7 +52,6 @@
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Main navigation -->
     <nav
       class="main-nav"
       id="main-navigation"
@@ -70,278 +61,314 @@
         Resources
       </a>
 
-      <a href="../index.html#about">
-        About
-      </a>
+      <a href="../index.html#about">About</a>
 
-      <a href="../index.html#feedback">
-        Feedback
-      </a>
+      <a href="../index.html#feedback">Feedback</a>
     </nav>
 
   </header>
 
-
-  <!-- ======================================================
-       2. Main Content
-       ====================================================== -->
   <main>
 
-    <!-- Category hero -->
-    <section class="category-hero career-hero">
+    <!-- PAGE INTRODUCTION -->
+    <section class="career-intro">
 
-      <div class="category-hero-content">
+      <div class="career-container">
 
-        <span class="category-icon">
-          <i data-lucide="briefcase-business"></i>
-        </span>
+        <a
+          href="../index.html#categories"
+          class="back-link"
+        >
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          All categories
+        </a>
 
-        <p class="eyebrow">CAREER DEVELOPMENT</p>
+        <div class="career-intro-content">
 
-        <h1>Career &amp; Jobs</h1>
+          <span class="career-intro-icon">
+            <i data-lucide="briefcase-business" aria-hidden="true"></i>
+          </span>
 
-        <p class="category-description">
-          Explore job opportunities, internships,
-          and resources to help you prepare for your future career.
-        </p>
+          <p class="career-eyebrow">
+            CAREER DEVELOPMENT
+          </p>
+
+          <h1>Career &amp; Jobs</h1>
+
+          <p class="career-intro-description">
+            Explore job opportunities, internships,
+            and resources to help you prepare for your future career.
+          </p>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ====================================================
-         3. Resource Search
-         ==================================================== -->
+    <!-- SEARCH AND RESOURCES -->
     <section
-      class="category-search"
-      aria-label="Search career resources"
+      class="career-resources"
+      id="career-resources"
+      aria-labelledby="career-resources-title"
     >
 
-      <div class="search-box">
+      <div class="career-container">
 
-        <i data-lucide="search"></i>
-
-        <input
-          id="resource-search"
-          type="search"
-          placeholder="Search career resources..."
+        <!-- Search -->
+        <div
+          class="career-search"
+          role="search"
           aria-label="Search career resources"
         >
 
-        <button
-          id="search-button"
-          type="button"
-          aria-label="Search resources"
-        >
-          <i data-lucide="arrow-right"></i>
-        </button>
+          <i data-lucide="search" aria-hidden="true"></i>
 
-      </div>
+          <input
+            id="resource-search"
+            type="search"
+            placeholder="Search career resources..."
+            aria-label="Search career resources"
+            autocomplete="off"
+          >
 
-    </section>
+          <button
+            id="search-button"
+            type="button"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
 
-
-    <!-- ====================================================
-         4. Featured Resources
-         ==================================================== -->
-    <section class="category-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">START HERE</p>
-          <h2>Featured resources</h2>
         </div>
-      </div>
 
-      <div class="resource-grid">
 
-        <!-- Career Center -->
-        <article
-          class="resource-card"
-          data-search="career center advising career development job preparation"
-        >
+        <!-- Directory heading -->
+        <div class="career-directory-heading">
 
-          <span class="resource-icon teal">
-            <i data-lucide="briefcase-business"></i>
+          <div>
+
+            <p class="career-eyebrow">
+              EXPLORE YOUR OPTIONS
+            </p>
+
+            <h2 id="career-resources-title">
+              Career resources
+            </h2>
+
+            <p>
+              Choose a resource to visit its website.
+            </p>
+
+          </div>
+
+          <span class="career-resource-count" aria-live="polite">
+            7 resources
           </span>
 
-          <h3>Career Center</h3>
+        </div>
 
-          <p>
-            Get guidance on career planning, professional
-            development, and preparing for job opportunities.
-          </p>
 
+        <!-- Resource list -->
+        <div class="career-resource-list">
+
+          <!-- Career Center -->
           <a
+            class="resource-list-item"
+            id="career-center"
             href="https://www.byui.edu/career-center"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="career center advising career development job preparation"
           >
-            Explore career services
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="briefcase-business" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Career Center</strong>
+              <small>
+                Get guidance on career planning, professional
+                development, and preparing for job opportunities.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-
-        <!-- Student Employment -->
-        <article
-          class="resource-card"
-          data-search="student jobs employment campus work part time"
-        >
-
-          <span class="resource-icon blue">
-            <i data-lucide="users"></i>
-          </span>
-
-          <h3>Student Employment</h3>
-
-          <p>
-            Explore campus job opportunities and learn
-            how to apply for student positions.
-          </p>
-
+          <!-- Student Employment -->
           <a
+            class="resource-list-item"
+            id="student-employment"
             href="https://www.byui.edu/human-resources/student-employment"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="student jobs employment campus work part time"
           >
-            Find student jobs
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="users" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Student Employment</strong>
+              <small>
+                Explore campus job opportunities and learn
+                how to apply for student positions.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-
-        <!-- Internships -->
-        <article
-          class="resource-card"
-          data-search="internships experience professional opportunities career"
-        >
-
-          <span class="resource-icon green">
-            <i data-lucide="graduation-cap"></i>
-          </span>
-
-          <h3>Internships</h3>
-
-          <p>
-            Learn how internships can help you gain
-            experience and prepare for your career.
-          </p>
-
+          <!-- Internships -->
           <a
+            class="resource-list-item"
+            id="internships"
             href="https://www.byui.edu/internships"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="internships experience professional opportunities career"
           >
-            Explore internships
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="graduation-cap" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Internships</strong>
+              <small>
+                Learn how internships can help you gain
+                experience and prepare for your career.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-      </div>
+          <!-- Resume and Cover Letter Help -->
+          <a
+            class="resource-list-item"
+            id="resume-cover-letter"
+            href="https://www.byui.edu/career-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="resume cv cover letter job applications"
+          >
 
-      <!-- Message displayed when no resources match -->
-      <p id="no-results" class="no-results" hidden>
-        No resources found. Try another search.
-      </p>
+            <span class="list-icon">
+              <i data-lucide="file-user" aria-hidden="true"></i>
+            </span>
 
-    </section>
+            <span class="resource-details">
+              <strong>Resume &amp; Cover Letter Help</strong>
+              <small>
+                Learn how to create professional resumes
+                and prepare strong job applications.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
 
 
-    <!-- ====================================================
-         5. More Career Resources
-         ==================================================== -->
-    <section class="category-section more-resources">
+          <!-- Interview Preparation -->
+          <a
+            class="resource-list-item"
+            id="interview-preparation"
+            href="https://www.byui.edu/career-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="interviews practice interview preparation professional"
+          >
 
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">BUILD YOUR FUTURE</p>
-          <h2>More career resources</h2>
+            <span class="list-icon">
+              <i data-lucide="messages-square" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Interview Preparation</strong>
+              <small>
+                Find tips and resources to help you feel
+                more prepared for job interviews.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- Networking and Career Events -->
+          <a
+            class="resource-list-item"
+            id="networking-career-events"
+            href="https://www.byui.edu/career-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="networking employers connections career fairs"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="network" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Networking &amp; Career Events</strong>
+              <small>
+                Explore opportunities to connect with
+                employers and other professionals.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- NEW: Help Wanted Postings -->
+          <a
+            class="resource-list-item"
+            id="help-wanted"
+            href="https://www.byui.edu/human-resources/student-employment"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="help wanted job postings job openings student employment hiring jobs on campus applications"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="search-check" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Help Wanted Postings</strong>
+              <small>
+                Learn where to look for available student jobs,
+                explore employment opportunities, and find
+                information about applying for positions.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
         </div>
-      </div>
-
-      <div class="resource-list">
-
-        <!-- Resume and Cover Letter Help -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/career-center"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="resume cv cover letter job applications"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="file-user"></i>
-          </span>
-
-          <span>
-            <strong>Resume &amp; Cover Letter Help</strong>
-            <small>
-              Learn how to create professional resumes
-              and prepare strong job applications.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
 
 
-        <!-- Interview Preparation -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/career-center"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="interviews practice interview preparation professional"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="messages-square"></i>
-          </span>
-
-          <span>
-            <strong>Interview Preparation</strong>
-            <small>
-              Find tips and resources to help you feel
-              more prepared for job interviews.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
-
-
-        <!-- Networking and Career Events -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/career-center"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="networking employers connections career fairs"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="network"></i>
-          </span>
-
-          <span>
-            <strong>Networking &amp; Career Events</strong>
-            <small>
-              Explore opportunities to connect with
-              employers and other professionals.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
+        <!-- No search results -->
+        <p id="no-results" class="no-results" hidden>
+          No resources found. Try another search.
+        </p>
 
       </div>
 
@@ -350,16 +377,13 @@
   </main>
 
 
-  <!-- ======================================================
-       6. Footer
-       ====================================================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
       <div class="footer-main">
 
-        <!-- Website information -->
         <div class="footer-brand">
 
           <a href="../index.html" class="logo">
@@ -377,7 +401,6 @@
 
         </div>
 
-        <!-- Quick navigation links -->
         <div class="footer-links">
 
           <h3>Quick Links</h3>
@@ -398,6 +421,75 @@
     </div>
 
   </footer>
+
+
+  <!-- Career resource search -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const searchInput = document.querySelector(
+        ".career-page #resource-search"
+      );
+
+      const searchButton = document.querySelector(
+        ".career-page #search-button"
+      );
+
+      const resources = Array.from(
+        document.querySelectorAll(
+          ".career-page .career-resource-list .resource-list-item"
+        )
+      );
+
+      const noResults = document.querySelector(
+        ".career-page #no-results"
+      );
+
+      const count = document.querySelector(
+        ".career-page .career-resource-count"
+      );
+
+      if (!searchInput) return;
+
+      function filterResources() {
+
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+
+        resources.forEach((resource) => {
+
+          const searchableText = (
+            (resource.dataset.search || "") + " " +
+            resource.textContent
+          ).toLowerCase();
+
+          const matches = searchableText.includes(query);
+
+          resource.hidden = !matches;
+
+          if (matches) {
+            visible++;
+          }
+
+        });
+
+        if (noResults) {
+          noResults.hidden = visible !== 0;
+        }
+
+        if (count) {
+          count.textContent =
+            visible + (visible === 1 ? " resource" : " resources");
+        }
+
+      }
+
+      searchInput.addEventListener("input", filterResources);
+
+      searchButton?.addEventListener("click", filterResources);
+
+    });
+  </script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Find BYU-Idaho academic resources, tutoring, writing support, and study help."
+    content="Find BYU-Idaho academic resources, tutoring, writing support, drop-in labs, and study help."
   >
 
   <title>My Classes | BYU-I Find</title>
@@ -21,34 +21,31 @@
     rel="stylesheet"
   >
 
-  <!-- Shared website styles -->
+  <!-- Shared styles -->
   <link rel="stylesheet" href="../css/styles.css">
 
-  <!-- Classes page styles -->
+  <!-- Category page styles -->
+  <link rel="stylesheet" href="../css/category-unified.css">
   <link rel="stylesheet" href="../css/classes.css">
 
-  <!-- Unified category design -->
-  <link rel="stylesheet" href="../css/category-unified.css">
-
-  <!-- Lucide icons -->
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
 
-  <!-- Shared website JavaScript -->
+  <!-- Shared JavaScript -->
   <script src="../js/script.js" defer></script>
 </head>
 
-<body>
+<body class="classes-page">
 
-  <!-- ======================================================
-       1. Header and Navigation
-       ====================================================== -->
+  <!-- ======================================
+       HEADER
+       ====================================== -->
   <header class="site-header">
 
     <a href="../index.html" class="logo">
       BYU-I <span>Find</span>
     </a>
 
-    <!-- Mobile menu button -->
     <button
       class="menu-toggle"
       type="button"
@@ -59,7 +56,6 @@
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Main navigation -->
     <nav
       class="main-nav"
       id="main-navigation"
@@ -80,260 +76,306 @@
 
   </header>
 
-
-  <!-- ======================================================
-       2. Main Content
-       ====================================================== -->
   <main>
 
-    <!-- Category hero -->
-    <section class="category-hero classes-hero">
+    <!-- ======================================
+         PAGE INTRODUCTION
+         ====================================== -->
+    <section class="classes-intro">
 
-      <div class="category-hero-content">
+      <div class="classes-container">
 
-        <span class="category-icon">
-          <i data-lucide="book-open"></i>
-        </span>
-
-        <p class="eyebrow">ACADEMIC SUPPORT</p>
-
-        <h1>My Classes</h1>
-
-        <p class="category-description">
-          Get help with your courses, tutoring, and academic skills.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ====================================================
-         3. Resource Search
-         ==================================================== -->
-    <section
-      class="category-search"
-      aria-label="Search academic resources"
-    >
-
-      <div class="search-box">
-
-        <i data-lucide="search"></i>
-
-        <input
-          id="resource-search"
-          type="search"
-          placeholder="Search class resources..."
-          aria-label="Search class resources"
+        <a
+          href="../index.html#categories"
+          class="back-link"
         >
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          All categories
+        </a>
 
-        <button
-          id="search-button"
-          type="button"
-          aria-label="Search"
-        >
-          <i data-lucide="arrow-right"></i>
-        </button>
+        <div class="classes-intro-content">
 
-      </div>
-
-    </section>
-
-
-    <!-- ====================================================
-         4. Featured Resources
-         ==================================================== -->
-    <section class="category-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">START HERE</p>
-          <h2>Featured resources</h2>
-        </div>
-      </div>
-
-      <div class="resource-grid">
-
-        <!-- Tutoring -->
-        <article
-          class="resource-card"
-          data-search="tutoring tutors courses subjects"
-        >
-
-          <span class="resource-icon blue">
-            <i data-lucide="graduation-cap"></i>
+          <span class="classes-intro-icon">
+            <i data-lucide="book-open" aria-hidden="true"></i>
           </span>
 
-          <h3>Tutoring</h3>
-
-          <p>
-            Get help from your peers in a variety of subjects and courses.
+          <p class="classes-eyebrow">
+            ACADEMIC SUPPORT
           </p>
 
+          <h1>My Classes</h1>
+
+          <p class="classes-intro-description">
+            Find tutoring, writing support, academic advising,
+            drop-in labs, and other resources to help you
+            succeed in your classes.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         SEARCH AND RESOURCES
+         ====================================== -->
+    <section
+      class="classes-resources"
+      id="academic-resources"
+      aria-labelledby="academic-resources-title"
+    >
+
+      <div class="classes-container">
+
+        <!-- Search -->
+        <div
+          class="classes-search"
+          role="search"
+          aria-label="Search academic resources"
+        >
+
+          <i data-lucide="search" aria-hidden="true"></i>
+
+          <input
+            id="resource-search"
+            type="search"
+            placeholder="Search academic resources..."
+            aria-label="Search academic resources"
+            autocomplete="off"
+          >
+
+          <button
+            id="search-button"
+            type="button"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
+
+        </div>
+
+
+        <!-- Directory heading -->
+        <div class="classes-directory-heading">
+
+          <div>
+
+            <p class="classes-eyebrow">
+              EXPLORE YOUR OPTIONS
+            </p>
+
+            <h2 id="academic-resources-title">
+              Academic resources
+            </h2>
+
+            <p>
+              Choose a resource to visit its official website.
+            </p>
+
+          </div>
+
+          <span class="classes-resource-count" aria-live="polite">
+            7 resources
+          </span>
+
+        </div>
+
+
+        <!-- Resource list -->
+        <div class="classes-resource-list">
+
+          <!-- Tutoring -->
           <a
+            class="resource-list-item"
+            id="tutoring"
             href="https://www.byui.edu/tutoring-center/"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="tutoring tutors courses subjects academic help"
           >
-            Explore tutoring
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="graduation-cap" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Tutoring</strong>
+              <small>
+                Get help from other students with your courses.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-
-        <!-- Writing Center -->
-        <article
-          class="resource-card"
-          data-search="writing center essays papers grammar writing"
-        >
-
-          <span class="resource-icon green">
-            <i data-lucide="file-pen-line"></i>
-          </span>
-
-          <h3>Writing Center</h3>
-
-          <p>
-            Get support with planning, drafting, and improving your writing.
-          </p>
-
+          <!-- Writing Center -->
           <a
+            class="resource-list-item"
+            id="writing-center"
             href="https://www.byui.edu/writing-center/"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="writing center essays papers grammar writing"
           >
-            Improve your writing
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="file-pen-line" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Writing Center</strong>
+              <small>
+                Get help with essays, papers, and writing.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-
-        <!-- Academic Advising -->
-        <article
-          class="resource-card"
-          data-search="academic advising degree requirements registration"
-        >
-
-          <span class="resource-icon purple">
-            <i data-lucide="user-round"></i>
-          </span>
-
-          <h3>Academic Advising</h3>
-
-          <p>
-            Find guidance on course planning and degree requirements.
-          </p>
-
+          <!-- Academic Advising -->
           <a
+            class="resource-list-item"
+            id="academic-advising"
             href="https://www.byui.edu/advising/"
             target="_blank"
             rel="noopener noreferrer"
+            data-search="academic advising degree requirements registration courses"
           >
-            Explore advising
-            <i data-lucide="arrow-up-right"></i>
+
+            <span class="list-icon">
+              <i data-lucide="user-round" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Academic Advising</strong>
+              <small>
+                Plan your classes and understand degree requirements.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
           </a>
 
-        </article>
 
-      </div>
+          <!-- Library -->
+          <a
+            class="resource-list-item"
+            id="library"
+            href="https://www.byui.edu/library/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="library books databases research study spaces"
+          >
 
-      <!-- Message displayed when no resources match -->
-      <p id="no-results" class="no-results" hidden>
-        No resources found. Try another search.
-      </p>
+            <span class="list-icon">
+              <i data-lucide="library" aria-hidden="true"></i>
+            </span>
 
-    </section>
+            <span class="resource-details">
+              <strong>David O. McKay Library</strong>
+              <small>
+                Find books, research tools, and study spaces.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
 
 
-    <!-- ====================================================
-         5. More Class Resources
-         ==================================================== -->
-    <section class="category-section more-resources">
+          <!-- Online Learning -->
+          <a
+            class="resource-list-item"
+            id="online-learning"
+            href="https://www.byui.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="online learning courses technology"
+          >
 
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">KEEP LEARNING</p>
-          <h2>More class resources</h2>
+            <span class="list-icon">
+              <i data-lucide="laptop" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Online Learning</strong>
+              <small>
+                Find university learning and course information.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- Study Skills -->
+          <a
+            class="resource-list-item"
+            id="study-skills"
+            href="https://www.byui.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="study skills learning habits time management"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="brain" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Study Skills</strong>
+              <small>
+                Improve your study habits and time management.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
+
+          <!-- Free Drop-in Labs -->
+          <a
+            class="resource-list-item"
+            id="drop-in-labs"
+            href="https://www.byui.edu/student-guide/drop-in-labs"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="free drop in labs tutoring science chemistry computing physics biology languages academic study help"
+          >
+
+            <span class="list-icon">
+              <i data-lucide="book-open-check" aria-hidden="true"></i>
+            </span>
+
+            <span class="resource-details">
+              <strong>Free Drop-in Labs</strong>
+              <small>
+                Get extra help with your classes through
+                volunteer tutoring labs in different subjects.
+                Check the available labs, locations, and schedules.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+
+          </a>
+
         </div>
-      </div>
-
-      <div class="resource-list">
-
-        <!-- Library -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/library/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="library books databases research"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="library"></i>
-          </span>
-
-          <span>
-            <strong>David O. McKay Library</strong>
-            <small>
-              Access research tools, databases, books, and study spaces.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
 
 
-        <!-- Online Learning -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="online learning courses technology"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="laptop"></i>
-          </span>
-
-          <span>
-            <strong>Online Learning</strong>
-            <small>
-              Find university learning resources and course information.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
-
-
-        <!-- Study Skills -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="study skills learning habits time management"
-        >
-
-          <span class="list-icon">
-            <i data-lucide="brain"></i>
-          </span>
-
-          <span>
-            <strong>Study Skills</strong>
-            <small>
-              Build better study habits and manage your time.
-            </small>
-          </span>
-
-          <i data-lucide="chevron-right"></i>
-
-        </a>
+        <!-- No search results -->
+        <p id="no-results" class="no-results" hidden>
+          No resources found. Try another search.
+        </p>
 
       </div>
 
@@ -342,16 +384,15 @@
   </main>
 
 
-  <!-- ======================================================
-       6. Footer
-       ====================================================== -->
+  <!-- ======================================
+       FOOTER
+       ====================================== -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
       <div class="footer-main">
 
-        <!-- Website information -->
         <div class="footer-brand">
 
           <a href="../index.html" class="logo">
@@ -369,7 +410,6 @@
 
         </div>
 
-        <!-- Quick navigation links -->
         <div class="footer-links">
 
           <h3>Quick Links</h3>
@@ -390,6 +430,79 @@
     </div>
 
   </footer>
+
+
+  <!-- ======================================
+       CATEGORY SEARCH FUNCTIONALITY
+       ====================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const searchInput = document.querySelector(
+        ".classes-page #resource-search"
+      );
+
+      const searchButton = document.querySelector(
+        ".classes-page #search-button"
+      );
+
+      const resources = Array.from(
+        document.querySelectorAll(
+          ".classes-page .classes-resource-list .resource-list-item"
+        )
+      );
+
+      const noResults = document.querySelector(
+        ".classes-page #no-results"
+      );
+
+      const count = document.querySelector(
+        ".classes-page .classes-resource-count"
+      );
+
+      if (!searchInput) return;
+
+      function filterResources() {
+
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+
+        resources.forEach((resource) => {
+
+          const searchableText = (
+            (resource.dataset.search || "") + " " +
+            resource.textContent
+          ).toLowerCase();
+
+          const matches = searchableText.includes(query);
+
+          resource.hidden = !matches;
+
+          if (matches) {
+            visible++;
+          }
+
+        });
+
+        if (noResults) {
+          noResults.hidden = visible !== 0;
+        }
+
+        if (count) {
+          count.textContent =
+            visible + (visible === 1 ? " resource" : " resources");
+        }
+
+      }
+
+      // Search automatically while typing
+      searchInput.addEventListener("input", filterResources);
+
+      // Search when clicking the arrow button
+      searchButton?.addEventListener("click", filterResources);
+
+    });
+  </script>
 
 </body>
 </html>

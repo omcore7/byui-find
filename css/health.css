@@ -1,44 +1,398 @@
-/* ==========================================================
-   BYU-I Find | My Health Page
-   ----------------------------------------------------------
-   Health-specific styles.
+/* ==========================================
+   MY HEALTH PAGE - BYU-I FIND
+   ========================================== */
 
-   The page uses:
-   - classes.css for the shared category layout
-   - category-unified.css for the common blue design
-   - A green accent for health-related elements
-
-   The shared header and footer are in styles.css.
-   ========================================================== */
-
-
-/* 1. Shared category layout */
-
-/*
- * Reuse the category layout from My Classes.
- * Both files are inside the css/ folder.
- */
-@import url("./classes.css");
-
-
-/* 2. Health theme */
-
-/*
- * The health category uses green as its accent.
- * These variables are also used by category-unified.css.
- */
-:root {
-  --category-accent: #2aa66a;
-  --category-soft: #e4f7eb;
+.health-page {
+  background: #ffffff;
 }
 
+.health-page .health-container {
+  width: min(100% - 40px, 1050px);
+  margin: 0 auto;
+}
 
-/* 3. Health-specific interactions */
+/* ==========================================
+   PAGE INTRODUCTION
+   ========================================== */
 
-/* Use the health accent for keyboard focus indicators. */
-.search-box:focus-within,
-.category-section .resource-card a:focus-visible,
-.category-section .resource-list-item:focus-visible,
-.search-box button:focus-visible {
-  outline-color: var(--category-accent);
+.health-page .health-intro {
+  background: #eef8f0;
+  padding: 38px 0 58px;
+}
+
+.health-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 38px;
+
+  color: #368457;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.health-page .back-link:hover {
+  text-decoration: underline;
+}
+
+.health-page .back-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.health-page .health-intro-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.health-page .health-intro-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 62px;
+  height: 62px;
+  margin-bottom: 18px;
+
+  background: #d8efdf;
+  color: #368457;
+  border-radius: 18px;
+}
+
+.health-page .health-intro-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.health-page .health-eyebrow {
+  margin: 0 0 12px;
+
+  color: #368457;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.health-page .health-intro h1 {
+  margin: 0 0 16px;
+
+  color: #1d3a2b;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.health-page .health-intro-description {
+  max-width: 600px;
+  margin: 0 auto;
+
+  color: #547362;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* ==========================================
+   RESOURCE DIRECTORY
+   ========================================== */
+
+.health-page .health-resources {
+  padding: 45px 0 90px;
+  background: #ffffff;
+}
+
+/* Search */
+
+.health-page .health-search {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  max-width: 700px;
+  margin: 0 auto 55px;
+  padding: 8px 10px 8px 20px;
+
+  background: #ffffff;
+  border: 1px solid #dce8df;
+  border-radius: 999px;
+  box-shadow: 0 5px 20px rgba(29, 58, 43, 0.05);
+}
+
+.health-page .health-search > svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  color: #648c73;
+}
+
+.health-page .health-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #1d3a2b;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.health-page .health-search input::placeholder {
+  color: #8ca99a;
+}
+
+.health-page .health-search:focus-within {
+  border-color: #368457;
+  box-shadow: 0 0 0 3px rgba(54, 132, 87, 0.12);
+}
+
+.health-page .health-search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+  background: #368457;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.health-page .health-search button:hover {
+  background: #286841;
+}
+
+.health-page .health-search button svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* Directory heading */
+
+.health-page .health-directory-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+
+  margin-bottom: 26px;
+}
+
+.health-page .health-directory-heading h2 {
+  margin: 0 0 10px;
+
+  color: #1d3a2b;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  letter-spacing: -0.035em;
+}
+
+.health-page .health-directory-heading p:not(.health-eyebrow) {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.health-page .health-resource-count {
+  flex-shrink: 0;
+
+  padding: 8px 14px;
+  background: #eef8f0;
+  border-radius: 999px;
+
+  color: #368457;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Resource list */
+
+.health-page .health-resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.health-page .resource-list-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px 24px;
+
+  background: #ffffff;
+  border: 1px solid #e1eae4;
+  border-radius: 15px;
+  box-shadow: none;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.health-page .resource-list-item[hidden],
+.health-page #no-results[hidden] {
+  display: none !important;
+}
+
+.health-page .resource-list-item:hover {
+  background: #f7fcf8;
+  border-color: #9bc9aa;
+  transform: translateX(3px);
+}
+
+.health-page .resource-list-item:focus-visible {
+  outline: 3px solid #368457;
+  outline-offset: 3px;
+}
+
+/* Icons */
+
+.health-page .list-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 50px;
+  height: 50px;
+
+  background: #e4f4e9;
+  color: #368457;
+  border-radius: 13px;
+}
+
+.health-page .list-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Resource information */
+
+.health-page .resource-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.health-page .resource-details strong {
+  color: #1d3a2b;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.health-page .resource-details small {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* Right arrow */
+
+.health-page .resource-list-item > svg:last-child {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #94a3b8;
+}
+
+.health-page .resource-list-item:hover > svg:last-child {
+  color: #368457;
+}
+
+/* No results */
+
+.health-page .no-results {
+  padding: 28px;
+  margin-top: 20px;
+
+  background: #f7fcf8;
+  border-radius: 14px;
+
+  color: #64748b;
+  text-align: center;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 700px) {
+  .health-page .health-intro {
+    padding: 25px 0 45px;
+  }
+
+  .health-page .back-link {
+    margin-bottom: 28px;
+  }
+
+  .health-page .health-resources {
+    padding: 35px 0 65px;
+  }
+
+  .health-page .health-search {
+    margin-bottom: 40px;
+  }
+
+  .health-page .health-directory-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .health-page .health-container {
+    width: min(100% - 30px, 1050px);
+  }
+
+  .health-page .health-intro h1 {
+    font-size: 2.35rem;
+  }
+
+  .health-page .health-intro-description {
+    font-size: 0.94rem;
+  }
+
+  .health-page .resource-list-item {
+    padding: 16px;
+    gap: 13px;
+  }
+
+  .health-page .list-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .health-page .resource-details strong {
+    font-size: 0.95rem;
+  }
+
+  .health-page .resource-details small {
+    font-size: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .health-page .resource-list-item {
+    transition: none;
+  }
+
+  .health-page .resource-list-item:hover {
+    transform: none;
+  }
 }

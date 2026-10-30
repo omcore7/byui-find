@@ -21,35 +21,30 @@
     rel="stylesheet"
   >
 
-  <!-- Shared website styles -->
+  <!-- Shared styles -->
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/category-unified.css">
 
   <!-- Housing page styles -->
   <link rel="stylesheet" href="../css/housing.css">
 
-  <!-- Unified category design -->
-  <link rel="stylesheet" href="../css/category-unified.css">
-
-  <!-- Lucide icons -->
+  <!-- Icons and shared JavaScript -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-
-  <!-- Shared website JavaScript -->
   <script src="../js/script.js" defer></script>
+
 </head>
 
-<body>
+<body class="housing-page">
 
-  <!-- ======================================================
-       1. Header and Navigation
-       ====================================================== -->
+  <!-- ======================================
+       HEADER
+       ====================================== -->
   <header class="site-header">
 
-    <!-- Website logo -->
     <a href="../index.html" class="logo">
       BYU-I <span>Find</span>
     </a>
 
-    <!-- Mobile menu button -->
     <button
       class="menu-toggle"
       type="button"
@@ -60,7 +55,6 @@
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Main navigation -->
     <nav
       class="main-nav"
       id="main-navigation"
@@ -81,267 +75,260 @@
 
   </header>
 
-
-  <!-- ======================================================
-       2. Main Content
-       ====================================================== -->
   <main>
 
-    <!-- Category hero -->
-    <section class="category-hero housing-hero">
+    <!-- ======================================
+         PAGE INTRODUCTION
+         ====================================== -->
+    <section class="housing-intro">
 
-      <div class="category-hero-content">
+      <div class="housing-container">
 
-        <span class="category-icon">
-          <i data-lucide="house"></i>
-        </span>
+        <a
+          href="../index.html#categories"
+          class="back-link"
+        >
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          All categories
+        </a>
 
-        <p class="eyebrow">STUDENT LIVING</p>
+        <div class="housing-intro-content">
 
-        <h1>Housing</h1>
+          <span class="housing-intro-icon">
+            <i data-lucide="house" aria-hidden="true"></i>
+          </span>
 
-        <p class="category-description">
-          Find housing information, apartment options,
-          and resources to help you feel at home in Rexburg.
-        </p>
+          <p class="housing-eyebrow">
+            STUDENT LIVING
+          </p>
+
+          <h1>Housing</h1>
+
+          <p class="housing-intro-description">
+            Find housing information, apartment options,
+            and resources to help you feel at home in Rexburg.
+          </p>
+
+        </div>
 
       </div>
 
     </section>
 
-
-    <!-- ====================================================
-         3. Resource Search
-         ==================================================== -->
+    <!-- ======================================
+         SEARCH AND RESOURCES
+         ====================================== -->
     <section
-      class="category-search"
-      aria-label="Search housing resources"
+      class="housing-resources"
+      id="housing-resources"
+      aria-labelledby="housing-resources-title"
     >
 
-      <div class="search-box">
+      <div class="housing-container">
 
-        <i data-lucide="search"></i>
-
-        <input
-          id="resource-search"
-          type="search"
-          placeholder="Search housing resources..."
+        <!-- Search -->
+        <div
+          class="housing-search"
+          role="search"
           aria-label="Search housing resources"
         >
 
-        <button
-          id="search-button"
-          type="button"
-          aria-label="Search resources"
-        >
-          <i data-lucide="arrow-right"></i>
-        </button>
+          <i data-lucide="search" aria-hidden="true"></i>
 
-      </div>
+          <input
+            id="resource-search"
+            type="search"
+            placeholder="Search housing resources..."
+            aria-label="Search housing resources"
+            autocomplete="off"
+          >
 
-    </section>
+          <button
+            id="search-button"
+            type="button"
+            aria-label="Search resources"
+          >
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
 
-
-    <!-- ====================================================
-         4. Featured Resources
-         ==================================================== -->
-    <section class="category-section">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">START HERE</p>
-          <h2>Featured resources</h2>
         </div>
-      </div>
 
-      <div class="resource-grid">
+        <!-- Directory heading -->
+        <div class="housing-directory-heading">
 
-        <!-- Approved Housing -->
-        <article
-          class="resource-card"
-          data-search="approved housing apartments student housing rexburg"
-        >
+          <div>
+            <p class="housing-eyebrow">
+              EXPLORE YOUR OPTIONS
+            </p>
 
-          <span class="resource-icon peach">
-            <i data-lucide="house"></i>
+            <h2 id="housing-resources-title">
+              Housing resources
+            </h2>
+
+            <p>
+              Choose a resource to visit its website.
+            </p>
+          </div>
+
+          <span class="housing-resource-count">
+            6 resources
           </span>
 
-          <h3>Approved Housing</h3>
-
-          <p>
-            Explore housing options and learn about
-            approved student apartments near campus.
-          </p>
-
-          <a
-            href="https://www.byui.edu/housing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Explore housing
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-
-        </article>
-
-
-        <!-- Housing Guidelines -->
-        <article
-          class="resource-card"
-          data-search="housing guidelines policies rules standards contracts"
-        >
-
-          <span class="resource-icon blue">
-            <i data-lucide="clipboard-list"></i>
-          </span>
-
-          <h3>Housing Guidelines</h3>
-
-          <p>
-            Learn about student housing policies,
-            apartment expectations, and living standards.
-          </p>
-
-          <a
-            href="https://www.byui.edu/housing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View housing guidelines
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-
-        </article>
-
-
-        <!-- Roommate Resources -->
-        <article
-          class="resource-card"
-          data-search="roommates apartment living communication conflict"
-        >
-
-          <span class="resource-icon green">
-            <i data-lucide="users"></i>
-          </span>
-
-          <h3>Roommate Resources</h3>
-
-          <p>
-            Find information to help you communicate,
-            share responsibilities, and live with roommates.
-          </p>
-
-          <a
-            href="https://www.byui.edu/housing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Explore roommate resources
-            <i data-lucide="arrow-up-right"></i>
-          </a>
-
-        </article>
-
-      </div>
-
-      <!-- Message displayed when no resources match -->
-      <p id="no-results" class="no-results" hidden>
-        No resources found. Try another search.
-      </p>
-
-    </section>
-
-
-    <!-- ====================================================
-         5. More Housing Resources
-         ==================================================== -->
-    <section class="category-section more-resources">
-
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">SETTLE IN</p>
-          <h2>More housing resources</h2>
         </div>
-      </div>
 
-      <div class="resource-list">
+        <!-- Resource list -->
+        <div class="housing-resource-list">
 
-        <!-- Housing Contracts -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/housing"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="housing contracts lease rent agreements"
-        >
+          <!-- Approved Housing -->
+          <a
+            class="resource-list-item"
+            id="approved-housing"
+            href="https://www.byui.edu/housing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="approved housing apartments student housing rexburg"
+          >
+            <span class="list-icon">
+              <i data-lucide="house" aria-hidden="true"></i>
+            </span>
 
-          <span class="list-icon">
-            <i data-lucide="file-text"></i>
-          </span>
+            <span class="resource-details">
+              <strong>Approved Housing</strong>
+              <small>
+                Explore housing options and learn about
+                approved student apartments near campus.
+              </small>
+            </span>
 
-          <span>
-            <strong>Housing Contracts</strong>
-            <small>
-              Learn about rental agreements and important
-              things to consider before signing a contract.
-            </small>
-          </span>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-          <i data-lucide="chevron-right"></i>
+          <!-- Housing Guidelines -->
+          <a
+            class="resource-list-item"
+            id="housing-guidelines"
+            href="https://www.byui.edu/housing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="housing guidelines policies rules standards contracts"
+          >
+            <span class="list-icon">
+              <i data-lucide="clipboard-list" aria-hidden="true"></i>
+            </span>
 
-        </a>
+            <span class="resource-details">
+              <strong>Housing Guidelines</strong>
+              <small>
+                Learn about student housing policies,
+                apartment expectations, and living standards.
+              </small>
+            </span>
 
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-        <!-- Apartment Living -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/housing"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="apartment living responsibilities cleaning community"
-        >
+          <!-- Roommate Resources -->
+          <a
+            class="resource-list-item"
+            id="roommate-resources"
+            href="https://www.byui.edu/housing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="roommates apartment living communication conflict"
+          >
+            <span class="list-icon">
+              <i data-lucide="users" aria-hidden="true"></i>
+            </span>
 
-          <span class="list-icon">
-            <i data-lucide="building-2"></i>
-          </span>
+            <span class="resource-details">
+              <strong>Roommate Resources</strong>
+              <small>
+                Find information to help you communicate,
+                share responsibilities, and live with roommates.
+              </small>
+            </span>
 
-          <span>
-            <strong>Apartment Living</strong>
-            <small>
-              Find guidance about living in student apartments
-              and creating a positive home environment.
-            </small>
-          </span>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-          <i data-lucide="chevron-right"></i>
+          <!-- Housing Contracts -->
+          <a
+            class="resource-list-item"
+            id="housing-contracts"
+            href="https://www.byui.edu/housing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="housing contracts lease rent agreements"
+          >
+            <span class="list-icon">
+              <i data-lucide="file-text" aria-hidden="true"></i>
+            </span>
 
-        </a>
+            <span class="resource-details">
+              <strong>Housing Contracts</strong>
+              <small>
+                Learn about rental agreements and important
+                things to consider before signing a contract.
+              </small>
+            </span>
 
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-        <!-- Housing Support -->
-        <a
-          class="resource-list-item"
-          href="https://www.byui.edu/housing"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-search="housing office questions assistance support"
-        >
+          <!-- Apartment Living -->
+          <a
+            class="resource-list-item"
+            id="apartment-living"
+            href="https://www.byui.edu/housing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="apartment living responsibilities cleaning community"
+          >
+            <span class="list-icon">
+              <i data-lucide="building-2" aria-hidden="true"></i>
+            </span>
 
-          <span class="list-icon">
-            <i data-lucide="message-circle-question"></i>
-          </span>
+            <span class="resource-details">
+              <strong>Apartment Living</strong>
+              <small>
+                Find guidance about living in student apartments
+                and creating a positive home environment.
+              </small>
+            </span>
 
-          <span>
-            <strong>Housing Support</strong>
-            <small>
-              Find housing office information and
-              guidance when you have questions.
-            </small>
-          </span>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
 
-          <i data-lucide="chevron-right"></i>
+          <!-- Housing Support -->
+          <a
+            class="resource-list-item"
+            id="housing-support"
+            href="https://www.byui.edu/housing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-search="housing office questions assistance support"
+          >
+            <span class="list-icon">
+              <i data-lucide="message-circle-question" aria-hidden="true"></i>
+            </span>
 
-        </a>
+            <span class="resource-details">
+              <strong>Housing Support</strong>
+              <small>
+                Find housing office information and
+                guidance when you have questions.
+              </small>
+            </span>
+
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
+
+        </div>
+
+        <!-- No search results -->
+        <p id="no-results" class="no-results" hidden>
+          No resources found. Try another search.
+        </p>
 
       </div>
 
@@ -349,17 +336,15 @@
 
   </main>
 
-
-  <!-- ======================================================
-       6. Footer
-       ====================================================== -->
+  <!-- ======================================
+       FOOTER
+       ====================================== -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
       <div class="footer-main">
 
-        <!-- Website information -->
         <div class="footer-brand">
 
           <a href="../index.html" class="logo">
@@ -377,7 +362,6 @@
 
         </div>
 
-        <!-- Quick navigation links -->
         <div class="footer-links">
 
           <h3>Quick Links</h3>
@@ -398,6 +382,66 @@
     </div>
 
   </footer>
+
+  <!-- Housing resource search -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.querySelector(
+        ".housing-page #resource-search"
+      );
+
+      const searchButton = document.querySelector(
+        ".housing-page #search-button"
+      );
+
+      const resources = Array.from(
+        document.querySelectorAll(
+          ".housing-page .housing-resource-list .resource-list-item"
+        )
+      );
+
+      const noResults = document.querySelector(
+        ".housing-page #no-results"
+      );
+
+      const count = document.querySelector(
+        ".housing-page .housing-resource-count"
+      );
+
+      if (!searchInput) return;
+
+      function filterResources() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+
+        resources.forEach((resource) => {
+          const searchableText = (
+            (resource.dataset.search || "") + " " +
+            resource.textContent
+          ).toLowerCase();
+
+          const matches = searchableText.includes(query);
+
+          resource.hidden = !matches;
+
+          if (matches) visible++;
+        });
+
+        if (noResults) {
+          noResults.hidden = visible !== 0;
+        }
+
+        if (count) {
+          count.textContent =
+            visible + (visible === 1 ? " resource" : " resources");
+        }
+      }
+
+      searchInput.addEventListener("input", filterResources);
+
+      searchButton?.addEventListener("click", filterResources);
+    });
+  </script>
 
 </body>
 </html>
