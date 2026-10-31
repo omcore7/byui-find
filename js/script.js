@@ -158,21 +158,67 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchFeedback = document.querySelector("#search-feedback");
   const categoryCards = document.querySelectorAll("#categories .category-card");
   const navSearch = document.querySelector("#nav-search");
+  const searchResults = document.querySelector("#search-results");
+  const searchResourceList = document.querySelector("#search-resource-list");
+
+  // Small words that shouldn't count as a match on their own.
+  const searchStopWords = new Set([
+    "the", "and", "for", "with", "how", "can", "get", "need",
+    "want", "help", "where", "what", "find", "free", "some", "about"
+  ]);
+
+  // Resources whose name, description, or keywords match the search,
+  // with the best matches first.
+  function findMatchingResources(query) {
+    const words = query
+      .split(/\s+/)
+      .filter((word) => word.length > 2 && !searchStopWords.has(word));
+
+    const terms = words.length > 0 ? words : [query];
+
+    return Object.keys(resourceLibrary)
+      .map((resourceId) => {
+        const resource = resourceLibrary[resourceId];
+        const searchableText = [
+          resource.title,
+          resource.description,
+          resource.keywords || ""
+        ].join(" ").toLowerCase();
+
+        const score = terms.filter((term) =>
+          searchableText.includes(term)
+        ).length;
+
+        return { resourceId, score };
+      })
+      .filter((match) => match.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map((match) => match.resourceId);
+  }
 
   if (homeSearchForm && homeSearchInput) {
     function filterHomeResources() {
       const query = homeSearchInput.value.trim().toLowerCase();
       const visibleCount = filterResources(categoryCards, query);
+      const matchingResources = query ? findMatchingResources(query) : [];
+
+      if (searchResults && searchResourceList) {
+        renderRecommendations(searchResourceList, matchingResources);
+        searchResults.hidden = matchingResources.length === 0;
+      }
 
       if (searchFeedback) {
+        const resourceCount = matchingResources.length;
+
         if (!query) {
           searchFeedback.textContent = "";
-        } else if (visibleCount === 0) {
+        } else if (visibleCount === 0 && resourceCount === 0) {
           searchFeedback.textContent =
-            "No matching categories found. Try another word.";
+            "No matching resources found. Try another word.";
         } else {
           searchFeedback.textContent =
-            `${visibleCount} matching ${visibleCount === 1 ? "category" : "categories"} found.`;
+            `${resourceCount} matching ${resourceCount === 1 ? "resource" : "resources"} and ` +
+            `${visibleCount} ${visibleCount === 1 ? "category" : "categories"} found.`;
         }
       }
 
@@ -268,7 +314,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore food assistance and student support options.",
       icon: "shopping-basket",
       color: "yellow",
-      url: "pages/financial.html#food-pantry"
+      url: "pages/financial.html#food-pantry",
+      keywords: "food hungry groceries meals free food bank"
     },
 
     financialAid: {
@@ -276,7 +323,26 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn about financial aid, scholarships, and paying for school.",
       icon: "coins",
       color: "yellow",
-      url: "pages/financial.html#financial-aid"
+      url: "pages/financial.html#financial-aid",
+      keywords: "money pay tuition grants loans pell aid"
+    },
+
+    scholarships: {
+      title: "Scholarships",
+      description: "See which BYU-Idaho scholarships you may qualify for.",
+      icon: "award",
+      color: "yellow",
+      url: "pages/financial.html#scholarships",
+      keywords: "money scholarship academic need based talent returned missionary"
+    },
+
+    fafsa: {
+      title: "FAFSA Application",
+      description: "Apply for federal aid and need-based scholarships.",
+      icon: "clipboard-list",
+      color: "yellow",
+      url: "pages/financial.html#fafsa-application",
+      keywords: "money fafsa federal aid grant pell application deadline"
     },
 
     studentEmployment: {
@@ -284,7 +350,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore employment opportunities for BYU-Idaho students.",
       icon: "briefcase-business",
       color: "teal",
-      url: "pages/career.html#student-employment"
+      url: "pages/career.html#student-employment",
+      keywords: "job jobs work campus job board hiring part time"
     },
 
     helpWanted: {
@@ -292,7 +359,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn where to look for student job opportunities.",
       icon: "search",
       color: "teal",
-      url: "pages/career.html#help-wanted"
+      url: "pages/career.html#help-wanted",
+      keywords: "job jobs work rexburg part time local off campus hiring"
     },
 
     careerCenter: {
@@ -300,7 +368,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Get help preparing for jobs, interviews, and your future career.",
       icon: "target",
       color: "teal",
-      url: "pages/career.html#career-center"
+      url: "pages/career.html#career-center",
+      keywords: "career advisor handshake future job interview"
     },
 
     internships: {
@@ -308,7 +377,26 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore internship guidance and career preparation.",
       icon: "file-user",
       color: "teal",
-      url: "pages/career.html#internships"
+      url: "pages/career.html#internships",
+      keywords: "internship intern experience career"
+    },
+
+    resumeHelp: {
+      title: "Resume & Cover Letter Help",
+      description: "Get your resume and job applications ready.",
+      icon: "file-text",
+      color: "teal",
+      url: "pages/career.html#resume-cover-letter",
+      keywords: "resume cv cover letter application"
+    },
+
+    careerEvents: {
+      title: "Career Fairs & Events",
+      description: "Meet employers at career fairs and networking events.",
+      icon: "handshake",
+      color: "teal",
+      url: "pages/career.html#networking-career-events",
+      keywords: "career fair networking employers events"
     },
 
     tutoring: {
@@ -316,7 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find academic support for your classes and courses.",
       icon: "graduation-cap",
       color: "blue",
-      url: "pages/classes.html#tutoring"
+      url: "pages/classes.html#tutoring",
+      keywords: "tutor tutoring help class homework study"
     },
 
     dropInLabs: {
@@ -324,7 +413,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore academic labs and additional study support.",
       icon: "book-open-check",
       color: "blue",
-      url: "pages/classes.html#drop-in-labs"
+      url: "pages/classes.html#drop-in-labs",
+      keywords: "lab labs math chemistry biology physics language conversation"
     },
 
     writingCenter: {
@@ -332,7 +422,35 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Get help with essays, assignments, and writing skills.",
       icon: "file-pen-line",
       color: "blue",
-      url: "pages/classes.html#writing-center"
+      url: "pages/classes.html#writing-center",
+      keywords: "writing essay paper english resume"
+    },
+
+    academicAdvising: {
+      title: "Academic Advising",
+      description: "Plan your classes, choose a major, and stay on track to graduate.",
+      icon: "compass",
+      color: "blue",
+      url: "pages/classes.html#academic-advising",
+      keywords: "advisor advising major classes schedule graduation"
+    },
+
+    library: {
+      title: "David O. McKay Library",
+      description: "Find books, research help, and quiet study spaces.",
+      icon: "library",
+      color: "blue",
+      url: "pages/classes.html#library",
+      keywords: "library books research study room"
+    },
+
+    studySkills: {
+      title: "Study Skills",
+      description: "Build better study habits and time management.",
+      icon: "lightbulb",
+      color: "blue",
+      url: "pages/classes.html#study-skills",
+      keywords: "study habits time management focus"
     },
 
     counseling: {
@@ -340,7 +458,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore counseling and emotional wellbeing support.",
       icon: "messages-square",
       color: "green",
-      url: "pages/health.html#counseling-center"
+      url: "pages/health.html#counseling-center",
+      keywords: "counseling therapy stress anxiety depression mental health talk"
     },
 
     getHelp: {
@@ -348,7 +467,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn about additional support when you need someone to talk to.",
       icon: "message-circle-heart",
       color: "green",
-      url: "pages/health.html#get-help-line"
+      url: "pages/health.html#get-help-line",
+      keywords: "talk support help line"
     },
 
     crisisSupport: {
@@ -356,7 +476,35 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find information about urgent emotional support resources.",
       icon: "heart-handshake",
       color: "green",
-      url: "pages/health.html#crisis-support"
+      url: "pages/health.html#crisis-support",
+      keywords: "crisis emergency 988 suicide urgent"
+    },
+
+    healthCenter: {
+      title: "Student Health Center",
+      description: "See a doctor, get prescriptions, and find health insurance info.",
+      icon: "stethoscope",
+      color: "green",
+      url: "pages/health.html#student-health-center",
+      keywords: "sick doctor medical health insurance pharmacy"
+    },
+
+    wellness: {
+      title: "Wellness Center",
+      description: "Free help with sleep, stress, nutrition, and healthy habits.",
+      icon: "leaf",
+      color: "green",
+      url: "pages/health.html#wellness-resources",
+      keywords: "wellness nutrition sleep stress healthy dietitian"
+    },
+
+    fitness: {
+      title: "Fitness & Recreation",
+      description: "Use the gym, pool, and free fitness classes.",
+      icon: "dumbbell",
+      color: "green",
+      url: "pages/health.html#fitness-recreation",
+      keywords: "gym fitness workout exercise pool"
     },
 
     internationalServices: {
@@ -364,7 +512,17 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find guidance and support for international students.",
       icon: "globe",
       color: "purple",
-      url: "pages/international.html#international-services"
+      url: "pages/international.html#international-services",
+      keywords: "international i-20 f-1 sevis travel signature"
+    },
+
+    visaImmigration: {
+      title: "Visa & Immigration",
+      description: "Keep your student status, I-20, and travel documents in order.",
+      icon: "plane",
+      color: "purple",
+      url: "pages/international.html#visa-immigration",
+      keywords: "visa immigration i-20 status travel passport"
     },
 
     workRules: {
@@ -372,7 +530,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn where to find guidance about employment authorization.",
       icon: "file-check",
       color: "purple",
-      url: "pages/international.html#employment-authorization"
+      url: "pages/international.html#employment-authorization",
+      keywords: "work job international opt cpt employment authorization"
     },
 
     housing: {
@@ -380,7 +539,17 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore housing information and apartment resources.",
       icon: "house",
       color: "peach",
-      url: "pages/housing.html#approved-housing"
+      url: "pages/housing.html#approved-housing",
+      keywords: "housing apartment rent approved housing live"
+    },
+
+    housingContracts: {
+      title: "Housing Contracts",
+      description: "Understand your contract before you sign, or sell it if you need to move.",
+      icon: "file-text",
+      color: "peach",
+      url: "pages/housing.html#housing-contracts",
+      keywords: "contract lease sell contract move"
     },
 
     roommateSupport: {
@@ -388,7 +557,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find guidance for shared living and roommate concerns.",
       icon: "users",
       color: "peach",
-      url: "pages/housing.html#roommate-resources"
+      url: "pages/housing.html#roommate-resources",
+      keywords: "roommate roommates conflict apartment"
     },
 
     studentSocieties: {
@@ -396,7 +566,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Discover groups and communities on campus.",
       icon: "users-round",
       color: "pink",
-      url: "pages/campus.html#student-societies"
+      url: "pages/campus.html#student-societies",
+      keywords: "society societies club clubs major friends"
     },
 
     campusActivities: {
@@ -404,7 +575,26 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore campus events and opportunities to get involved.",
       icon: "calendar-days",
       color: "pink",
-      url: "pages/campus.html#campus-activities"
+      url: "pages/campus.html#campus-activities",
+      keywords: "activities events friends fun i-belong"
+    },
+
+    campusEvents: {
+      title: "Campus Events",
+      description: "See what's happening on campus this week.",
+      icon: "party-popper",
+      color: "pink",
+      url: "pages/campus.html#campus-events",
+      keywords: "events calendar dance concert devotional"
+    },
+
+    sportsRecreation: {
+      title: "Sports & Recreation",
+      description: "Join intramural sports and recreation activities.",
+      icon: "trophy",
+      color: "pink",
+      url: "pages/campus.html#sports-recreation",
+      keywords: "sports intramurals recreation team"
     }
 
   };
@@ -421,20 +611,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const needRecommendations = {
     food: ["foodPantry", "financialAid"],
-    money: ["financialAid", "foodPantry"],
-    jobs: ["studentEmployment", "helpWanted", "careerCenter"],
-    classes: ["tutoring", "dropInLabs", "writingCenter"],
-    wellbeing: ["counseling", "getHelp", "crisisSupport"],
-    international: ["internationalServices", "workRules", "studentEmployment"],
+    money: ["financialAid", "scholarships", "fafsa", "foodPantry"],
+    jobs: ["studentEmployment", "helpWanted", "careerCenter", "resumeHelp"],
+    classes: ["tutoring", "dropInLabs", "writingCenter", "academicAdvising"],
+    wellbeing: ["counseling", "getHelp", "crisisSupport", "wellness"],
+    international: ["internationalServices", "visaImmigration", "workRules", "studentEmployment"],
     talk: ["counseling", "getHelp", "crisisSupport"],
-    studying: ["dropInLabs", "tutoring", "writingCenter"],
-    internship: ["internships", "careerCenter"],
-    career: ["careerCenter", "internships", "studentEmployment"],
-    friends: ["studentSocieties", "campusActivities"],
-    involved: ["campusActivities", "studentSocieties"],
-    housing: ["housing", "roommateSupport"],
+    studying: ["dropInLabs", "tutoring", "studySkills", "library"],
+    internship: ["internships", "careerCenter", "resumeHelp"],
+    career: ["careerCenter", "internships", "careerEvents", "resumeHelp"],
+    friends: ["studentSocieties", "campusActivities", "sportsRecreation"],
+    involved: ["campusActivities", "studentSocieties", "campusEvents"],
+    housing: ["housing", "housingContracts", "roommateSupport"],
     roommates: ["roommateSupport", "housing"],
-    new: ["campusActivities", "studentSocieties", "internationalServices"]
+    new: ["campusActivities", "studentSocieties", "internationalServices", "academicAdvising"]
   };
 
 
