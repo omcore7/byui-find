@@ -32,11 +32,18 @@
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="../js/script.js" defer></script>
 
-  <!-- Vercel Web Analytics -->
+  <!-- Link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BYU-I Find">
+  <meta property="og:title" content="Campus Life | BYU-I Find">
+  <meta property="og:description" content="Find campus activities, student societies, events, and ways to get involved at BYU-Idaho.">
+  <meta property="og:url" content="https://byui-find.vercel.app/pages/campus.html">
+  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
   <script>
-      window.va = window.va || function () {
-          (window.vaq = window.vaq || []).push(arguments);
-      };
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -70,6 +77,10 @@
     >
       <a href="../index.html#categories" class="active">
         Resources
+      </a>
+
+      <a href="faq.html">
+        FAQ
       </a>
 
       <a href="../index.html#about">
@@ -192,7 +203,7 @@
           <a
             class="resource-list-item"
             id="campus-activities"
-            href="https://www.byui.edu/activities"
+            href="https://www.byui.edu/student-activities/"
             target="_blank"
             rel="noopener noreferrer"
             data-search="campus activities recreation social student involvement"
@@ -216,7 +227,7 @@
           <a
             class="resource-list-item"
             id="student-societies"
-            href="https://www.byui.edu/societies"
+            href="https://www.byui.edu/academic-societies/join-a-society"
             target="_blank"
             rel="noopener noreferrer"
             data-search="student societies clubs groups interests community"
@@ -240,7 +251,7 @@
           <a
             class="resource-list-item"
             id="campus-events"
-            href="https://www.byui.edu/events"
+            href="https://www.byui.edu/calendar/"
             target="_blank"
             rel="noopener noreferrer"
             data-search="campus events calendar performances activities"
@@ -264,7 +275,7 @@
           <a
             class="resource-list-item"
             id="sports-recreation"
-            href="https://www.byui.edu/activities"
+            href="https://www.byui.edu/student-activities/sports"
             target="_blank"
             rel="noopener noreferrer"
             data-search="sports recreation fitness games intramural"
@@ -288,7 +299,7 @@
           <a
             class="resource-list-item"
             id="leadership-service"
-            href="https://www.byui.edu/activities"
+            href="https://www.byui.edu/student-activities/service"
             target="_blank"
             rel="noopener noreferrer"
             data-search="leadership volunteering service student involvement"
@@ -312,7 +323,7 @@
           <a
             class="resource-list-item"
             id="arts-entertainment"
-            href="https://www.byui.edu/events"
+            href="https://www.byui.edu/center-stage/tickets"
             target="_blank"
             rel="noopener noreferrer"
             data-search="arts music concerts performances entertainment"
@@ -376,6 +387,7 @@
           <h3>Quick Links</h3>
 
           <a href="../index.html#categories">Resources</a>
+          <a href="faq.html">FAQ</a>
           <a href="../index.html#about">About</a>
           <a href="../index.html#feedback">Feedback</a>
 

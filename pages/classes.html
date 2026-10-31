@@ -33,14 +33,21 @@
 
   <!-- Shared JavaScript -->
   <script src="../js/script.js" defer></script>
+  <!-- Link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BYU-I Find">
+  <meta property="og:title" content="My Classes | BYU-I Find">
+  <meta property="og:description" content="Find free tutoring, writing help, advising, and study resources at BYU-Idaho.">
+  <meta property="og:url" content="https://byui-find.vercel.app/pages/classes.html">
+  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Vercel Web Analytics -->
+  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
   <script>
-      window.va = window.va || function () {
-          (window.vaq = window.vaq || []).push(arguments);
-      };
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+
 </head>
 
 <body class="classes-page">
@@ -71,6 +78,10 @@
     >
       <a href="../index.html#categories" class="active">
         Resources
+      </a>
+
+      <a href="faq.html">
+        FAQ
       </a>
 
       <a href="../index.html#about">
@@ -198,7 +209,7 @@
           <a
             class="resource-list-item"
             id="tutoring"
-            href="https://www.byui.edu/tutoring-center/"
+            href="https://www.byui.edu/student-guide/tutoring-center"
             target="_blank"
             rel="noopener noreferrer"
             data-search="tutoring tutors courses subjects academic help"
@@ -224,7 +235,7 @@
           <a
             class="resource-list-item"
             id="writing-center"
-            href="https://www.byui.edu/writing-center/"
+            href="https://www.byui.edu/student-guide/writing-center"
             target="_blank"
             rel="noopener noreferrer"
             data-search="writing center essays papers grammar writing"
@@ -276,7 +287,7 @@
           <a
             class="resource-list-item"
             id="library"
-            href="https://www.byui.edu/library/"
+            href="https://library.byui.edu/"
             target="_blank"
             rel="noopener noreferrer"
             data-search="library books databases research study spaces"
@@ -328,7 +339,7 @@
           <a
             class="resource-list-item"
             id="study-skills"
-            href="https://www.byui.edu/"
+            href="https://www.byui.edu/student-guide/study-skills-center"
             target="_blank"
             rel="noopener noreferrer"
             data-search="study skills learning habits time management"
@@ -423,6 +434,7 @@
           <h3>Quick Links</h3>
 
           <a href="../index.html#categories">Resources</a>
+          <a href="faq.html">FAQ</a>
           <a href="../index.html#about">About</a>
           <a href="../index.html#feedback">Feedback</a>
 

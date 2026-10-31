@@ -12,6 +12,21 @@
 
   <title>BYU-I Find | Discover Campus Resources</title>
 
+  <!-- Link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BYU-I Find">
+  <meta property="og:title" content="BYU-I Find | Discover Campus Resources">
+  <meta property="og:description" content="Find BYU-Idaho campus resources based on what you need, from students for students.">
+  <meta property="og:url" content="https://byui-find.vercel.app/">
+  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +87,10 @@
 
       <a href="#categories" class="nav-link">
         Resources
+      </a>
+
+      <a href="pages/faq.html" class="nav-link">
+        FAQ
       </a>
 
       <a href="#about" class="nav-link">
@@ -686,6 +705,16 @@
 
       </div>
 
+      <!-- Resources matching the homepage search -->
+      <div class="search-results" id="search-results" aria-live="polite" hidden>
+        <h3 class="search-results-title">Matching resources</h3>
+
+        <div
+          class="recommendation-grid"
+          id="search-resource-list"
+        ></div>
+      </div>
+
       <div class="category-grid">
 
         <!-- My Classes -->
@@ -1036,6 +1065,7 @@
 
           <a href="#discover">Discover</a>
           <a href="#categories">Resources</a>
+          <a href="pages/faq.html">FAQ</a>
           <a href="#about">About</a>
           <a href="#feedback">Feedback</a>
 

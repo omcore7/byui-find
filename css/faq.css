@@ -1,0 +1,325 @@
+/* ==========================================
+   FAQ PAGE - BYU-I FIND
+   Matches the layout of the category pages.
+   ========================================== */
+
+.faq-page {
+  background: #ffffff;
+}
+
+.faq-page .faq-container {
+  width: min(100% - 40px, 860px);
+  margin: 0 auto;
+}
+
+/* ==========================================
+   PAGE INTRODUCTION
+   ========================================== */
+
+.faq-page .faq-intro {
+  background: #eef4fc;
+  padding: 38px 0 58px;
+}
+
+.faq-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 38px;
+
+  color: #2768a7;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.faq-page .back-link:hover {
+  text-decoration: underline;
+}
+
+.faq-page .back-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.faq-page .faq-intro-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.faq-page .faq-intro-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 62px;
+  height: 62px;
+  margin-bottom: 18px;
+
+  background: #dbe8f8;
+  color: #2768a7;
+  border-radius: 18px;
+}
+
+.faq-page .faq-intro-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.faq-page .faq-eyebrow {
+  margin: 0 0 12px;
+
+  color: #2768a7;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.faq-page .faq-intro h1 {
+  margin: 0 0 16px;
+
+  color: #102f56;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.faq-page .faq-intro-description {
+  max-width: 600px;
+  margin: 0 auto;
+
+  color: #4f6480;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* ==========================================
+   SEARCH
+   ========================================== */
+
+.faq-page .faq-questions {
+  padding: 45px 0 90px;
+}
+
+.faq-page .faq-search {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  max-width: 700px;
+  margin: 0 auto 45px;
+  padding: 8px 20px;
+
+  background: #ffffff;
+  border: 1px solid #dce5f0;
+  border-radius: 999px;
+  box-shadow: 0 5px 20px rgba(16, 47, 86, 0.05);
+}
+
+.faq-page .faq-search > svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  color: #6a86a8;
+}
+
+.faq-page .faq-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #102f56;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.faq-page .faq-search:focus-within {
+  border-color: #2768a7;
+  box-shadow: 0 0 0 3px rgba(39, 104, 167, 0.12);
+}
+
+/* ==========================================
+   QUESTION GROUPS
+   ========================================== */
+
+.faq-page .faq-group {
+  margin-bottom: 34px;
+}
+
+.faq-page .faq-group[hidden],
+.faq-page .faq-item[hidden],
+.faq-page .faq-no-results[hidden] {
+  display: none !important;
+}
+
+.faq-page .faq-group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0 0 14px;
+
+  color: #102f56;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.faq-page .faq-group-title svg {
+  width: 20px;
+  height: 20px;
+  color: #2768a7;
+}
+
+/* ==========================================
+   QUESTIONS (DROPDOWNS)
+   ========================================== */
+
+.faq-page .faq-item {
+  margin-bottom: 10px;
+
+  background: #ffffff;
+  border: 1px solid #e1e8f1;
+  border-radius: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.faq-page .faq-item:hover {
+  border-color: #a9c3e2;
+}
+
+.faq-page .faq-item[open] {
+  background: #f7faff;
+  border-color: #a9c3e2;
+}
+
+.faq-page .faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  min-height: 44px;
+  padding: 18px 22px;
+
+  color: #102f56;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-page .faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Arrow that turns when the answer opens */
+.faq-page .faq-item summary::after {
+  content: "";
+  flex-shrink: 0;
+
+  width: 9px;
+  height: 9px;
+  margin-right: 4px;
+
+  border-right: 2px solid #2768a7;
+  border-bottom: 2px solid #2768a7;
+
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.faq-page .faq-item[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.faq-page .faq-item summary:focus-visible {
+  outline: 3px solid #2768a7;
+  outline-offset: 3px;
+  border-radius: 15px;
+}
+
+.faq-page .faq-answer {
+  padding: 0 22px 20px;
+
+  color: #4f6480;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.faq-page .faq-answer p {
+  margin: 0 0 12px;
+}
+
+.faq-page .faq-answer a {
+  color: #2768a7;
+  font-weight: 600;
+}
+
+.faq-page .faq-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  text-decoration: none;
+}
+
+.faq-page .faq-link:hover {
+  text-decoration: underline;
+}
+
+.faq-page .faq-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ==========================================
+   NOTES
+   ========================================== */
+
+.faq-page .faq-no-results {
+  padding: 24px;
+
+  background: #f7faff;
+  border-radius: 15px;
+
+  color: #4f6480;
+  text-align: center;
+}
+
+.faq-page .faq-checked {
+  margin: 40px 0 0;
+
+  color: #6a7d96;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .faq-page .faq-item summary {
+    padding: 16px 18px;
+    font-size: 0.95rem;
+  }
+
+  .faq-page .faq-answer {
+    padding: 0 18px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-page .faq-item,
+  .faq-page .faq-item summary::after {
+    transition: none;
+  }
+}

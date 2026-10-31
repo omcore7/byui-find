@@ -3071,3 +3071,14 @@ section[id] {
     transform: none;
   }
 }
+
+/* Homepage search: matching resources */
+.search-results {
+  margin-bottom: 34px;
+}
+
+.search-results-title {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-size: 18px;
+}
