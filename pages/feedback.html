@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Share your feedback, suggestions, or ideas to help improve BYU-I Find."
+  >
+
+  <title>Feedback | BYU-I Find</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main website styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Feedback page styles -->
+  <link rel="stylesheet" href="../css/feedback.css">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Main website JavaScript -->
+  <script src="../js/script.js" defer></script>
+
+  <!-- Feedback form JavaScript -->
+  <script src="../js/feedback.js" defer></script>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       1. Header and Navigation
+       ========================================== -->
+  <header class="site-header">
+
+    <a href="../index.html" class="logo">
+      BYU-I <span>Find</span>
+    </a>
+
+    <!-- Mobile navigation -->
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i data-lucide="menu"></i>
+    </button>
+
+    <nav
+      class="navigation"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+
+      <a href="../index.html#discover" class="nav-link">
+        Discover
+      </a>
+
+      <a href="../index.html#categories" class="nav-link">
+        Resources
+      </a>
+
+      <a href="../index.html#about" class="nav-link">
+        About
+      </a>
+
+      <a
+        href="feedback.html"
+        class="nav-link active"
+        aria-current="page"
+      >
+        Feedback
+      </a>
+
+      <a href="faq.html" class="nav-link">
+        FAQ
+      </a>
+
+      <a
+        href="../index.html#categories"
+        class="search-button"
+        aria-label="Browse resources"
+      >
+        <i data-lucide="search"></i>
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main class="feedback-page">
+
+    <!-- ==========================================
+         2. Feedback Heading
+         ========================================== -->
+    <section class="feedback-container">
+
+      <div class="feedback-heading">
+
+        <div class="feedback-page-icon">
+          <i data-lucide="message-square-heart"></i>
+        </div>
+
+        <p class="feedback-eyebrow">
+          YOUR VOICE MATTERS
+        </p>
+
+        <h1>We'd love your feedback!</h1>
+
+        <p>
+          Have an idea, found something wrong, or want to
+          suggest a resource? We'd love to hear from you.
+        </p>
+
+      </div>
+
+
+      <!-- ==========================================
+           3. Feedback Form
+           ========================================== -->
+      <form id="feedback-form" class="feedback-form">
+
+        <!-- Honeypot: hidden from regular visitors -->
+        <div class="feedback-honeypot" aria-hidden="true">
+        <label for="feedback-website">Website</label>
+        <input
+            type="text"
+            id="feedback-website"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+        >
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group">
+
+          <label for="subject">
+            Subject *
+          </label>
+
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="What is your feedback about?"
+            maxlength="150"
+            required
+          >
+
+        </div>
+
+
+        <!-- Message -->
+        <div class="form-group">
+
+          <label for="message">
+            Message *
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Tell us what you think..."
+            maxlength="5000"
+            rows="6"
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- Optional Email -->
+        <div class="form-group">
+
+          <label for="email">
+            Email (optional)
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="yourname@example.com"
+            maxlength="254"
+          >
+
+          <small>
+            Only include your email if you'd like us
+            to be able to reply.
+          </small>
+
+        </div>
+
+
+        <!-- Privacy note -->
+        <p class="feedback-privacy">
+          <i data-lucide="lock-keyhole"></i>
+          Your feedback will not be displayed publicly.
+        </p>
+
+
+        <!-- Submit button -->
+        <button
+          type="submit"
+          class="feedback-submit"
+        >
+          <i data-lucide="send"></i>
+          Send Feedback
+        </button>
+
+
+        <!-- Success or error message -->
+        <p
+          id="feedback-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==========================================
+       4. Footer
+       ========================================== -->
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-main">
+
+        <!-- Website information -->
+        <div class="footer-brand">
+
+          <a href="../index.html" class="logo">
+            BYU-I <span>Find</span>
+          </a>
+
+          <p>
+            Helping BYU-Idaho students discover
+            the support they need, all in one place.
+          </p>
+
+          <span class="footer-note">
+            A student-created campus resource guide.
+          </span>
+
+        </div>
+
+
+        <!-- Footer links -->
+        <div class="footer-links">
+
+          <h3>Quick Links</h3>
+
+          <a href="../index.html#discover">
+            Discover
+          </a>
+
+          <a href="../index.html#categories">
+            Resources
+          </a>
+
+          <a href="faq.html">
+            FAQ
+          </a>
+
+          <a href="../index.html#about">
+            About
+          </a>
+
+          <a href="feedback.html">
+            Feedback
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+
+        <p>
+          © 2026 BYU-I Find. Student project.
+        </p>
+
+        <p>
+          Made for BYU-Idaho students
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
