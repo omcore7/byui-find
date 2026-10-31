@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn about financial aid, scholarships, and paying for school.",
       icon: "coins",
       color: "yellow",
-      url: "pages/financial.html"
+      url: "pages/financial.html#financial-aid"
     },
 
     studentEmployment: {
@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore employment opportunities for BYU-Idaho students.",
       icon: "briefcase-business",
       color: "teal",
-      url: "pages/career.html"
+      url: "pages/career.html#student-employment"
     },
 
     helpWanted: {
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Get help preparing for jobs, interviews, and your future career.",
       icon: "target",
       color: "teal",
-      url: "pages/career.html"
+      url: "pages/career.html#career-center"
     },
 
     internships: {
@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore internship guidance and career preparation.",
       icon: "file-user",
       color: "teal",
-      url: "pages/career.html"
+      url: "pages/career.html#internships"
     },
 
     tutoring: {
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find academic support for your classes and courses.",
       icon: "graduation-cap",
       color: "blue",
-      url: "https://www.byui.edu/tutoring-center"
+      url: "pages/classes.html#tutoring"
     },
 
     dropInLabs: {
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Get help with essays, assignments, and writing skills.",
       icon: "file-pen-line",
       color: "blue",
-      url: "https://www.byui.edu/academic-support-centers/writing-center"
+      url: "pages/classes.html#writing-center"
     },
 
     counseling: {
@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore counseling and emotional wellbeing support.",
       icon: "messages-square",
       color: "green",
-      url: "https://www.byui.edu/counseling-center"
+      url: "pages/health.html#counseling-center"
     },
 
     getHelp: {
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find guidance and support for international students.",
       icon: "globe",
       color: "purple",
-      url: "pages/international.html"
+      url: "pages/international.html#international-services"
     },
 
     workRules: {
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Learn where to find guidance about employment authorization.",
       icon: "file-check",
       color: "purple",
-      url: "pages/international.html"
+      url: "pages/international.html#employment-authorization"
     },
 
     housing: {
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore housing information and apartment resources.",
       icon: "house",
       color: "peach",
-      url: "pages/housing.html"
+      url: "pages/housing.html#approved-housing"
     },
 
     roommateSupport: {
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Find guidance for shared living and roommate concerns.",
       icon: "users",
       color: "peach",
-      url: "pages/housing.html"
+      url: "pages/housing.html#roommate-resources"
     },
 
     studentSocieties: {
@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Discover groups and communities on campus.",
       icon: "users-round",
       color: "pink",
-      url: "pages/campus.html"
+      url: "pages/campus.html#student-societies"
     },
 
     campusActivities: {
@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Explore campus events and opportunities to get involved.",
       icon: "calendar-days",
       color: "pink",
-      url: "pages/campus.html"
+      url: "pages/campus.html#campus-activities"
     }
 
   };
@@ -668,35 +668,35 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Did you know students can explore food assistance and support resources?",
       icon: "shopping-basket",
-      url: "pages/financial.html"
+      url: "pages/financial.html#food-pantry"
     },
     {
       title: "I Get Help Line",
       description:
         "Discover additional support resources for students who need someone to talk to.",
       icon: "message-circle-heart",
-      url: "pages/health.html"
+      url: "pages/health.html#get-help-line"
     },
     {
       title: "Free Drop-in Labs",
       description:
         "Explore academic labs and support that can help you with challenging classes.",
       icon: "book-open-check",
-      url: "pages/classes.html"
+      url: "pages/classes.html#drop-in-labs"
     },
     {
       title: "International Services",
       description:
         "Find support and guidance for international students at BYU-Idaho.",
       icon: "globe",
-      url: "pages/international.html"
+      url: "pages/international.html#international-services"
     },
     {
       title: "Help Wanted Postings",
       description:
         "Discover where to explore employment opportunities and job postings.",
       icon: "briefcase-business",
-      url: "pages/career.html"
+      url: "pages/career.html#help-wanted"
     }
   ];
 
