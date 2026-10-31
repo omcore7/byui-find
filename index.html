@@ -12,6 +12,21 @@
 
   <title>BYU-I Find | Discover Campus Resources</title>
 
+  <!-- Link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BYU-I Find">
+  <meta property="og:title" content="BYU-I Find | Discover Campus Resources">
+  <meta property="og:description" content="Find BYU-Idaho campus resources based on what you need, from students for students.">
+  <meta property="og:url" content="https://byui-find.vercel.app/">
+  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,6 +79,10 @@
 
       <a href="#categories" class="nav-link">
         Resources
+      </a>
+
+      <a href="pages/faq.html" class="nav-link">
+        FAQ
       </a>
 
       <a href="#about" class="nav-link">
@@ -171,6 +190,66 @@
       </div>
 
     </section>
+
+    <!-- ====================================================
+         Need Help Right Now?
+         ==================================================== -->
+    <section
+      class="urgent-help section-wrap"
+      aria-labelledby="urgent-help-title"
+    >
+
+      <div class="urgent-help-panel">
+
+        <div class="urgent-help-heading">
+
+          <span class="urgent-help-icon">
+            <i data-lucide="life-buoy" aria-hidden="true"></i>
+          </span>
+
+          <div>
+            <h2 id="urgent-help-title">Need help right now?</h2>
+            <p>You're not alone. These are free and ready to help.</p>
+          </div>
+
+        </div>
+
+        <ul class="urgent-help-list">
+
+          <li>
+            <a href="tel:911">
+              <strong>911</strong>
+              <span>Emergency: someone is in danger</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="tel:988">
+              <strong>Call or text 988</strong>
+              <span>Suicide &amp; Crisis Lifeline, 24/7</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="tel:+12084963000">
+              <strong>(208) 496-3000</strong>
+              <span>BYU-I Security, 24/7</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="tel:+12084969370">
+              <strong>(208) 496-9370</strong>
+              <span>Counseling Center, weekdays 8&ndash;5</span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
 
     <!-- ====================================================
          3. Discover Resources by Student Needs
@@ -1038,6 +1117,7 @@
 
           <a href="#discover">Discover</a>
           <a href="#categories">Resources</a>
+          <a href="pages/faq.html">FAQ</a>
           <a href="#about">About</a>
           <a href="#feedback">Feedback</a>
 
