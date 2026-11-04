@@ -2553,7 +2553,7 @@ section[id] {
 }
 
 .categories .category-card::after {
-  content: "↗";
+  content: none;
   position: absolute;
   right: 20px;
   top: 50%;
@@ -3132,4 +3132,56 @@ section[id] {
   color: #526d8e;
   font-size: 0.85rem;
   line-height: 1.7;
+}
+
+/* ========================================
+   Category Card Arrows
+======================================== */
+
+.categories .category-card {
+  position: relative;
+  padding-right: 56px;
+}
+
+.categories .category-arrow {
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  color: #8da5c4;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.categories .category-arrow svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
+}
+
+.categories .category-card:hover .category-arrow {
+  color: #2768a7;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .categories .category-card {
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 14px;
+    padding: 16px 48px 16px 16px;
+  }
+
+  .categories .category-arrow {
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+  }
+
+  .categories .category-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
 }
