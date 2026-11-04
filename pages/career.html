@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Explore BYU-Idaho career resources, student jobs, job postings, internships, resumes, and interview preparation."
+    content="Find BYU-Idaho career resources, student jobs, internships, resumes, interviews, and career events."
   >
 
   <title>Career &amp; Jobs | BYU-I Find</title>
@@ -15,34 +15,46 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Shared styles -->
+  <!-- Shared Styles -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/category-unified.css">
 
-  <!-- Career page styles -->
+  <!-- Career Styles -->
   <link rel="stylesheet" href="../css/career.css">
 
-  <!-- Icons and shared JavaScript -->
+  <!-- Icons and JavaScript -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="../js/script.js" defer></script>
-  <!-- Link previews -->
+  <script src="../js/career.js" defer></script>
+
+  <!-- Link Previews -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BYU-I Find">
   <meta property="og:title" content="Career &amp; Jobs | BYU-I Find">
-  <meta property="og:description" content="Find BYU-Idaho student jobs, internships, career help, and part-time jobs in Rexburg.">
-  <meta property="og:url" content="https://byui-find.vercel.app/pages/career.html">
-  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta
+    property="og:description"
+    content="Find student jobs, internships, career help, and interview preparation at BYU-Idaho."
+  >
+  <meta
+    property="og:url"
+    content="https://byui-find.vercel.app/pages/career.html"
+  >
+  <meta
+    property="og:image"
+    content="https://byui-find.vercel.app/assets/images/byui-campus.jpg"
+  >
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
+  <!-- Vercel Analytics -->
   <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -72,17 +84,24 @@
       id="main-navigation"
       aria-label="Main navigation"
     >
-      <a href="../index.html#categories" class="active">
+
+      <a href="#finder" class="nav-link">
+        Discover
+      </a>
+
+      <a href="/#categories" class="active">
         Resources
       </a>
 
-      <a href="../index.html#about">About</a>
+      <a href="/#about">
+        About
+      </a>
 
-      <a href="pages/feedback.html" class="nav-link">
+      <a href="/pages/feedback.html" class="nav-link">
         Feedback
       </a>
 
-      <a href="faq.html">
+      <a href="/pages/faq.html">
         FAQ
       </a>
     </nav>
@@ -96,10 +115,7 @@
 
       <div class="career-container">
 
-        <a
-          href="../index.html#categories"
-          class="back-link"
-        >
+        <a href="../index.html#categories" class="back-link">
           <i data-lucide="arrow-left" aria-hidden="true"></i>
           All categories
         </a>
@@ -117,8 +133,9 @@
           <h1>Career &amp; Jobs</h1>
 
           <p class="career-intro-description">
-            Explore job opportunities, internships,
-            and resources to help you prepare for your future career.
+            Looking for a job or preparing for your future?
+            Find internships, career support, and resources
+            to help you take the next step.
           </p>
 
         </div>
@@ -126,7 +143,6 @@
       </div>
 
     </section>
-
 
     <!-- SEARCH AND RESOURCES -->
     <section
@@ -149,7 +165,7 @@
           <input
             id="resource-search"
             type="search"
-            placeholder="Search career resources..."
+            placeholder="Try: internships, resumes, interviews..."
             aria-label="Search career resources"
             autocomplete="off"
           >
@@ -164,231 +180,50 @@
 
         </div>
 
-
-        <!-- Directory heading -->
+        <!-- Directory Heading -->
         <div class="career-directory-heading">
 
           <div>
 
             <p class="career-eyebrow">
-              EXPLORE YOUR OPTIONS
+              FIND THE HELP YOU NEED
             </p>
 
             <h2 id="career-resources-title">
-              Career resources
+              What do you need help with?
             </h2>
 
             <p>
-              Choose a resource to visit its website.
+              Choose a situation to find career resources
+              and learn how to get started.
             </p>
 
           </div>
 
-          <span class="career-resource-count" aria-live="polite">
-            7 resources
+          <span
+            class="career-resource-count"
+            aria-live="polite"
+          >
+            10 resources
           </span>
 
         </div>
 
+        <!-- Resource Guides -->
+        <div
+          class="career-resource-list"
+          id="career-resource-list"
+        ></div>
 
-        <!-- Resource list -->
-        <div class="career-resource-list">
-
-          <!-- Career Center -->
-          <a
-            class="resource-list-item"
-            id="career-center"
-            href="https://www.byui.edu/career/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="career center advising career development job preparation"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="briefcase-business" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Career Center</strong>
-              <small>
-                Get guidance on career planning, professional
-                development, and preparing for job opportunities.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Student Employment -->
-          <a
-            class="resource-list-item"
-            id="student-employment"
-            href="https://web.byui.edu/studentemployment/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="student jobs employment campus work part time"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="users" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Student Employment</strong>
-              <small>
-                Explore campus job opportunities and learn
-                how to apply for student positions.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Internships -->
-          <a
-            class="resource-list-item"
-            id="internships"
-            href="https://www.byui.edu/internships/finding-an-internship"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="internships experience professional opportunities career"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="graduation-cap" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Internships</strong>
-              <small>
-                Learn how internships can help you gain
-                experience and prepare for your career.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Resume and Cover Letter Help -->
-          <a
-            class="resource-list-item"
-            id="resume-cover-letter"
-            href="https://www.byui.edu/career-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="resume cv cover letter job applications"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="file-user" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Resume &amp; Cover Letter Help</strong>
-              <small>
-                Learn how to create professional resumes
-                and prepare strong job applications.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Interview Preparation -->
-          <a
-            class="resource-list-item"
-            id="interview-preparation"
-            href="https://www.byui.edu/career/students/job-market-readiness"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="interviews practice interview preparation professional"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="messages-square" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Interview Preparation</strong>
-              <small>
-                Find tips and resources to help you feel
-                more prepared for job interviews.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Networking and Career Events -->
-          <a
-            class="resource-list-item"
-            id="networking-career-events"
-            href="https://www.byui.edu/career/career-fair/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="networking employers connections career fairs"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="network" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Networking &amp; Career Events</strong>
-              <small>
-                Explore opportunities to connect with
-                employers and other professionals.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- NEW: Help Wanted Postings -->
-          <a
-            class="resource-list-item"
-            id="help-wanted"
-            href="https://www.byui.edu/help-wanted-postings/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="help wanted job postings job openings student employment hiring jobs on campus applications"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="search-check" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Help Wanted Postings</strong>
-              <small>
-                Learn where to look for available student jobs,
-                explore employment opportunities, and find
-                information about applying for positions.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-        </div>
-
-
-        <!-- No search results -->
+        <!-- No Results -->
         <p id="no-results" class="no-results" hidden>
           No resources found. Try another search.
+        </p>
+
+        <p class="career-source-note">
+          Job openings, internship requirements, and event
+          dates can change. Check the official resource
+          for the latest information.
         </p>
 
       </div>
@@ -396,7 +231,6 @@
     </section>
 
   </main>
-
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -426,10 +260,11 @@
 
           <h3>Quick Links</h3>
 
-          <a href="../index.html#categories">Resources</a>
-          <a href="faq.html">FAQ</a>
-          <a href="../index.html#about">About</a>
-          <a href="pages/feedback.html">Feedback</a>
+          <a href="/#finder">Discover</a>
+          <a href="/#categories">Resources</a>
+          <a href="/#about">About</a>
+          <a href="/pages/feedback.html">Feedback</a>
+          <a href="/pages/faq.html">FAQ</a>
 
         </div>
 
@@ -443,75 +278,6 @@
     </div>
 
   </footer>
-
-
-  <!-- Career resource search -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const searchInput = document.querySelector(
-        ".career-page #resource-search"
-      );
-
-      const searchButton = document.querySelector(
-        ".career-page #search-button"
-      );
-
-      const resources = Array.from(
-        document.querySelectorAll(
-          ".career-page .career-resource-list .resource-list-item"
-        )
-      );
-
-      const noResults = document.querySelector(
-        ".career-page #no-results"
-      );
-
-      const count = document.querySelector(
-        ".career-page .career-resource-count"
-      );
-
-      if (!searchInput) return;
-
-      function filterResources() {
-
-        const query = searchInput.value.trim().toLowerCase();
-        let visible = 0;
-
-        resources.forEach((resource) => {
-
-          const searchableText = (
-            (resource.dataset.search || "") + " " +
-            resource.textContent
-          ).toLowerCase();
-
-          const matches = searchableText.includes(query);
-
-          resource.hidden = !matches;
-
-          if (matches) {
-            visible++;
-          }
-
-        });
-
-        if (noResults) {
-          noResults.hidden = visible !== 0;
-        }
-
-        if (count) {
-          count.textContent =
-            visible + (visible === 1 ? " resource" : " resources");
-        }
-
-      }
-
-      searchInput.addEventListener("input", filterResources);
-
-      searchButton?.addEventListener("click", filterResources);
-
-    });
-  </script>
 
 </body>
 </html>

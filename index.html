@@ -44,14 +44,6 @@
 
   <!-- Main JavaScript -->
   <script src="js/script.js" defer></script>
-
-  <!-- Vercel Web Analytics -->
-  <script>
-      window.va = window.va || function () {
-          (window.vaq = window.vaq || []).push(arguments);
-      };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
@@ -81,7 +73,7 @@
       id="main-navigation"
       aria-label="Main navigation"
     >
-      <a href="#discover" class="nav-link active">
+      <a href="#finder" class="nav-link active">
         Discover
       </a>
 
@@ -190,358 +182,10 @@
           aria-live="polite"
         ></p>
 
-        <a href="#discover" class="hero-discover-link">
+        <a href="#finder" class="hero-discover-link">
           Not sure where to start? Explore below
           <i data-lucide="arrow-down"></i>
         </a>
-
-      </div>
-
-    </section>
-
-    <!-- ====================================================
-         3. Discover Resources by Student Needs
-         ==================================================== -->
-    <section
-      class="discover-section section-wrap"
-      id="discover"
-    >
-
-      <div class="section-heading discover-heading">
-
-        <div>
-          <p class="section-eyebrow">DISCOVER YOUR SUPPORT</p>
-
-          <h2>What's on your mind?</h2>
-
-          <p class="section-description">
-            You don't need to know where to look.
-            Just choose what sounds familiar, and we'll
-            help you find a place to start.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- The first six options are visible by default.
-           JavaScript reveals the remaining options. -->
-      <div class="needs-grid" id="needs-grid">
-
-        <!-- Food assistance -->
-        <button
-          class="need-card"
-          type="button"
-          data-need="food"
-          data-category="financial"
-        >
-          <span class="need-icon yellow">
-            <i data-lucide="shopping-basket"></i>
-          </span>
-
-          <strong>I need help with food</strong>
-
-          <span>Find food assistance and support.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <!-- Financial difficulties -->
-        <button
-          class="need-card"
-          type="button"
-          data-need="money"
-          data-category="financial"
-        >
-          <span class="need-icon yellow">
-            <i data-lucide="wallet"></i>
-          </span>
-
-          <strong>I'm worried about money</strong>
-
-          <span>Explore financial support options.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <!-- Employment -->
-        <button
-          class="need-card"
-          type="button"
-          data-need="jobs"
-          data-category="career"
-        >
-          <span class="need-icon teal">
-            <i data-lucide="briefcase-business"></i>
-          </span>
-
-          <strong>I'm looking for a job</strong>
-
-          <span>Discover student employment resources.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <!-- Academic difficulties -->
-        <button
-          class="need-card"
-          type="button"
-          data-need="classes"
-          data-category="classes"
-        >
-          <span class="need-icon blue">
-            <i data-lucide="book-open"></i>
-          </span>
-
-          <strong>I'm struggling in a class</strong>
-
-          <span>Find tutoring and academic help.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <!-- Emotional wellbeing -->
-        <button
-          class="need-card"
-          type="button"
-          data-need="wellbeing"
-          data-category="health"
-        >
-          <span class="need-icon green">
-            <i data-lucide="heart-handshake"></i>
-          </span>
-
-          <strong>I'm feeling overwhelmed</strong>
-
-          <span>Explore wellbeing and support resources.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <!-- International students -->
-        <button
-          class="need-card"
-          type="button"
-          data-need="international"
-          data-category="international"
-        >
-          <span class="need-icon purple">
-            <i data-lucide="globe"></i>
-          </span>
-
-          <strong>I'm an international student</strong>
-
-          <span>Discover services and important guidance.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <!-- Additional options -->
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="talk"
-          data-category="health"
-          hidden
-        >
-          <span class="need-icon green">
-            <i data-lucide="message-circle-heart"></i>
-          </span>
-
-          <strong>I need someone to talk to</strong>
-          <span>Find someone who can help.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="studying"
-          data-category="classes"
-          hidden
-        >
-          <span class="need-icon blue">
-            <i data-lucide="graduation-cap"></i>
-          </span>
-
-          <strong>I need help studying</strong>
-          <span>Explore labs and academic support.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="internship"
-          data-category="career"
-          hidden
-        >
-          <span class="need-icon teal">
-            <i data-lucide="file-user"></i>
-          </span>
-
-          <strong>I need an internship</strong>
-          <span>Find experience and career guidance.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="career"
-          data-category="career"
-          hidden
-        >
-          <span class="need-icon teal">
-            <i data-lucide="target"></i>
-          </span>
-
-          <strong>I need career advice</strong>
-          <span>Prepare for your professional future.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="friends"
-          data-category="campus"
-          hidden
-        >
-          <span class="need-icon pink">
-            <i data-lucide="users-round"></i>
-          </span>
-
-          <strong>I want to make friends</strong>
-          <span>Find communities and student groups.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="involved"
-          data-category="campus"
-          hidden
-        >
-          <span class="need-icon pink">
-            <i data-lucide="calendar-days"></i>
-          </span>
-
-          <strong>I want to get involved</strong>
-          <span>Explore activities and campus events.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="housing"
-          data-category="housing"
-          hidden
-        >
-          <span class="need-icon peach">
-            <i data-lucide="house"></i>
-          </span>
-
-          <strong>I'm looking for housing</strong>
-          <span>Explore student apartment options.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="roommates"
-          data-category="housing"
-          hidden
-        >
-          <span class="need-icon peach">
-            <i data-lucide="users"></i>
-          </span>
-
-          <strong>I'm having roommate problems</strong>
-          <span>Find housing guidance and support.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-        <button
-          class="need-card extra-need"
-          type="button"
-          data-need="new"
-          data-category="campus"
-          hidden
-        >
-          <span class="need-icon purple">
-            <i data-lucide="map"></i>
-          </span>
-
-          <strong>I'm new to BYU-Idaho</strong>
-          <span>Discover services and campus life.</span>
-
-          <i data-lucide="arrow-up-right" class="need-arrow"></i>
-        </button>
-
-      </div>
-
-      <!-- Expand or collapse additional options -->
-      <div class="discover-actions">
-
-        <button
-          class="show-more-button"
-          id="show-more-needs"
-          type="button"
-          aria-expanded="false"
-          aria-controls="needs-grid"
-        >
-          See all options
-          <i data-lucide="chevron-down"></i>
-        </button>
-
-      </div>
-
-
-      <!-- Recommendations appear after a need is selected -->
-      <div
-        class="recommendation-panel"
-        id="need-recommendations"
-        aria-live="polite"
-        hidden
-      >
-
-        <div class="recommendation-header">
-          <div>
-            <p class="section-eyebrow">RECOMMENDED FOR YOU</p>
-
-            <h3 id="recommendation-title">
-              Resources that may help
-            </h3>
-          </div>
-
-          <button
-            class="recommendation-close"
-            id="close-recommendations"
-            type="button"
-            aria-label="Close recommendations"
-          >
-            <i data-lucide="x"></i>
-          </button>
-        </div>
-
-        <p id="recommendation-description"></p>
-
-        <div
-          class="recommendation-grid"
-          id="recommendation-results"
-        ></div>
 
       </div>
 
@@ -641,6 +285,14 @@
             <button class="finder-submit" type="submit">
               Find my resources
               <i data-lucide="arrow-right"></i>
+            </button>
+            <button
+              type="button"
+              class="finder-clear"
+              id="clear-finder"
+            >
+              <i data-lucide="rotate-ccw"></i>
+              Clear selections
             </button>
 
             <p
@@ -1063,7 +715,7 @@
 
           <h3>Quick Links</h3>
 
-          <a href="#discover">Discover</a>
+          <a href="#finder">Discover</a>
           <a href="#categories">Resources</a>
           <a href="pages/faq.html">FAQ</a>
           <a href="#about">About</a>

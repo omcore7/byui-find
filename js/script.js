@@ -1,20 +1,6 @@
 /* ==========================================================
    BYU-I Find | Main JavaScript
-   ----------------------------------------------------------
-   Shared functionality:
-   1. Lucide icons
-   2. Mobile navigation
-   3. Resource filtering
-   4. Homepage search
-   5. Category page search
-
-   Homepage discovery features:
-   6. Resource recommendation data
-   7. Student needs and recommendations
-   8. Personalized resource finder
-   9. Did You Know? resource spotlight
-
-   This file is used by the homepage and category pages.
+   Shared navigation, search, Discover, Finder, and Spotlight
    ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,20 +17,143 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateIcons();
 
+  // ----------------------------------------------------------
+  // 2. Open Recommended Resource Guides
+  // ----------------------------------------------------------
+
+  const guideSearchTerms = {
+    "food": ["food", "pantry"],
+    "financial-aid": ["financial aid", "paying for school"],
+    "scholarship": ["scholarship"],
+    "fafsa": ["fafsa"],
+    "job-on-campus": ["job on campus", "campus job"],
+    "other-job-postings": ["other job postings", "job postings"],
+    "career-choice": ["not sure what career", "career i want"],
+    "internship": ["find an internship", "internship"],
+    "resume": ["improve my resume", "resume"],
+    "interview": ["practice for a job interview", "interview"],
+    "employers": ["meet employers", "career fair"],
+    "employment-preparation": ["prepared for employment", "employment preparation"],
+    "tutoring": ["tutor", "struggling in a class"],
+    "study": ["studying", "study"],
+    "writing": ["writing", "essay"],
+    "advising": ["advising", "planning my classes"],
+    "library": ["library"],
+    "study-skills": ["study skills", "study habits"],
+    "counseling": ["counseling", "someone to talk"],
+    "overwhelmed": ["overwhelmed", "stress"],
+    "crisis": ["crisis", "urgent"],
+    "medical": ["medical", "health center", "doctor"],
+    "wellness": ["wellness", "wellbeing"],
+    "fitness": ["fitness", "exercise", "gym"],
+    "form-i": ["form i-20", "i-20"],
+    "maintaining-f-1": ["maintaining f-1", "f-1 visa status", "f-1 status"],
+    "travel": ["travel"],
+    "employment": ["employment", "work"],
+    "internships": ["internship", "cpt"],
+    "opt": ["optional practical training", "opt"],
+    "stem-opt": ["stem opt"],
+    "housing": ["housing", "apartment"],
+    "contract": ["contract", "lease"],
+    "roommate": ["roommate"],
+    "friends": ["friends", "societies", "clubs"],
+    "activities": ["activities", "involved", "i-belong"],
+    "events": ["events"],
+    "sports": ["sports", "intramural"]
+  };
+
+  const requestedGuide = new URLSearchParams(
+    window.location.search
+  ).get("guide");
+
+  if (requestedGuide) {
+    let openedGuide = false;
+
+    const terms = guideSearchTerms[requestedGuide] || [
+      requestedGuide.replace(/-/g, " ")
+    ];
+
+    function openRequestedGuide() {
+      if (openedGuide) return true;
+
+      const guides = [
+        ...document.querySelectorAll("details.resource-guide")
+      ];
+
+      if (guides.length === 0) return false;
+
+      // Prefer an exact guide ID when available.
+      let match = guides.find(
+        (guide) => guide.id === requestedGuide
+      );
+
+      if (!match) {
+        match = guides.find((guide) => {
+          const title = (
+            guide.querySelector("summary")?.textContent || ""
+          ).toLowerCase().replace(/\s+/g, " ");
+
+          return terms.some((term) => title.includes(term));
+        });
+      }
+
+      if (!match) return false;
+
+      openedGuide = true;
+      match.hidden = false;
+      match.open = true;
+
+      requestAnimationFrame(() => {
+        match.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+
+      return true;
+    }
+
+    if (!openRequestedGuide()) {
+      const observer = new MutationObserver(() => {
+        if (openRequestedGuide()) {
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+      window.addEventListener("load", () => {
+        openRequestedGuide();
+
+        setTimeout(() => {
+          observer.disconnect();
+        }, 3000);
+      }, { once: true });
+    }
+  }
 
   // ----------------------------------------------------------
-  // 2. Mobile Navigation
+  // 3. Mobile Navigation
   // ----------------------------------------------------------
 
   const menuToggle = document.querySelector(".menu-toggle");
-  const navigation = document.querySelector(".navigation, .main-nav");
+  const navigation = document.querySelector(
+    ".navigation, .main-nav"
+  );
 
   function setMenuState(isOpen) {
     if (!menuToggle || !navigation) return;
 
     navigation.classList.toggle("open", isOpen);
 
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
     menuToggle.setAttribute(
       "aria-label",
       isOpen ? "Close navigation" : "Open navigation"
@@ -63,8 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (menuToggle && navigation) {
     menuToggle.addEventListener("click", () => {
-      const isOpen = navigation.classList.contains("open");
-      setMenuState(!isOpen);
+      setMenuState(!navigation.classList.contains("open"));
     });
 
     navigation.querySelectorAll("a").forEach((link) => {
@@ -72,9 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
   // ----------------------------------------------------------
-  // Active Navigation on Scroll
+  // 4. Active Navigation on Scroll
   // ----------------------------------------------------------
 
   const sectionLinks = document.querySelectorAll(
@@ -82,14 +189,15 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const trackedSections = [...sectionLinks]
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter((section) => section !== null);
+    .map((link) => document.querySelector(
+      link.getAttribute("href")
+    ))
+    .filter(Boolean);
 
   function updateActiveNavigation() {
-    if (trackedSections.length === 0) return;
+    if (!trackedSections.length) return;
 
     const scrollPosition = window.scrollY + 160;
-
     let activeSection = trackedSections[0];
 
     trackedSections.forEach((section) => {
@@ -99,12 +207,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     sectionLinks.forEach((link) => {
-      const isActive =
-        link.getAttribute("href") === `#${activeSection.id}`;
+      const active = link.getAttribute("href") ===
+        `#${activeSection.id}`;
 
-      link.classList.toggle("active", isActive);
+      link.classList.toggle("active", active);
 
-      if (isActive) {
+      if (active) {
         link.setAttribute("aria-current", "location");
       } else {
         link.removeAttribute("aria-current");
@@ -112,19 +220,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (sectionLinks.length > 0) {
-    window.addEventListener("scroll", updateActiveNavigation, {
-      passive: true
-    });
+  if (sectionLinks.length) {
+    window.addEventListener(
+      "scroll",
+      updateActiveNavigation,
+      { passive: true }
+    );
 
-    window.addEventListener("resize", updateActiveNavigation);
+    window.addEventListener(
+      "resize",
+      updateActiveNavigation
+    );
 
     updateActiveNavigation();
   }
 
-
   // ----------------------------------------------------------
-  // 3. Reusable Resource Filtering
+  // 5. Reusable Resource Filtering
   // ----------------------------------------------------------
 
   function filterResources(resources, query) {
@@ -140,505 +252,511 @@ document.addEventListener("DOMContentLoaded", () => {
 
       resource.hidden = !matches;
 
-      if (matches) {
-        visibleCount++;
-      }
+      if (matches) visibleCount++;
     });
 
     return visibleCount;
   }
 
-
   // ----------------------------------------------------------
-  // 4. Homepage Search
-  // ----------------------------------------------------------
-
-  const homeSearchForm = document.querySelector("#search-form");
-  const homeSearchInput = homeSearchForm?.querySelector("#resource-search");
-  const searchFeedback = document.querySelector("#search-feedback");
-  const categoryCards = document.querySelectorAll("#categories .category-card");
-  const navSearch = document.querySelector("#nav-search");
-  const searchResults = document.querySelector("#search-results");
-  const searchResourceList = document.querySelector("#search-resource-list");
-
-  // Small words that shouldn't count as a match on their own.
-  const searchStopWords = new Set([
-    "the", "and", "for", "with", "how", "can", "get", "need",
-    "want", "help", "where", "what", "find", "free", "some", "about"
-  ]);
-
-  // Resources whose name, description, or keywords match the search,
-  // with the best matches first.
-  function findMatchingResources(query) {
-    const words = query
-      .split(/\s+/)
-      .filter((word) => word.length > 2 && !searchStopWords.has(word));
-
-    const terms = words.length > 0 ? words : [query];
-
-    return Object.keys(resourceLibrary)
-      .map((resourceId) => {
-        const resource = resourceLibrary[resourceId];
-        const searchableText = [
-          resource.title,
-          resource.description,
-          resource.keywords || ""
-        ].join(" ").toLowerCase();
-
-        const score = terms.filter((term) =>
-          searchableText.includes(term)
-        ).length;
-
-        return { resourceId, score };
-      })
-      .filter((match) => match.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .map((match) => match.resourceId);
-  }
-
-  if (homeSearchForm && homeSearchInput) {
-    function filterHomeResources() {
-      const query = homeSearchInput.value.trim().toLowerCase();
-      const visibleCount = filterResources(categoryCards, query);
-      const matchingResources = query ? findMatchingResources(query) : [];
-
-      if (searchResults && searchResourceList) {
-        renderRecommendations(searchResourceList, matchingResources);
-        searchResults.hidden = matchingResources.length === 0;
-      }
-
-      if (searchFeedback) {
-        const resourceCount = matchingResources.length;
-
-        if (!query) {
-          searchFeedback.textContent = "";
-        } else if (visibleCount === 0 && resourceCount === 0) {
-          searchFeedback.textContent =
-            "No matching resources found. Try another word.";
-        } else {
-          searchFeedback.textContent =
-            `${resourceCount} matching ${resourceCount === 1 ? "resource" : "resources"} and ` +
-            `${visibleCount} ${visibleCount === 1 ? "category" : "categories"} found.`;
-        }
-      }
-
-      return visibleCount;
-    }
-
-    homeSearchInput.addEventListener("input", filterHomeResources);
-
-    homeSearchForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      if (!homeSearchInput.value.trim()) {
-        homeSearchInput.focus();
-        return;
-      }
-
-      filterHomeResources();
-      document.querySelector("#categories")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    });
-
-    navSearch?.addEventListener("click", () => {
-      document.querySelector(".hero")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-      homeSearchInput.focus({ preventScroll: true });
-      closeMenu();
-    });
-  }
-
-
-  // ----------------------------------------------------------
-  // 5. Category Page Search
-  // ----------------------------------------------------------
-
-  const categorySearchInput = document.querySelector(
-    ".category-search #resource-search"
-  );
-
-  const categorySearchButton = document.querySelector("#search-button");
-
-  if (categorySearchInput) {
-    const resources = document.querySelectorAll(
-      ".category-section .resource-card, " +
-      ".category-section .resource-list-item"
-    );
-
-    const categoryNoResults = document.querySelector(
-      ".category-section #no-results"
-    );
-
-    function filterCategoryResources() {
-      const query = categorySearchInput.value.trim().toLowerCase();
-      const visibleCount = filterResources(resources, query);
-
-      if (categoryNoResults) {
-        categoryNoResults.hidden = visibleCount > 0;
-      }
-    }
-
-    categorySearchInput.addEventListener(
-      "input",
-      filterCategoryResources
-    );
-
-    categorySearchButton?.addEventListener(
-      "click",
-      filterCategoryResources
-    );
-  }
-
-
-  // ----------------------------------------------------------
-  // 6. Resource Recommendation Data
+  // 6. Recommendation Resource Library
   // ----------------------------------------------------------
 
   /*
-   * Resources are stored in one place so both the student
-   * need cards and personalized finder can reuse them.
-   *
-   * Internal links point to existing category pages.
-   * Verify that each category page contains the named
-   * resource before publishing.
+   * Each resource links to its category page.
+   * The guide query parameter helps open the matching guide.
    */
 
-  const resourceLibrary = {
+  const resourceLibrary = {};
 
-    foodPantry: {
-      title: "Food Pantry",
-      description: "Explore food assistance and student support options.",
-      icon: "shopping-basket",
-      color: "yellow",
-      url: "pages/financial.html#food-pantry",
-      keywords: "food hungry groceries meals free food bank"
-    },
+  function addResource(
+    id, title, description, icon, color,
+    page, guide, keywords
+  ) {
+    resourceLibrary[id] = {
+      title,
+      description,
+      icon,
+      color,
+      url: `pages/${page}.html?guide=${guide}`,
+      keywords
+    };
+  }
 
-    financialAid: {
-      title: "Financial Aid & Scholarships",
-      description: "Learn about financial aid, scholarships, and paying for school.",
-      icon: "coins",
-      color: "yellow",
-      url: "pages/financial.html#financial-aid",
-      keywords: "money pay tuition grants loans pell aid"
-    },
+  // Paying for School
 
-    scholarships: {
-      title: "Scholarships",
-      description: "See which BYU-Idaho scholarships you may qualify for.",
-      icon: "award",
-      color: "yellow",
-      url: "pages/financial.html#scholarships",
-      keywords: "money scholarship academic need based talent returned missionary"
-    },
+  addResource(
+    "foodPantry",
+    "I need help with food",
+    "Find food assistance and support options.",
+    "shopping-basket", "yellow",
+    "financial", "food",
+    "food hungry pantry groceries meals"
+  );
 
-    fafsa: {
-      title: "FAFSA Application",
-      description: "Apply for federal aid and need-based scholarships.",
-      icon: "clipboard-list",
-      color: "yellow",
-      url: "pages/financial.html#fafsa-application",
-      keywords: "money fafsa federal aid grant pell application deadline"
-    },
+  addResource(
+    "financialAid",
+    "I need help paying for school",
+    "Explore financial aid and tuition support.",
+    "coins", "yellow",
+    "financial", "financial-aid",
+    "financial money tuition grants aid"
+  );
 
-    studentEmployment: {
-      title: "Student Employment",
-      description: "Explore employment opportunities for BYU-Idaho students.",
-      icon: "briefcase-business",
-      color: "teal",
-      url: "pages/career.html#student-employment",
-      keywords: "job jobs work campus job board hiring part time"
-    },
+  addResource(
+    "scholarships",
+    "I want to apply for scholarships",
+    "Learn where to find scholarship opportunities.",
+    "award", "yellow",
+    "financial", "scholarship",
+    "scholarships money awards"
+  );
 
-    helpWanted: {
-      title: "Help Wanted Postings",
-      description: "Learn where to look for student job opportunities.",
-      icon: "search",
-      color: "teal",
-      url: "pages/career.html#help-wanted",
-      keywords: "job jobs work rexburg part time local off campus hiring"
-    },
+  addResource(
+    "fafsa",
+    "I need help with FAFSA",
+    "Find guidance for applying for federal student aid.",
+    "clipboard-list", "yellow",
+    "financial", "fafsa",
+    "fafsa federal aid application"
+  );
 
-    careerCenter: {
-      title: "Career Center",
-      description: "Get help preparing for jobs, interviews, and your future career.",
-      icon: "target",
-      color: "teal",
-      url: "pages/career.html#career-center",
-      keywords: "career advisor handshake future job interview"
-    },
+  // Career & Jobs
 
-    internships: {
-      title: "Internship Resources",
-      description: "Explore internship guidance and career preparation.",
-      icon: "file-user",
-      color: "teal",
-      url: "pages/career.html#internships",
-      keywords: "internship intern experience career"
-    },
+  addResource(
+    "studentEmployment",
+    "I need a job on campus",
+    "Find student employment information.",
+    "briefcase-business", "teal",
+    "career", "job-on-campus",
+    "job jobs student employment campus work"
+  );
 
-    resumeHelp: {
-      title: "Resume & Cover Letter Help",
-      description: "Get your resume and job applications ready.",
-      icon: "file-text",
-      color: "teal",
-      url: "pages/career.html#resume-cover-letter",
-      keywords: "resume cv cover letter application"
-    },
+  addResource(
+    "helpWanted",
+    "I want to see other job postings",
+    "Explore additional job listings.",
+    "search", "teal",
+    "career", "other-job-postings",
+    "job postings hiring work"
+  );
 
-    careerEvents: {
-      title: "Career Fairs & Events",
-      description: "Meet employers at career fairs and networking events.",
-      icon: "handshake",
-      color: "teal",
-      url: "pages/career.html#networking-career-events",
-      keywords: "career fair networking employers events"
-    },
+  addResource(
+    "careerCenter",
+    "I am not sure what career I want",
+    "Find career guidance and next steps.",
+    "target", "teal",
+    "career", "career-choice",
+    "career advice guidance"
+  );
 
-    tutoring: {
-      title: "Tutoring",
-      description: "Find academic support for your classes and courses.",
-      icon: "graduation-cap",
-      color: "blue",
-      url: "pages/classes.html#tutoring",
-      keywords: "tutor tutoring help class homework study"
-    },
+  addResource(
+    "internships",
+    "I want to find an internship",
+    "Learn about internships and Handshake.",
+    "file-user", "teal",
+    "career", "internship",
+    "internship intern handshake cpt"
+  );
 
-    dropInLabs: {
-      title: "Free Drop-in Labs",
-      description: "Explore academic labs and additional study support.",
-      icon: "book-open-check",
-      color: "blue",
-      url: "pages/classes.html#drop-in-labs",
-      keywords: "lab labs math chemistry biology physics language conversation"
-    },
+  addResource(
+    "resumeHelp",
+    "I want to improve my resume",
+    "Explore resume support and VMock.",
+    "file-text", "teal",
+    "career", "resume",
+    "resume vmock cv"
+  );
 
-    writingCenter: {
-      title: "Writing Center",
-      description: "Get help with essays, assignments, and writing skills.",
-      icon: "file-pen-line",
-      color: "blue",
-      url: "pages/classes.html#writing-center",
-      keywords: "writing essay paper english resume"
-    },
+  addResource(
+    "interviews",
+    "I want to practice for an interview",
+    "Find interview preparation resources.",
+    "messages-square", "teal",
+    "career", "interview",
+    "interview practice job"
+  );
 
-    academicAdvising: {
-      title: "Academic Advising",
-      description: "Plan your classes, choose a major, and stay on track to graduate.",
-      icon: "compass",
-      color: "blue",
-      url: "pages/classes.html#academic-advising",
-      keywords: "advisor advising major classes schedule graduation"
-    },
+  addResource(
+    "careerEvents",
+    "I want to meet employers",
+    "Find career fairs and networking events.",
+    "handshake", "teal",
+    "career", "employers",
+    "career fair employers networking"
+  );
 
-    library: {
-      title: "David O. McKay Library",
-      description: "Find books, research help, and quiet study spaces.",
-      icon: "library",
-      color: "blue",
-      url: "pages/classes.html#library",
-      keywords: "library books research study room"
-    },
+  addResource(
+    "employmentPrep",
+    "I want to prepare for employment",
+    "Explore job readiness and career preparation.",
+    "badge-check", "teal",
+    "career", "employment-preparation",
+    "employment readiness preparation"
+  );
 
-    studySkills: {
-      title: "Study Skills",
-      description: "Build better study habits and time management.",
-      icon: "lightbulb",
-      color: "blue",
-      url: "pages/classes.html#study-skills",
-      keywords: "study habits time management focus"
-    },
+  // My Classes
 
-    counseling: {
-      title: "Counseling Center",
-      description: "Explore counseling and emotional wellbeing support.",
-      icon: "messages-square",
-      color: "green",
-      url: "pages/health.html#counseling-center",
-      keywords: "counseling therapy stress anxiety depression mental health talk"
-    },
+  addResource(
+    "tutoring",
+    "I am struggling in a class",
+    "Find tutoring and help with coursework.",
+    "graduation-cap", "blue",
+    "classes", "tutoring",
+    "tutor class homework academic"
+  );
 
-    getHelp: {
-      title: "I Get Help Line",
-      description: "Learn about additional support when you need someone to talk to.",
-      icon: "message-circle-heart",
-      color: "green",
-      url: "pages/health.html#get-help-line",
-      keywords: "talk support help line"
-    },
+  addResource(
+    "dropInLabs",
+    "I need help studying",
+    "Find labs and study support.",
+    "book-open-check", "blue",
+    "classes", "study",
+    "study labs studying"
+  );
 
-    crisisSupport: {
-      title: "Crisis Support",
-      description: "Find information about urgent emotional support resources.",
-      icon: "heart-handshake",
-      color: "green",
-      url: "pages/health.html#crisis-support",
-      keywords: "crisis emergency 988 suicide urgent"
-    },
+  addResource(
+    "writingCenter",
+    "I need help with writing",
+    "Find help with papers and assignments.",
+    "file-pen-line", "blue",
+    "classes", "writing",
+    "writing essays papers"
+  );
 
-    healthCenter: {
-      title: "Student Health Center",
-      description: "See a doctor, get prescriptions, and find health insurance info.",
-      icon: "stethoscope",
-      color: "green",
-      url: "pages/health.html#student-health-center",
-      keywords: "sick doctor medical health insurance pharmacy"
-    },
+  addResource(
+    "academicAdvising",
+    "I need help planning my classes",
+    "Explore academic advising and course planning.",
+    "compass", "blue",
+    "classes", "advising",
+    "academic advisor classes planning"
+  );
 
-    wellness: {
-      title: "Wellness Center",
-      description: "Free help with sleep, stress, nutrition, and healthy habits.",
-      icon: "leaf",
-      color: "green",
-      url: "pages/health.html#wellness-resources",
-      keywords: "wellness nutrition sleep stress healthy dietitian"
-    },
+  addResource(
+    "library",
+    "I need research or library help",
+    "Find library and research resources.",
+    "library", "blue",
+    "classes", "library",
+    "library books research"
+  );
 
-    fitness: {
-      title: "Fitness & Recreation",
-      description: "Use the gym, pool, and free fitness classes.",
-      icon: "dumbbell",
-      color: "green",
-      url: "pages/health.html#fitness-recreation",
-      keywords: "gym fitness workout exercise pool"
-    },
+  addResource(
+    "studySkills",
+    "I want better study habits",
+    "Explore ways to study and manage time.",
+    "lightbulb", "blue",
+    "classes", "study-skills",
+    "study time management habits"
+  );
 
-    internationalServices: {
-      title: "International Services",
-      description: "Find guidance and support for international students.",
-      icon: "globe",
-      color: "purple",
-      url: "pages/international.html#international-services",
-      keywords: "international i-20 f-1 sevis travel signature"
-    },
+  // My Health
 
-    visaImmigration: {
-      title: "Visa & Immigration",
-      description: "Keep your student status, I-20, and travel documents in order.",
-      icon: "plane",
-      color: "purple",
-      url: "pages/international.html#visa-immigration",
-      keywords: "visa immigration i-20 status travel passport"
-    },
+  addResource(
+    "counseling",
+    "I need someone to talk to",
+    "Find counseling and emotional support.",
+    "messages-square", "green",
+    "health", "counseling",
+    "counseling stress anxiety talk"
+  );
 
-    workRules: {
-      title: "International Student Work Rules",
-      description: "Learn where to find guidance about employment authorization.",
-      icon: "file-check",
-      color: "purple",
-      url: "pages/international.html#employment-authorization",
-      keywords: "work job international opt cpt employment authorization"
-    },
+  addResource(
+    "getHelp",
+    "I am feeling overwhelmed",
+    "Explore emotional wellbeing support.",
+    "heart-handshake", "green",
+    "health", "overwhelmed",
+    "overwhelmed stress support"
+  );
 
-    housing: {
-      title: "Student Housing",
-      description: "Explore housing information and apartment resources.",
-      icon: "house",
-      color: "peach",
-      url: "pages/housing.html#approved-housing",
-      keywords: "housing apartment rent approved housing live"
-    },
+  addResource(
+    "crisisSupport",
+    "I need urgent emotional support",
+    "Find information about urgent support.",
+    "heart-pulse", "green",
+    "health", "crisis",
+    "crisis emergency urgent 988"
+  );
 
-    housingContracts: {
-      title: "Housing Contracts",
-      description: "Understand your contract before you sign, or sell it if you need to move.",
-      icon: "file-text",
-      color: "peach",
-      url: "pages/housing.html#housing-contracts",
-      keywords: "contract lease sell contract move"
-    },
+  addResource(
+    "healthCenter",
+    "I need medical care",
+    "Explore the Student Health Center.",
+    "stethoscope", "green",
+    "health", "medical",
+    "doctor sick medical health"
+  );
 
-    roommateSupport: {
-      title: "Roommate Resources",
-      description: "Find guidance for shared living and roommate concerns.",
-      icon: "users",
-      color: "peach",
-      url: "pages/housing.html#roommate-resources",
-      keywords: "roommate roommates conflict apartment"
-    },
+  addResource(
+    "wellness",
+    "I want to improve my wellbeing",
+    "Find wellness and healthy living resources.",
+    "leaf", "green",
+    "health", "wellness",
+    "wellness sleep nutrition"
+  );
 
-    studentSocieties: {
-      title: "Student Societies",
-      description: "Discover groups and communities on campus.",
-      icon: "users-round",
-      color: "pink",
-      url: "pages/campus.html#student-societies",
-      keywords: "society societies club clubs major friends"
-    },
+  addResource(
+    "fitness",
+    "I want to exercise",
+    "Find fitness and recreation opportunities.",
+    "dumbbell", "green",
+    "health", "fitness",
+    "gym exercise fitness"
+  );
 
-    campusActivities: {
-      title: "Campus Activities",
-      description: "Explore campus events and opportunities to get involved.",
-      icon: "calendar-days",
-      color: "pink",
-      url: "pages/campus.html#campus-activities",
-      keywords: "activities events friends fun i-belong"
-    },
+  // International Support
 
-    campusEvents: {
-      title: "Campus Events",
-      description: "See what's happening on campus this week.",
-      icon: "party-popper",
-      color: "pink",
-      url: "pages/campus.html#campus-events",
-      keywords: "events calendar dance concert devotional"
-    },
+  addResource(
+    "internationalServices",
+    "I need help with my Form I-20",
+    "Find guidance for international student documents.",
+    "globe", "purple",
+    "international", "form-i",
+    "international form i-20 sevis"
+  );
 
-    sportsRecreation: {
-      title: "Sports & Recreation",
-      description: "Join intramural sports and recreation activities.",
-      icon: "trophy",
-      color: "pink",
-      url: "pages/campus.html#sports-recreation",
-      keywords: "sports intramurals recreation team"
-    }
+  addResource(
+    "visaImmigration",
+    "I want to maintain my F-1 status",
+    "Find guidance on maintaining student status.",
+    "plane", "purple",
+    "international", "maintaining-f-1",
+    "visa immigration f1 status"
+  );
 
-  };
+  addResource(
+    "travel",
+    "I need to travel internationally",
+    "Review travel guidance for F-1 students.",
+    "plane-takeoff", "purple",
+    "international", "travel",
+    "travel visa passport signature"
+  );
 
+  addResource(
+    "workRules",
+    "I want to work as an international student",
+    "Find guidance about F-1 employment rules.",
+    "file-check", "purple",
+    "international", "employment",
+    "work employment authorization international"
+  );
+
+  addResource(
+    "cpt",
+    "I need an internship as an international student",
+    "Find internship and CPT guidance.",
+    "file-user", "purple",
+    "international", "internships",
+    "cpt internship international"
+  );
+
+  addResource(
+    "opt",
+    "I want to apply for OPT",
+    "Explore post-graduation work guidance.",
+    "graduation-cap", "purple",
+    "international", "opt",
+    "opt graduation employment international"
+  );
+
+  addResource(
+    "stemOpt",
+    "I want to learn about STEM OPT",
+    "Explore STEM OPT guidance.",
+    "flask-conical", "purple",
+    "international", "stem-opt",
+    "stem opt extension"
+  );
+
+  // Housing
+
+  addResource(
+    "housing",
+    "I am looking for housing",
+    "Find housing options and information.",
+    "house", "peach",
+    "housing", "housing",
+    "housing apartment approved rent"
+  );
+
+  addResource(
+    "housingContracts",
+    "I need help with a housing contract",
+    "Find guidance on contracts and leases.",
+    "file-text", "peach",
+    "housing", "contract",
+    "contract lease housing"
+  );
+
+  addResource(
+    "roommateSupport",
+    "I am having roommate problems",
+    "Explore guidance for roommate concerns.",
+    "users", "peach",
+    "housing", "roommate",
+    "roommates conflict housing"
+  );
+
+  // Campus Life
+
+  addResource(
+    "studentSocieties",
+    "I want to make friends",
+    "Find student communities and groups.",
+    "users-round", "pink",
+    "campus", "friends",
+    "friends society clubs groups"
+  );
+
+  addResource(
+    "campusActivities",
+    "I want to get involved",
+    "Explore activities and I-Belong.",
+    "calendar-days", "pink",
+    "campus", "activities",
+    "activities i-belong events"
+  );
+
+  addResource(
+    "campusEvents",
+    "I want to find campus events",
+    "Discover events and activities.",
+    "party-popper", "pink",
+    "campus", "events",
+    "events campus activities"
+  );
+
+  addResource(
+    "sportsRecreation",
+    "I want to join campus sports",
+    "Explore sports and recreation opportunities.",
+    "trophy", "pink",
+    "campus", "sports",
+    "sports intramurals recreation"
+  );
 
   // ----------------------------------------------------------
   // 7. Student Needs and Recommendations
   // ----------------------------------------------------------
 
-  /*
-   * Each student need maps to resource IDs.
-   * Multiple needs can share the same resources.
-   */
-
   const needRecommendations = {
-    food: ["foodPantry", "financialAid"],
-    money: ["financialAid", "scholarships", "fafsa", "foodPantry"],
-    jobs: ["studentEmployment", "helpWanted", "careerCenter", "resumeHelp"],
-    classes: ["tutoring", "dropInLabs", "writingCenter", "academicAdvising"],
-    wellbeing: ["counseling", "getHelp", "crisisSupport", "wellness"],
-    international: ["internationalServices", "visaImmigration", "workRules", "studentEmployment"],
-    talk: ["counseling", "getHelp", "crisisSupport"],
-    studying: ["dropInLabs", "tutoring", "studySkills", "library"],
-    internship: ["internships", "careerCenter", "resumeHelp"],
-    career: ["careerCenter", "internships", "careerEvents", "resumeHelp"],
-    friends: ["studentSocieties", "campusActivities", "sportsRecreation"],
-    involved: ["campusActivities", "studentSocieties", "campusEvents"],
-    housing: ["housing", "housingContracts", "roommateSupport"],
-    roommates: ["roommateSupport", "housing"],
-    new: ["campusActivities", "studentSocieties", "internationalServices", "academicAdvising"]
+    food: [
+      "foodPantry",
+      "financialAid"
+    ],
+
+    money: [
+      "financialAid",
+      "scholarships",
+      "fafsa",
+      "foodPantry"
+    ],
+
+    jobs: [
+      "studentEmployment",
+      "helpWanted",
+      "resumeHelp",
+      "interviews"
+    ],
+
+    classes: [
+      "tutoring",
+      "dropInLabs",
+      "academicAdvising",
+      "writingCenter"
+    ],
+
+    wellbeing: [
+      "getHelp",
+      "counseling",
+      "wellness",
+      "crisisSupport"
+    ],
+
+    international: [
+      "internationalServices",
+      "visaImmigration",
+      "travel",
+      "workRules",
+      "opt"
+    ],
+
+    talk: [
+      "counseling",
+      "getHelp",
+      "crisisSupport"
+    ],
+
+    studying: [
+      "dropInLabs",
+      "tutoring",
+      "studySkills",
+      "library"
+    ],
+
+    internship: [
+      "internships",
+      "resumeHelp",
+      "careerCenter",
+      "cpt"
+    ],
+
+    career: [
+      "careerCenter",
+      "employmentPrep",
+      "careerEvents",
+      "interviews"
+    ],
+
+    friends: [
+      "studentSocieties",
+      "campusActivities",
+      "campusEvents"
+    ],
+
+    involved: [
+      "campusActivities",
+      "campusEvents",
+      "sportsRecreation"
+    ],
+
+    housing: [
+      "housing",
+      "housingContracts",
+      "roommateSupport"
+    ],
+
+    roommates: [
+      "roommateSupport",
+      "housing"
+    ],
+
+    new: [
+      "campusActivities",
+      "academicAdvising",
+      "internationalServices",
+      "housing"
+    ]
   };
 
+  // ----------------------------------------------------------
+  // 8. Create Recommendation Cards
+  // ----------------------------------------------------------
 
-  // Creates a reusable recommendation card.
   function createRecommendationCard(resourceId) {
     const resource = resourceLibrary[resourceId];
 
     if (!resource) return null;
 
     const card = document.createElement("a");
+
     card.className = "recommendation-card";
     card.href = resource.url;
 
-    // External links open in a new tab.
     if (resource.url.startsWith("https://")) {
       card.target = "_blank";
       card.rel = "noopener noreferrer";
@@ -662,14 +780,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return card;
   }
 
-
-  // Displays a collection of recommended resources.
   function renderRecommendations(container, resourceIds) {
     if (!container) return;
 
     container.replaceChildren();
 
-    // Remove duplicate resources while preserving their order.
     const uniqueIds = [...new Set(resourceIds)];
 
     uniqueIds.forEach((resourceId) => {
@@ -683,14 +798,241 @@ document.addEventListener("DOMContentLoaded", () => {
     updateIcons();
   }
 
+  // ----------------------------------------------------------
+  // 9. Homepage Search
+  // ----------------------------------------------------------
+
+  const homeSearchForm = document.querySelector("#search-form");
+
+  const homeSearchInput = homeSearchForm?.querySelector(
+    "#resource-search"
+  );
+
+  const searchFeedback = document.querySelector(
+    "#search-feedback"
+  );
+
+  const categoryCards = document.querySelectorAll(
+    "#categories .category-card"
+  );
+
+  const navSearch = document.querySelector("#nav-search");
+
+  const searchResults = document.querySelector(
+    "#search-results"
+  );
+
+  const searchResourceList = document.querySelector(
+    "#search-resource-list"
+  );
+
+  const searchStopWords = new Set([
+    "the", "and", "for", "with", "how", "can",
+    "get", "need", "want", "help", "where",
+    "what", "find", "free", "some", "about"
+  ]);
+
+  function findMatchingResources(query) {
+    const stopWords = new Set([
+      "i", "me", "my", "a", "an", "the",
+      "is", "are", "am", "to", "for",
+      "with", "in", "on", "at", "of",
+      "and", "or", "can", "do", "how",
+      "where", "what", "need", "want",
+      "help", "find", "get", "some",
+      "please", "would", "like"
+    ]);
+
+    const normalize = (text) =>
+      String(text)
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const words = normalize(query)
+      .split(" ")
+      .filter((word) =>
+        word.length > 1 && !stopWords.has(word)
+      );
+
+    if (words.length === 0) {
+      return [];
+    }
+
+    return Object.keys(resourceLibrary)
+      .map((resourceId) => {
+        const resource = resourceLibrary[resourceId];
+
+        const searchableText = normalize([
+          resource.title,
+          resource.description,
+          resource.keywords || ""
+        ].join(" "));
+
+        const score = words.filter((word) =>
+          searchableText.split(" ").some((term) =>
+            term === word ||
+            term.startsWith(word) ||
+            word.startsWith(term)
+          )
+        ).length;
+
+        return {
+          resourceId,
+          score
+        };
+      })
+      .filter((match) => match.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map((match) => match.resourceId);
+  }
+
+  if (homeSearchForm && homeSearchInput) {
+
+    function filterHomeResources() {
+      const query = homeSearchInput.value
+        .trim()
+        .toLowerCase();
+
+      const visibleCount = filterResources(
+        categoryCards,
+        query
+      );
+
+      const matchingResources = query
+        ? findMatchingResources(query)
+        : [];
+
+      if (searchResults && searchResourceList) {
+        renderRecommendations(
+          searchResourceList,
+          matchingResources
+        );
+
+        searchResults.hidden = matchingResources.length === 0;
+      }
+
+      if (searchFeedback) {
+        const resourceCount = matchingResources.length;
+
+        if (!query) {
+          searchFeedback.textContent = "";
+        } else if (
+          visibleCount === 0 &&
+          resourceCount === 0
+        ) {
+          searchFeedback.textContent =
+            "No matching resources found. Try another word.";
+        } else {
+          searchFeedback.textContent =
+            `${resourceCount} matching ` +
+            `${resourceCount === 1 ? "resource" : "resources"} and ` +
+            `${visibleCount} ` +
+            `${visibleCount === 1 ? "category" : "categories"} found.`;
+        }
+      }
+    }
+
+    homeSearchInput.addEventListener(
+      "input",
+      filterHomeResources
+    );
+
+    homeSearchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!homeSearchInput.value.trim()) {
+        homeSearchInput.focus();
+        return;
+      }
+
+      filterHomeResources();
+
+      document.querySelector("#categories")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+
+    navSearch?.addEventListener("click", () => {
+      document.querySelector(".hero")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      homeSearchInput.focus({ preventScroll: true });
+
+      closeMenu();
+    });
+  }
 
   // ----------------------------------------------------------
-  // 8. Student Need Cards
+  // 10. Category Page Search
+  // ----------------------------------------------------------
+
+  const categorySearchInput = document.querySelector(
+    ".category-search #resource-search"
+  );
+
+  const categorySearchButton = document.querySelector(
+    "#search-button"
+  );
+
+  if (categorySearchInput) {
+    const resources = document.querySelectorAll(
+      ".category-section .resource-card, " +
+      ".category-section .resource-list-item"
+    );
+
+    const categoryNoResults = document.querySelector(
+      ".category-section #no-results"
+    );
+
+    function filterCategoryResources() {
+      // Dynamic resource guides have their own search logic.
+      if (!resources.length) return;
+
+      const query = categorySearchInput.value
+        .trim()
+        .toLowerCase();
+
+      const visibleCount = filterResources(
+        resources,
+        query
+      );
+
+      if (categoryNoResults) {
+        categoryNoResults.hidden = visibleCount > 0;
+      }
+    }
+
+    categorySearchInput.addEventListener(
+      "input",
+      filterCategoryResources
+    );
+
+    categorySearchButton?.addEventListener(
+      "click",
+      filterCategoryResources
+    );
+  }
+
+  // ----------------------------------------------------------
+  // 11. Discover - Student Need Cards
   // ----------------------------------------------------------
 
   const needCards = document.querySelectorAll(".need-card");
-  const showMoreButton = document.querySelector("#show-more-needs");
-  const extraNeeds = document.querySelectorAll(".extra-need");
+
+  const showMoreButton = document.querySelector(
+    "#show-more-needs"
+  );
+
+  const extraNeeds = document.querySelectorAll(
+    ".extra-need"
+  );
 
   const recommendationPanel = document.querySelector(
     "#need-recommendations"
@@ -712,12 +1054,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "#close-recommendations"
   );
 
-
-  // Expand or collapse the additional student needs.
   showMoreButton?.addEventListener("click", () => {
-    const isExpanded = showMoreButton.getAttribute(
-      "aria-expanded"
-    ) === "true";
+    const isExpanded =
+      showMoreButton.getAttribute("aria-expanded") === "true";
 
     extraNeeds.forEach((card) => {
       card.hidden = isExpanded;
@@ -735,23 +1074,24 @@ document.addEventListener("DOMContentLoaded", () => {
     updateIcons();
   });
 
-
-  // Show recommendations when a student selects a need.
   needCards.forEach((card) => {
     card.addEventListener("click", () => {
       const needId = card.dataset.need;
+
       const resources = needRecommendations[needId] || [];
 
-      if (!recommendationPanel || !recommendationResults) return;
+      if (!recommendationPanel || !recommendationResults) {
+        return;
+      }
 
-      // Highlight the selected card.
       needCards.forEach((item) => {
         item.classList.toggle("active", item === card);
       });
 
       if (recommendationTitle) {
-        recommendationTitle.textContent = card.querySelector("strong")
-          ?.textContent || "Resources that may help";
+        recommendationTitle.textContent =
+          card.querySelector("strong")?.textContent ||
+          "Resources that may help";
       }
 
       if (recommendationDescription) {
@@ -759,7 +1099,10 @@ document.addEventListener("DOMContentLoaded", () => {
           "Here are some resources you can explore based on what you selected.";
       }
 
-      renderRecommendations(recommendationResults, resources);
+      renderRecommendations(
+        recommendationResults,
+        resources
+      );
 
       recommendationPanel.hidden = false;
 
@@ -770,8 +1113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
-  // Close the recommendation panel.
   closeRecommendations?.addEventListener("click", () => {
     if (recommendationPanel) {
       recommendationPanel.hidden = true;
@@ -782,9 +1123,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
   // ----------------------------------------------------------
-  // 9. Personalized Resource Finder
+  // 12. Personalized Resource Finder
   // ----------------------------------------------------------
 
   const finderForm = document.querySelector(
@@ -812,7 +1152,6 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     ].map((input) => input.value);
 
-    // Ask the student to select at least one option.
     if (selectedNeeds.length === 0) {
       if (finderFeedback) {
         finderFeedback.textContent =
@@ -830,12 +1169,14 @@ document.addEventListener("DOMContentLoaded", () => {
       finderFeedback.textContent = "";
     }
 
-    // Combine recommendations from every selected need.
-    const recommendedIds = selectedNeeds.flatMap((needId) => {
-      return needRecommendations[needId] || [];
-    });
+    const recommendedIds = selectedNeeds.flatMap(
+      (needId) => needRecommendations[needId] || []
+    );
 
-    renderRecommendations(finderResourceList, recommendedIds);
+    renderRecommendations(
+      finderResourceList,
+      recommendedIds
+    );
 
     if (finderResults) {
       finderResults.hidden = false;
@@ -847,64 +1188,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Clear selected options and hide recommendations
+  const clearFinderButton = document.querySelector("#clear-finder");
+
+  clearFinderButton?.addEventListener("click", () => {
+    // Uncheck all selected options
+    finderForm?.reset();
+
+    // Hide the recommendation results
+    if (finderResults) {
+      finderResults.hidden = true;
+    }
+
+    // Remove previous recommendation cards
+    if (finderResourceList) {
+      finderResourceList.replaceChildren();
+    }
+
+    // Clear feedback messages
+    if (finderFeedback) {
+      finderFeedback.textContent = "";
+    }
+
+    // Scroll back to the finder
+    document.querySelector("#finder")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
 
   // ----------------------------------------------------------
-  // 10. Did You Know? Resource Spotlight
+  // 13. Did You Know? Resource Spotlight
   // ----------------------------------------------------------
 
   const spotlightResources = [
-    {
-      title: "Food Pantry",
-      description:
-        "Did you know students can explore food assistance and support resources?",
-      icon: "shopping-basket",
-      url: "pages/financial.html#food-pantry"
-    },
-    {
-      title: "I Get Help Line",
-      description:
-        "Discover additional support resources for students who need someone to talk to.",
-      icon: "message-circle-heart",
-      url: "pages/health.html#get-help-line"
-    },
-    {
-      title: "Free Drop-in Labs",
-      description:
-        "Explore academic labs and support that can help you with challenging classes.",
-      icon: "book-open-check",
-      url: "pages/classes.html#drop-in-labs"
-    },
-    {
-      title: "International Services",
-      description:
-        "Find support and guidance for international students at BYU-Idaho.",
-      icon: "globe",
-      url: "pages/international.html#international-services"
-    },
-    {
-      title: "Help Wanted Postings",
-      description:
-        "Discover where to explore employment opportunities and job postings.",
-      icon: "briefcase-business",
-      url: "pages/career.html#help-wanted"
-    }
-  ];
+    "foodPantry",
+    "counseling",
+    "dropInLabs",
+    "internationalServices",
+    "studentEmployment"
+  ].map((id) => resourceLibrary[id]);
 
-  const spotlightTitle = document.querySelector("#spotlight-title");
+  const spotlightTitle = document.querySelector(
+    "#spotlight-title"
+  );
 
   const spotlightDescription = document.querySelector(
     "#spotlight-description"
   );
 
-  const spotlightIcon = document.querySelector("#spotlight-icon");
-  const spotlightLink = document.querySelector("#spotlight-link");
-  const spotlightCounter = document.querySelector("#spotlight-counter");
+  const spotlightIcon = document.querySelector(
+    "#spotlight-icon"
+  );
 
-  const spotlightPrev = document.querySelector("#spotlight-prev");
-  const spotlightNext = document.querySelector("#spotlight-next");
+  const spotlightLink = document.querySelector(
+    "#spotlight-link"
+  );
+
+  const spotlightCounter = document.querySelector(
+    "#spotlight-counter"
+  );
+
+  const spotlightPrev = document.querySelector(
+    "#spotlight-prev"
+  );
+
+  const spotlightNext = document.querySelector(
+    "#spotlight-next"
+  );
 
   let spotlightIndex = 0;
-
 
   function updateSpotlight() {
     const resource = spotlightResources[spotlightIndex];
@@ -935,7 +1288,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateIcons();
   }
 
-
   spotlightPrev?.addEventListener("click", () => {
     spotlightIndex = (
       spotlightIndex - 1 + spotlightResources.length
@@ -943,7 +1295,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateSpotlight();
   });
-
 
   spotlightNext?.addEventListener("click", () => {
     spotlightIndex = (

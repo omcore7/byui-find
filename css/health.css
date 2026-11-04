@@ -396,3 +396,227 @@
     transform: none;
   }
 }
+
+/* ==========================================
+   MY HEALTH | RESOURCE GUIDES
+   ========================================== */
+
+/* Emergency Support */
+
+.health-page .health-emergency {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px;
+  margin-bottom: 28px;
+  background: #fff5f5;
+  border: 1px solid #f3caca;
+  border-radius: 16px;
+}
+
+.health-page .health-emergency-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #ffe4e4;
+  color: #a82e36;
+}
+
+.health-page .health-emergency h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #84262c;
+}
+
+.health-page .health-emergency p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+  color: #58383b;
+}
+
+.health-page .health-emergency a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #9b2630;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.health-page .health-emergency a svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Resource Cards */
+
+.health-page .resource-guide {
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #dce6f2;
+  border-radius: 16px;
+}
+
+.health-page .resource-guide[hidden] {
+  display: none !important;
+}
+
+/* Card Heading */
+
+.health-page .resource-guide > summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.health-page .resource-guide > summary::-webkit-details-marker {
+  display: none;
+}
+
+.health-page .resource-guide > summary:hover {
+  background: #f5f9ff;
+}
+
+.health-page .resource-guide > summary:focus-visible {
+  outline: 3px solid #3478cb;
+  outline-offset: -3px;
+}
+
+.health-page .resource-guide > summary .resource-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.health-page .resource-guide > summary strong,
+.health-page .resource-guide > summary small {
+  display: block;
+}
+
+.health-page .resource-guide > summary small {
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+/* Chevron */
+
+.health-page .guide-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.health-page .resource-guide[open] .guide-chevron {
+  transform: rotate(180deg);
+}
+
+/* Expanded Content */
+
+.health-page .guide-content {
+  padding: 18px 22px 22px;
+  border-top: 1px solid #e7edf5;
+  line-height: 1.7;
+}
+
+.health-page .guide-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  color: #1b3655;
+}
+
+.health-page .guide-content h4 {
+  margin: 16px 0 8px;
+  font-size: 1rem;
+}
+
+.health-page .guide-content p {
+  margin: 0 0 12px;
+}
+
+.health-page .guide-content ol {
+  margin: 8px 0 18px;
+  padding-left: 24px;
+}
+
+.health-page .guide-content li + li {
+  margin-top: 6px;
+}
+
+/* Cost Information */
+
+.health-page .guide-cost {
+  padding: 12px 14px;
+  background: #f2f7fc;
+  border-radius: 10px;
+  font-size: 0.94rem;
+}
+
+/* Official Resource Button */
+
+.health-page .guide-official-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #eaf3ff;
+  color: #154f99;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.health-page .guide-official-link:hover {
+  background: #dbeafe;
+}
+
+.health-page .guide-official-link:focus-visible,
+.health-page .health-emergency a:focus-visible {
+  outline: 3px solid #3478cb;
+  outline-offset: 3px;
+}
+
+.health-page .guide-official-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Source Note */
+
+.health-page .health-source-note {
+  margin: 22px 0 0;
+  font-size: 0.9rem;
+  color: #526277;
+  line-height: 1.6;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .health-page .health-emergency {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .health-page .health-emergency-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .health-page .resource-guide > summary {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .health-page .guide-content {
+    padding: 16px;
+  }
+
+}

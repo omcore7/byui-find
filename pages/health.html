@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Find BYU-Idaho health, counseling, wellness, fitness, and mental health support resources."
+    content="Find BYU-Idaho health, counseling, wellness, fitness, and mental health support."
   >
 
   <title>My Health | BYU-I Find</title>
@@ -16,42 +16,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Shared styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="../css/styles.css">
-
-  <!-- Unified category styles -->
   <link rel="stylesheet" href="../css/category-unified.css">
-
-  <!-- Health page styles -->
   <link rel="stylesheet" href="../css/health.css">
 
-  <!-- Icons -->
+  <!-- Icons and Scripts -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-
-  <!-- Shared JavaScript -->
   <script src="../js/script.js" defer></script>
+  <script src="../js/health.js" defer></script>
 
-  <!-- Link previews -->
+  <!-- Link Previews -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BYU-I Find">
   <meta property="og:title" content="My Health | BYU-I Find">
-  <meta property="og:description" content="Find BYU-Idaho health, counseling, wellness, and fitness resources.">
-  <meta property="og:url" content="https://byui-find.vercel.app/pages/health.html">
-  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta
+    property="og:description"
+    content="Find health, counseling, wellness, and mental health resources at BYU-Idaho."
+  >
+  <meta
+    property="og:url"
+    content="https://byui-find.vercel.app/pages/health.html"
+  >
+  <meta
+    property="og:image"
+    content="https://byui-find.vercel.app/assets/images/byui-campus.jpg"
+  >
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
+  <!-- Vercel Analytics -->
   <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-
 </head>
 
 <body class="health-page">
@@ -80,19 +84,24 @@
       id="main-navigation"
       aria-label="Main navigation"
     >
-      <a href="../index.html#categories" class="active">
+
+      <a href="#finder" class="nav-link">
+        Discover
+      </a>
+
+      <a href="/#categories" class="active">
         Resources
       </a>
 
-      <a href="../index.html#about">
+      <a href="/#about">
         About
       </a>
 
-      <a href="pages/feedback.html" class="nav-link">
+      <a href="/pages/feedback.html" class="nav-link">
         Feedback
       </a>
 
-      <a href="faq.html">
+      <a href="/pages/faq.html">
         FAQ
       </a>
     </nav>
@@ -129,8 +138,9 @@
           <h1>My Health</h1>
 
           <p class="health-intro-description">
-            Find support for your physical, mental,
-            and emotional well-being.
+            Taking care of yourself matters. Find support
+            for your physical, mental, and emotional health,
+            and learn how to get started.
           </p>
 
         </div>
@@ -138,7 +148,6 @@
       </div>
 
     </section>
-
 
     <!-- ======================================
          SEARCH AND RESOURCES
@@ -150,6 +159,42 @@
     >
 
       <div class="health-container">
+
+        <!-- Emergency Support -->
+        <aside
+          class="health-emergency"
+          aria-labelledby="emergency-title"
+        >
+
+          <span class="health-emergency-icon">
+            <i data-lucide="heart-handshake" aria-hidden="true"></i>
+          </span>
+
+          <div class="health-emergency-content">
+
+            <h2 id="emergency-title">
+              Need help right now?
+            </h2>
+
+            <p>
+              If you or someone you know is experiencing
+              a mental health crisis, call or text 988
+              in the United States. For immediate physical
+              danger, call 911.
+            </p>
+
+            <a
+              href="https://988lifeline.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit the 988 Lifeline
+              <i data-lucide="external-link" aria-hidden="true"></i>
+            </a>
+
+          </div>
+
+        </aside>
 
         <!-- Search -->
         <div
@@ -163,7 +208,7 @@
           <input
             id="resource-search"
             type="search"
-            placeholder="Search health resources..."
+            placeholder="Try: stress, counseling, sleep, fitness..."
             aria-label="Search health resources"
             autocomplete="off"
           >
@@ -178,206 +223,50 @@
 
         </div>
 
-
-        <!-- Directory heading -->
+        <!-- Directory Heading -->
         <div class="health-directory-heading">
 
           <div>
 
             <p class="health-eyebrow">
-              EXPLORE YOUR OPTIONS
+              FIND HELP FOR YOUR SITUATION
             </p>
 
             <h2 id="health-resources-title">
-              Health resources
+              What do you need help with?
             </h2>
 
             <p>
-              Choose a resource to visit its website.
+              Choose a situation to learn which resources
+              are available and how to use them.
             </p>
 
           </div>
 
-          <span class="health-resource-count" aria-live="polite">
-            6 resources
+          <span
+            class="health-resource-count"
+            aria-live="polite"
+          >
+            10 resources
           </span>
 
         </div>
 
+        <!-- Resource Guides -->
+        <div
+          class="health-resource-list"
+          id="health-resource-list"
+        ></div>
 
-        <!-- Resource list -->
-        <div class="health-resource-list">
-
-          <!-- Counseling Center -->
-          <a
-            class="resource-list-item"
-            id="counseling-center"
-            href="https://www.byui.edu/counseling-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="counseling mental health stress anxiety emotional support therapy"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="heart-handshake" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Counseling Center</strong>
-              <small>
-                Find support for stress, emotional challenges,
-                and mental well-being.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Student Health Center -->
-          <a
-            class="resource-list-item"
-            id="student-health-center"
-            href="https://www.byui.edu/health-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="student health center medical doctor appointments physical health healthcare"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="stethoscope" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Student Health Center</strong>
-              <small>
-                Find information about medical services,
-                appointments, and student healthcare.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Fitness and Recreation -->
-          <a
-            class="resource-list-item"
-            id="fitness-recreation"
-            href="https://www.byui.edu/recreational-services/hart-building/fitness-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="fitness gym recreation exercise sports wellness campus activities"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="dumbbell" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Fitness &amp; Recreation</strong>
-              <small>
-                Explore campus fitness, sports, exercise,
-                and recreational activities.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- Wellness Resources -->
-          <a
-            class="resource-list-item"
-            id="wellness-resources"
-            href="https://www.byui.edu/wellness-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="wellness healthy habits physical emotional health wellbeing"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="leaf" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Wellness Resources</strong>
-              <small>
-                Explore healthy habits and ways to
-                support your well-being.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- NEW: I Get Help Line -->
-          <a
-            class="resource-list-item"
-            id="get-help-line"
-            href="https://www.byui.edu/counseling-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="i get help line get help emotional support mental health counseling talk someone stress help"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="message-circle-heart" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>I Get Help Line</strong>
-              <small>
-                Explore BYU-Idaho counseling resources and
-                information about getting emotional support
-                when you need someone to talk to.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-
-          <!-- NEW: Crisis Support -->
-          <a
-            class="resource-list-item"
-            id="crisis-support"
-            href="https://988lifeline.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="crisis support 988 suicide prevention lifeline emergency mental health immediate help emotional distress"
-          >
-
-            <span class="list-icon">
-              <i data-lucide="heart-handshake" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Crisis Support — 988 Lifeline</strong>
-              <small>
-                Get free, confidential support during a
-                mental health or emotional crisis.
-                Call or text 988 in the United States,
-                or visit the 988 Lifeline website.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-
-          </a>
-
-        </div>
-
-
-        <!-- No search results -->
+        <!-- No Results -->
         <p id="no-results" class="no-results" hidden>
           No resources found. Try another search.
+        </p>
+
+        <p class="health-source-note">
+          This is a student-created resource guide, not a
+          medical service. Check official websites for
+          current costs, eligibility, and availability.
         </p>
 
       </div>
@@ -385,7 +274,6 @@
     </section>
 
   </main>
-
 
   <!-- ======================================
        FOOTER
@@ -417,10 +305,11 @@
 
           <h3>Quick Links</h3>
 
-          <a href="../index.html#categories">Resources</a>
-          <a href="faq.html">FAQ</a>
-          <a href="../index.html#about">About</a>
-          <a href="pages/feedback.html">Feedback</a>
+          <a href="/#finder">Discover</a>
+          <a href="/#categories">Resources</a>
+          <a href="/#about">About</a>
+          <a href="/pages/feedback.html">Feedback</a>
+          <a href="/pages/faq.html">FAQ</a>
 
         </div>
 
@@ -434,77 +323,6 @@
     </div>
 
   </footer>
-
-
-  <!-- ======================================
-       HEALTH RESOURCE SEARCH
-       ====================================== -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const searchInput = document.querySelector(
-        ".health-page #resource-search"
-      );
-
-      const searchButton = document.querySelector(
-        ".health-page #search-button"
-      );
-
-      const resources = Array.from(
-        document.querySelectorAll(
-          ".health-page .health-resource-list .resource-list-item"
-        )
-      );
-
-      const noResults = document.querySelector(
-        ".health-page #no-results"
-      );
-
-      const count = document.querySelector(
-        ".health-page .health-resource-count"
-      );
-
-      if (!searchInput) return;
-
-      function filterResources() {
-
-        const query = searchInput.value.trim().toLowerCase();
-        let visible = 0;
-
-        resources.forEach((resource) => {
-
-          const searchableText = (
-            (resource.dataset.search || "") + " " +
-            resource.textContent
-          ).toLowerCase();
-
-          const matches = searchableText.includes(query);
-
-          resource.hidden = !matches;
-
-          if (matches) {
-            visible++;
-          }
-
-        });
-
-        if (noResults) {
-          noResults.hidden = visible !== 0;
-        }
-
-        if (count) {
-          count.textContent =
-            visible + (visible === 1 ? " resource" : " resources");
-        }
-
-      }
-
-      searchInput.addEventListener("input", filterResources);
-
-      searchButton?.addEventListener("click", filterResources);
-
-    });
-  </script>
 
 </body>
 </html>

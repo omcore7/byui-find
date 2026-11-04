@@ -907,7 +907,7 @@ button {
   line-height: 1.7;
 }
 
-#discover,
+#finder,
 #finder,
 #spotlight,
 #categories {
@@ -3081,4 +3081,38 @@ section[id] {
   margin: 0 0 14px;
   color: var(--navy);
   font-size: 18px;
+}
+
+/* Personalized Finder - Clear Button */
+
+.finder-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 18px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: transparent;
+  color: #6756a8;
+
+  font: inherit;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.finder-clear:hover {
+  background: rgba(103, 86, 168, 0.08);
+}
+
+.finder-clear:focus-visible {
+  outline: 3px solid #6756a8;
+  outline-offset: 3px;
 }

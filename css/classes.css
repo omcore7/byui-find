@@ -397,3 +397,146 @@
     transform: none;
   }
 }
+
+/* ==========================================
+   MY CLASSES | EXPANDABLE RESOURCE GUIDES
+   ========================================== */
+
+.classes-page .resource-guide {
+  border: 1px solid #dce6f2;
+  border-radius: 16px;
+  background: #ffffff;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.classes-page .resource-guide[hidden] {
+  display: none !important;
+}
+
+/* Resource Heading */
+
+.classes-page .resource-guide > summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.classes-page .resource-guide > summary::-webkit-details-marker {
+  display: none;
+}
+
+.classes-page .resource-guide > summary:hover {
+  background: #f5f9ff;
+}
+
+.classes-page .resource-guide > summary:focus-visible {
+  outline: 3px solid #3478cb;
+  outline-offset: -3px;
+}
+
+.classes-page .resource-guide > summary .resource-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.classes-page .resource-guide > summary .resource-details strong,
+.classes-page .resource-guide > summary .resource-details small {
+  display: block;
+}
+
+.classes-page .resource-guide > summary .resource-details small {
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+/* Expand Arrow */
+
+.classes-page .guide-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.classes-page .resource-guide[open] .guide-chevron {
+  transform: rotate(180deg);
+}
+
+/* Expanded Content */
+
+.classes-page .guide-content {
+  padding: 0 22px 22px;
+  border-top: 1px solid #e7edf5;
+  line-height: 1.7;
+}
+
+.classes-page .guide-content p {
+  margin-top: 16px;
+}
+
+.classes-page .guide-content h3 {
+  margin: 14px 0 6px;
+  font-size: 1rem;
+}
+
+.classes-page .guide-content ol {
+  padding-left: 24px;
+  margin: 8px 0 18px;
+}
+
+.classes-page .guide-content li + li {
+  margin-top: 6px;
+}
+
+/* Official Resource Link */
+
+.classes-page .guide-official-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #eaf3ff;
+  color: #154f99;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.classes-page .guide-official-link:hover {
+  background: #dbeafe;
+}
+
+.classes-page .guide-official-link:focus-visible {
+  outline: 3px solid #3478cb;
+  outline-offset: 3px;
+}
+
+.classes-page .guide-official-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Source Note */
+
+.classes-page .classes-source-note {
+  margin: 22px 0 0;
+  font-size: 0.9rem;
+  color: #526277;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .classes-page .resource-guide > summary {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .classes-page .guide-content {
+    padding: 0 16px 18px;
+  }
+
+}

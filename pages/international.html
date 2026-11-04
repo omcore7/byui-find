@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="Find BYU-Idaho international student resources, immigration information, employment guidance, and campus support."
+    content="Find BYU-Idaho international student resources for immigration, I-20 documents, travel, employment, and campus life."
   >
 
   <title>International Support | BYU-I Find</title>
@@ -15,35 +15,46 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Shared styles -->
+  <!-- Shared Styles -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/category-unified.css">
 
-  <!-- International page styles -->
+  <!-- International Styles -->
   <link rel="stylesheet" href="../css/international.css">
 
-  <!-- Icons and shared JavaScript -->
+  <!-- Icons and JavaScript -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="../js/script.js" defer></script>
+  <script src="../js/international.js" defer></script>
 
-  <!-- Link previews -->
+  <!-- Link Previews -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BYU-I Find">
   <meta property="og:title" content="International Support | BYU-I Find">
-  <meta property="og:description" content="Find support for BYU-Idaho international students: I-20, visa, work rules, and more.">
-  <meta property="og:url" content="https://byui-find.vercel.app/pages/international.html">
-  <meta property="og:image" content="https://byui-find.vercel.app/assets/images/byui-campus.jpg">
+  <meta
+    property="og:description"
+    content="Find support for international students at BYU-Idaho."
+  >
+  <meta
+    property="og:url"
+    content="https://byui-find.vercel.app/pages/international.html"
+  >
+  <meta
+    property="og:image"
+    content="https://byui-find.vercel.app/assets/images/byui-campus.jpg"
+  >
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Vercel Web Analytics (starts counting once enabled in Vercel) -->
+  <!-- Vercel Analytics -->
   <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -51,9 +62,7 @@
 
 <body class="international-page">
 
-  <!-- ======================================
-       HEADER
-       ====================================== -->
+  <!-- HEADER -->
   <header class="site-header">
 
     <a href="../index.html" class="logo">
@@ -75,19 +84,24 @@
       id="main-navigation"
       aria-label="Main navigation"
     >
-      <a href="../index.html#categories" class="active">
+
+      <a href="#finder" class="nav-link">
+        Discover
+      </a>
+
+      <a href="/#categories" class="active">
         Resources
       </a>
 
-      <a href="../index.html#about">
+      <a href="/#about">
         About
       </a>
 
-      <a href="pages/feedback.html" class="nav-link">
+      <a href="/pages/feedback.html" class="nav-link">
         Feedback
       </a>
 
-      <a href="faq.html">
+      <a href="/pages/faq.html">
         FAQ
       </a>
     </nav>
@@ -96,17 +110,12 @@
 
   <main>
 
-    <!-- ======================================
-         PAGE INTRODUCTION
-         ====================================== -->
+    <!-- PAGE INTRODUCTION -->
     <section class="international-intro">
 
       <div class="international-container">
 
-        <a
-          href="../index.html#categories"
-          class="back-link"
-        >
+        <a href="../index.html#categories" class="back-link">
           <i data-lucide="arrow-left" aria-hidden="true"></i>
           All categories
         </a>
@@ -124,8 +133,10 @@
           <h1>International Support</h1>
 
           <p class="international-intro-description">
-            Find resources to help you navigate student life,
-            immigration requirements, and opportunities at BYU-Idaho.
+            Studying in another country comes with questions.
+            Find resources to help you understand immigration
+            requirements, work opportunities, and student life
+            at BYU-Idaho.
           </p>
 
         </div>
@@ -134,9 +145,7 @@
 
     </section>
 
-    <!-- ======================================
-         SEARCH AND RESOURCES
-         ====================================== -->
+    <!-- SEARCH AND RESOURCES -->
     <section
       class="international-resources"
       id="international-resources"
@@ -157,7 +166,7 @@
           <input
             id="resource-search"
             type="search"
-            placeholder="Search international resources..."
+            placeholder="Try: I-20, travel, CPT, OPT..."
             aria-label="Search international resources"
             autocomplete="off"
           >
@@ -172,181 +181,52 @@
 
         </div>
 
-        <!-- Directory heading -->
+        <!-- Directory Heading -->
         <div class="international-directory-heading">
 
           <div>
+
             <p class="international-eyebrow">
-              EXPLORE YOUR OPTIONS
+              FIND THE HELP YOU NEED
             </p>
 
             <h2 id="international-resources-title">
-              International resources
+              What do you need help with?
             </h2>
 
             <p>
-              Choose a resource to visit its website.
+              Choose a situation to find resources
+              and learn how to get started.
             </p>
+
           </div>
 
-          <span class="international-resource-count">
-            6 resources
+          <span
+            class="international-resource-count"
+            aria-live="polite"
+          >
+            12 resources
           </span>
 
         </div>
 
-        <!-- Resource list -->
-        <div class="international-resource-list">
+        <!-- Resource Guides -->
+        <div
+          class="international-resource-list"
+          id="international-resource-list"
+        ></div>
 
-          <!-- International Services -->
-          <a
-            class="resource-list-item"
-            id="international-services"
-            href="https://www.byui.edu/international-services"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="international services student advisors immigration questions"
-          >
-            <span class="list-icon">
-              <i data-lucide="globe" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>International Services</strong>
-              <small>
-                Find information and guidance for international
-                students studying at BYU-Idaho.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
-
-          <!-- Visa and Immigration -->
-          <a
-            class="resource-list-item"
-            id="visa-immigration"
-            href="https://www.byui.edu/international-services/faq"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="f1 visa immigration i20 sevis travel student status"
-          >
-            <span class="list-icon">
-              <i data-lucide="file-check" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Visa &amp; Immigration</strong>
-              <small>
-                Learn about maintaining student status,
-                immigration documents, and travel requirements.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
-
-          <!-- Student Support -->
-          <a
-            class="resource-list-item"
-            id="student-support"
-            href="https://www.byui.edu/dean-of-students/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="student support adjustment campus community international"
-          >
-            <span class="list-icon">
-              <i data-lucide="users" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Student Support</strong>
-              <small>
-                Discover campus resources and support
-                to help you adjust to university life.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
-
-          <!-- Employment Authorization -->
-          <a
-            class="resource-list-item"
-            id="employment-authorization"
-            href="https://www.byui.edu/international-services/employment"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="cpt opt employment authorization international students work"
-          >
-            <span class="list-icon">
-              <i data-lucide="briefcase-business" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Employment Authorization</strong>
-              <small>
-                Learn about work authorization, CPT, and OPT
-                for eligible international students.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
-
-          <!-- Academic Advising -->
-          <a
-            class="resource-list-item"
-            id="academic-advising"
-            href="https://www.byui.edu/advising"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="academic advising classes registration degree planning"
-          >
-            <span class="list-icon">
-              <i data-lucide="graduation-cap" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Academic Advising</strong>
-              <small>
-                Get guidance on planning your classes
-                and meeting degree requirements.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
-
-          <!-- Campus Life and Activities -->
-          <a
-            class="resource-list-item"
-            id="campus-life-activities"
-            href="https://www.byui.edu/student-activities/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-search="campus life activities friends community clubs events"
-          >
-            <span class="list-icon">
-              <i data-lucide="users-round" aria-hidden="true"></i>
-            </span>
-
-            <span class="resource-details">
-              <strong>Campus Life &amp; Activities</strong>
-              <small>
-                Explore activities and opportunities
-                to connect with other students.
-              </small>
-            </span>
-
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
-
-        </div>
-
-        <!-- No search results -->
+        <!-- No Results -->
         <p id="no-results" class="no-results" hidden>
           No resources found. Try another search.
+        </p>
+
+        <!-- Important Reminder -->
+        <p class="international-source-note">
+          Immigration rules and university procedures can change.
+          Always confirm your requirements with BYU-Idaho
+          International Services before making decisions about
+          travel, employment, or your student status.
         </p>
 
       </div>
@@ -355,9 +235,7 @@
 
   </main>
 
-  <!-- ======================================
-       FOOTER
-       ====================================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
 
     <div class="footer-container">
@@ -385,10 +263,11 @@
 
           <h3>Quick Links</h3>
 
-          <a href="../index.html#categories">Resources</a>
-          <a href="faq.html">FAQ</a>
-          <a href="../index.html#about">About</a>
-          <a href="pages/feedback.html">Feedback</a>
+          <a href="/#finder">Discover</a>
+          <a href="/#categories">Resources</a>
+          <a href="/#about">About</a>
+          <a href="/pages/feedback.html">Feedback</a>
+          <a href="/pages/faq.html">FAQ</a>
 
         </div>
 
@@ -402,66 +281,6 @@
     </div>
 
   </footer>
-
-  <!-- International resource search -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const searchInput = document.querySelector(
-        ".international-page #resource-search"
-      );
-
-      const searchButton = document.querySelector(
-        ".international-page #search-button"
-      );
-
-      const resources = Array.from(
-        document.querySelectorAll(
-          ".international-page .international-resource-list .resource-list-item"
-        )
-      );
-
-      const noResults = document.querySelector(
-        ".international-page #no-results"
-      );
-
-      const count = document.querySelector(
-        ".international-page .international-resource-count"
-      );
-
-      if (!searchInput) return;
-
-      function filterResources() {
-        const query = searchInput.value.trim().toLowerCase();
-        let visible = 0;
-
-        resources.forEach((resource) => {
-          const searchableText = (
-            (resource.dataset.search || "") + " " +
-            resource.textContent
-          ).toLowerCase();
-
-          const matches = searchableText.includes(query);
-
-          resource.hidden = !matches;
-
-          if (matches) visible++;
-        });
-
-        if (noResults) {
-          noResults.hidden = visible !== 0;
-        }
-
-        if (count) {
-          count.textContent =
-            visible + (visible === 1 ? " resource" : " resources");
-        }
-      }
-
-      searchInput.addEventListener("input", filterResources);
-
-      searchButton?.addEventListener("click", filterResources);
-    });
-  </script>
 
 </body>
 </html>

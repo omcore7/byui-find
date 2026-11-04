@@ -203,3 +203,14 @@ main {
   color: var(--category-accent);
   background: var(--category-soft);
 }
+
+/* Keep the area above the category navigation white */
+html,
+body {
+  background: #ffffff;
+}
+
+/* Keep the category content light blue */
+main {
+  background: #f3f8ff;
+}
