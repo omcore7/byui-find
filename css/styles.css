@@ -3116,3 +3116,20 @@ section[id] {
   outline: 3px solid #6756a8;
   outline-offset: 3px;
 }
+
+/* Footer Disclaimer */
+
+.footer-disclaimer {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 20px 24px 0;
+  border-top: 1px solid rgba(16, 45, 85, 0.12);
+  text-align: center;
+}
+
+.footer-disclaimer p {
+  margin: 0;
+  color: #526d8e;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
